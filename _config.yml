@@ -61,9 +61,11 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
+# Sina Weibo
+weibo_user: 1959085582 # 微博数字 ID 或域名 ID
 
 # Github repositories
-github_user:
+github_user: CodePeasant
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
@@ -90,8 +92,8 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: CodePeasant
+disqus_show_comment_count: true
 
 # Google Analytics
 google_analytics_tracking_id:
