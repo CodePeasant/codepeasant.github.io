@@ -16,7 +16,7 @@ description:
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: 
 subscribe_email:
 # RSS feeds can list your email address if you like
 email: 1032197148@qq.com
@@ -63,6 +63,10 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 # Sina Weibo
 weibo_user: 1959085582 # 微博数字 ID 或域名 ID
+
+# Stackoverflow
+stackoverflow_user_id: 2853651
+stackoverflow_user: wuyixiang
 
 # Github repositories
 github_user: CodePeasant
