@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://CodePeasant.github.io/sitemap.xml 
