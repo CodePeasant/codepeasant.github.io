@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-11-25T19:24:34+08:00</updated>
+  <updated>2013-11-26T15:32:15+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -12,75 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[程序员的自我修养]]></title>
-    <link href="http://CodePeasant.github.io/blog/2013/11/25/cheng-xu-yuan-de-zi-wo-xiu-yang/"/>
-    <updated>2013-11-25T17:42:00+08:00</updated>
-    <id>http://CodePeasant.github.io/blog/2013/11/25/cheng-xu-yuan-de-zi-wo-xiu-yang</id>
-    <content type="html"><![CDATA[<h2>关于</h2>
-
-<p>陈皓写过一篇《<a href="http://coolshell.cn/articles/4990.html">程序员技术练级攻略</a>》，感觉对写的很不错，基本列明了一个程序员需要掌握的基础技能。所以我将大致按着他的提纲整理我已经掌握的技能和记录学习一些新的技能的笔记和心得。</p>
-
-<h2>客户端</h2>
-
-<h3>IOS</h3>
-
-<h3>Android</h3>
-
-<h3>HTML+CSS+JS</h3>
-
-<h3>PC</h3>
-
-<h2>服务器端</h2>
-
-<h3>Linux</h3>
-
-<h3>Mysql</h3>
-
-<h3>NOSQL</h3>
-
-<h3>Nginx</h3>
-
-<h3>MQ</h3>
-
-<h3>框架</h3>
-
-<h2>工具</h2>
-
-<h3>脚本</h3>
-
-<h3>IDE</h3>
-
-<h3>GIT</h3>
-
-<h2>代码风格</h2>
-
-<h3>代码大全</h3>
-
-<h3>设计模式</h3>
-
-<h2>操作系统原理</h2>
-
-<h3>Unix编程艺术</h3>
-
-<h3>Unix高级环境编程</h3>
-
-<h2>算法</h2>
-
-<h3>July博客</h3>
-
-<h2>数据分析与挖掘</h2>
-
-<h3>推荐系统</h3>
-
-<h3>数据挖掘</h3>
-
-<h3>机器学习</h3>
-
-<h2>系统架构</h2>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[大四]]></title>
