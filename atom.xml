@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-11-26T15:32:15+08:00</updated>
+  <updated>2013-12-04T19:42:34+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ios Outline]]></title>
+    <link href="http://CodePeasant.github.io/blog/2013/12/04/ios-outline/"/>
+    <updated>2013-12-04T00:00:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2013/12/04/ios-outline</id>
+    <content type="html"><![CDATA[<p>从理论上讲，我在爱奇艺的职位应该是iOS工程师，入职前的实习本来是做服务器端的，入职后奇谈的移动端缺人就改到白玉的小组做iOS了，虽然我没有半点移动开发的经验@@，感谢白玉的教材和指点。IOS其实上手还是挺简单的，开发逻辑也类似于MFC，学了两个星期就开始开发<a href="https://itunes.apple.com/cn/app/ai-qi-yi-re-liao/id663264968?mt=8">热聊</a>的剧照模块，然后又做了两个星期做好了以后就做一些直播、截图之类的下个版本的视频特性的试验。然后过了一段时间主程序员跑路了就负责交接XMPP的模块。再后来热聊就被叫停了&hellip;然后就换到了现在的部门，现在的工作留待以后再写。发一个热聊的遗照，纪念我做的第一个iOS项目.</p>
+
+<p><img src="http://CodePeasant.github.io/images/page/hotChat.jpg" alt="热聊" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[大四]]></title>
