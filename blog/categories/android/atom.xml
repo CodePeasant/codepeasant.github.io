@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: android | 乌衣巷]]></title>
+  <link href="http://CodePeasant.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://CodePeasant.github.io/"/>
+  <updated>2013-12-04T20:52:30+08:00</updated>
+  <id>http://CodePeasant.github.io/</id>
+  <author>
+    <name><![CDATA[吴逸翔]]></name>
+    <email><![CDATA[1032197148@qq.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[android]]></title>
+    <link href="http://CodePeasant.github.io/blog/2013/12/04/android/"/>
+    <updated>2013-12-04T20:30:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2013/12/04/android</id>
+    <content type="html"><![CDATA[<p>Android基本上是在热聊被叫停后基本没什么事干的时候学的，就写了几个HelloWorld程序和复习了一遍OpenES,不过<a href="http://developer.android.com/training/index.html">Goodle的安卓学习课程</a>的确很赞，入门很不错.</p>
+]]></content>
+  </entry>
+  
+</feed>
