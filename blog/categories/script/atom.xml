@@ -4,7 +4,7 @@
   <title><![CDATA[Category: script | 乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/blog/categories/script/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-12-04T20:52:30+08:00</updated>
+  <updated>2013-12-04T20:54:11+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -32,7 +32,7 @@ Ctrl+I 清空整屏
 
 <h3>命令</h3>
 
-<p>```shell
+<p>```bash
 ls|wc -c/w/l #统计字符数/词数/行数
 sudo !!    #重复上个输入的命令</p>
 

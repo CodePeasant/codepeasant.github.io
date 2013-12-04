@@ -9,7 +9,9 @@
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Dec 4th, 2013 Comments iOS 从理论上讲，我在爱奇艺的职位应该是iOS工程师，入职前的实习本来是做服务器端的，入职后奇谈的移动端缺人就改到白玉的小组做iOS了，虽然我没有半点移动开发的经验@@，感谢白玉的教材和指点。IOS其实上手还是挺简单的，开发逻辑也类似于MFC， &hellip;">
+	<meta name="description" content="Dec 4th, 2013 script Comments Script_tips 未熟悉 grep QLStagePhoto -rl branches/ #在某个目录下查找含有某段文字的文件 已掌握 技巧 Ctrl+U 清空当前行
+Ctrl+I 清空整屏
+一般输入某个命令加- &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,7 +66,7 @@
 <hgroup>
   <h1><a href="/">乌衣巷</a></h1>
   
-    <h2>不是文青的雕饰不是好备胎</h2>
+    <h2>修我战剑，杀上九天</h2>
   
 </hgroup>
 
@@ -129,8 +131,152 @@
   
 
 
+<time datetime="2013-12-04T20:38:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/script/'>script</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2013/12/04/script-tips/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/script-tips/" itemprop="url">Script_tips</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h2>未熟悉</h2>
+
+<p>grep QLStagePhoto -rl branches/ #在某个目录下查找含有某段文字的文件</p>
+
+<h2>已掌握</h2>
+
+<h3>技巧</h3>
+
+<p>Ctrl+U 清空当前行
+Ctrl+I 清空整屏
+一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ls -lh</p>
+
+<h3>命令</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ls|wc -c/w/l <span class="c">#统计字符数/词数/行数</span>
+</span><span class='line'>sudo !!    <span class="c">#重复上个输入的命令</span>
+</span><span class='line'>
+</span><span class='line'>python -m SimpleHTTPServer <span class="c">#以当前目录为根目录启动HTTPServer，端口为8000</span>
+</span><span class='line'><span class="nb">history</span> | awk <span class="s1">&#39;{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a }&#39;</span> | grep -v <span class="s2">&quot;./&quot;</span> | column -c3 -s <span class="s2">&quot; &quot;</span> -t | sort -nr | nl | head -n10    <span class="c">#统计当前用户最常用的10个命令</span>
+</span><span class='line'>
+</span><span class='line'>ipfw pipe pipe_nr config bw B delay D queue Q plr P <span class="c">#这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；B 是指频宽，可以表示为 bit/s、Kbit/s、Mbit/s、Bytes/s、KBytes/s、或 MBytes/s。D 是延迟多少 milliseconds (1/1000)。Q 是 queue size 的大小 (单位为 packages 或 Bytes)。P 是要随机丢弃的封包数量。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T20:36:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/script/'>script</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2013/12/04/script/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/script/" itemprop="url">Script</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h2><a href="/blog/2013/12/04/script_tips">常用脚本命令</a></h2>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T20:30:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/android/'>android</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2013/12/04/android/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/android/" itemprop="url">Android</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Android基本上是在热聊被叫停后基本没什么事干的时候学的，就写了几个HelloWorld程序和复习了一遍OpenES,不过<a href="http://developer.android.com/training/index.html">Goodle的安卓学习课程</a>的确很赞，入门很不错.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
 <time datetime="2013-12-04T19:25:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
 		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/ios/'>iOS</a>
+
 
 </div>
 		
