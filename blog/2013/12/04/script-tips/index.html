@@ -5,17 +5,14 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>script_tips - 乌衣巷</title>
+	<title>有用的Shell命令和小技巧 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Script_tips 未熟悉 grep QLStagePhoto -rl branches/ #在某个目录下查找含有某段文字的文件 已掌握 技巧 Ctrl+U 清空当前行
+	<meta name="description" content="有用的Shell命令和小技巧 未熟悉 在某个目录下查找含有某段文字的文件 1
+grep QLStagePhoto -rl branches/ 已掌握 技巧 Ctrl+U 清空当前行
 Ctrl+I 清空整屏
-一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ls -lh 命令 1
-2
-3
-4
-5 &hellip;">
+一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h 命令 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,7 +67,7 @@ Ctrl+I 清空整屏
 <hgroup>
   <h1><a href="/">乌衣巷</a></h1>
   
-    <h2>修我战剑，杀上九天</h2>
+    <h2>惜羽</h2>
   
 </hgroup>
 
@@ -118,20 +115,76 @@ Ctrl+I 清空整屏
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">Script_tips</h1>
+	<h1 class="title" itemprop="name">有用的Shell命令和小技巧</h1>
 	<div class="entry-content" itemprop="articleBody"><h2>未熟悉</h2>
 
-<p>grep QLStagePhoto -rl branches/ #在某个目录下查找含有某段文字的文件</p>
+<ul>
+<li>在某个目录下查找含有某段文字的文件</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grep QLStagePhoto -rl branches/
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>已掌握</h2>
 
 <h3>技巧</h3>
 
-<p>Ctrl+U 清空当前行
-Ctrl+I 清空整屏
-一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ls -lh</p>
+<ul>
+<li>Ctrl+U 清空当前行</li>
+<li>Ctrl+I 清空整屏</li>
+<li>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</li>
+</ul>
+
 
 <h3>命令</h3>
+
+<ul>
+<li>统计字符数/词数/行数</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ls|wc -c/w/l
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>重复上个输入的命令</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo !!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>以当前目录为根目录启动HTTPServer，端口为8000</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>python -m SimpleHTTPServer
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>统计当前用户最常用的10个命令</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">history</span> | awk <span class="s1">&#39;{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a }&#39;</span> | grep -v <span class="s2">&quot;./&quot;</span> | column -c3 -s <span class="s2">&quot; &quot;</span> -t | sort -nr | nl | head -n10
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>降低当前网络速度质量(用于WIFI模拟手机2G环境)</li>
+</ul>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -139,15 +192,15 @@ Ctrl+I 清空整屏
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ls|wc -c/w/l <span class="c">#统计字符数/词数/行数</span>
-</span><span class='line'>sudo !!    <span class="c">#重复上个输入的命令</span>
-</span><span class='line'>
-</span><span class='line'>python -m SimpleHTTPServer <span class="c">#以当前目录为根目录启动HTTPServer，端口为8000</span>
-</span><span class='line'><span class="nb">history</span> | awk <span class="s1">&#39;{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a }&#39;</span> | grep -v <span class="s2">&quot;./&quot;</span> | column -c3 -s <span class="s2">&quot; &quot;</span> -t | sort -nr | nl | head -n10    <span class="c">#统计当前用户最常用的10个命令</span>
-</span><span class='line'>
-</span><span class='line'>ipfw pipe pipe_nr config bw B delay D queue Q plr P <span class="c">#这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；B 是指频宽，可以表示为 bit/s、Kbit/s、Mbit/s、Bytes/s、KBytes/s、或 MBytes/s。D 是延迟多少 milliseconds (1/1000)。Q 是 queue size 的大小 (单位为 packages 或 Bytes)。P 是要随机丢弃的封包数量。</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ipfw pipe pipe_nr config bw B delay D queue Q plr P
+</span><span class='line'><span class="se">\#</span>这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；
+</span><span class='line'><span class="se">\#</span>B 是指频宽，可以表示为 bit/s、Kbit/s、Mbit/s、Bytes/s、KBytes/s、或 MBytes/s
+</span><span class='line'><span class="se">\#</span>D 是延迟多少 milliseconds <span class="o">(</span>1/1000<span class="o">)</span>
+</span><span class='line'><span class="se">\#</span>Q 是 queue size 的大小 <span class="o">(</span>单位为 packages 或 Bytes<span class="o">)</span>
+</span><span class='line'><span class="se">\#</span>P 是要随机丢弃的封包数量。
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 

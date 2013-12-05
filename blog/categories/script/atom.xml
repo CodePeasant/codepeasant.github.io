@@ -4,7 +4,7 @@
   <title><![CDATA[Category: script | 乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/blog/categories/script/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-12-04T21:00:35+08:00</updated>
+  <updated>2013-12-05T20:41:06+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -14,34 +14,61 @@
 
   
   <entry>
-    <title type="html"><![CDATA[script_tips]]></title>
+    <title type="html"><![CDATA[有用的Shell命令和小技巧]]></title>
     <link href="http://CodePeasant.github.io/blog/2013/12/04/script-tips/"/>
     <updated>2013-12-04T20:38:00+08:00</updated>
     <id>http://CodePeasant.github.io/blog/2013/12/04/script-tips</id>
     <content type="html"><![CDATA[<h2>未熟悉</h2>
 
-<p>grep QLStagePhoto -rl branches/ #在某个目录下查找含有某段文字的文件</p>
+<ul>
+<li>在某个目录下查找含有某段文字的文件
+<code>bash
+grep QLStagePhoto -rl branches/
+</code></li>
+</ul>
+
 
 <h2>已掌握</h2>
 
 <h3>技巧</h3>
 
-<p>Ctrl+U 清空当前行
-Ctrl+I 清空整屏
-一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ls -lh</p>
+<ul>
+<li>Ctrl+U 清空当前行</li>
+<li>Ctrl+I 清空整屏</li>
+<li>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</li>
+</ul>
+
 
 <h3>命令</h3>
 
-<p>```bash
-ls|wc -c/w/l #统计字符数/词数/行数
-sudo !!    #重复上个输入的命令</p>
+<ul>
+<li>统计字符数/词数/行数
+<code>bash
+ls|wc -c/w/l
+</code></li>
+<li>重复上个输入的命令
+<code>bash
+sudo !!
+</code></li>
+<li>以当前目录为根目录启动HTTPServer，端口为8000
+<code>bash
+python -m SimpleHTTPServer
+</code></li>
+<li>统计当前用户最常用的10个命令
+<code>bash
+history | awk '{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] " " CMD[a]/count*100 "% " a }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10  
+</code></li>
+<li>降低当前网络速度质量(用于WIFI模拟手机2G环境)
+<code>bash
+ipfw pipe pipe_nr config bw B delay D queue Q plr P
+\#这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；
+\#B 是指频宽，可以表示为 bit/s、Kbit/s、Mbit/s、Bytes/s、KBytes/s、或 MBytes/s
+\#D 是延迟多少 milliseconds (1/1000)
+\#Q 是 queue size 的大小 (单位为 packages 或 Bytes)
+\#P 是要随机丢弃的封包数量。
+</code></li>
+</ul>
 
-<p>python -m SimpleHTTPServer #以当前目录为根目录启动HTTPServer，端口为8000
-history | awk &lsquo;{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] &ldquo; &rdquo; CMD[a]/count*100 &ldquo;% &rdquo; a }&rsquo; | grep -v &ldquo;./&rdquo; | column -c3 -s &ldquo; &rdquo; -t | sort -nr | nl | head -n10    #统计当前用户最常用的10个命令</p>
-
-<p>ipfw pipe pipe_nr config bw B delay D queue Q plr P #这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；B 是指频宽，可以表示为 bit/s、Kbit/s、Mbit/s、Bytes/s、KBytes/s、或 MBytes/s。D 是延迟多少 milliseconds (1/1000)。Q 是 queue size 的大小 (单位为 packages 或 Bytes)。P 是要随机丢弃的封包数量。</p>
-
-<p>```</p>
 ]]></content>
   </entry>
   
