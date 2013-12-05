@@ -4,7 +4,7 @@
   <title><![CDATA[Category: script | 乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/blog/categories/script/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-12-05T20:41:06+08:00</updated>
+  <updated>2013-12-05T20:51:36+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -20,15 +20,25 @@
     <id>http://CodePeasant.github.io/blog/2013/12/04/script-tips</id>
     <content type="html"><![CDATA[<h2>未熟悉</h2>
 
+<blockquote><p>你好</p>
+
+<p>你是是谁</p>
+
+<p>我是吴逸翔</p></blockquote>
+
 <ul>
 <li>在某个目录下查找含有某段文字的文件
 <code>bash
 grep QLStagePhoto -rl branches/
 </code></li>
+<li>统计一个命令的运行时间
+<code>bash
+time ls
+</code>
+
+<h2>已掌握</h2></li>
 </ul>
 
-
-<h2>已掌握</h2>
 
 <h3>技巧</h3>
 
@@ -43,11 +53,11 @@ grep QLStagePhoto -rl branches/
 
 <ul>
 <li>统计字符数/词数/行数
-<code>bash
+<code>sh
 ls|wc -c/w/l
 </code></li>
 <li>重复上个输入的命令
-<code>bash
+<code>sh
 sudo !!
 </code></li>
 <li>以当前目录为根目录启动HTTPServer，端口为8000
