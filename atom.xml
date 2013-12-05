@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-12-05T20:51:36+08:00</updated>
+  <updated>2013-12-05T20:56:05+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -19,12 +19,6 @@
     <updated>2013-12-04T20:38:00+08:00</updated>
     <id>http://CodePeasant.github.io/blog/2013/12/04/script-tips</id>
     <content type="html"><![CDATA[<h2>未熟悉</h2>
-
-<blockquote><p>你好</p>
-
-<p>你是是谁</p>
-
-<p>我是吴逸翔</p></blockquote>
 
 <ul>
 <li>在某个目录下查找含有某段文字的文件</li>
