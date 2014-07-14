@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Category: boost - 乌衣巷</title>
+	<title>数据库笔记 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Category: boost">
+	<meta name="description" content="数据库笔记 范式比较 1NF 数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值，即实体中的某个属性不能有多个值或者不能有重复的属性。 2NF 非主属性完全依赖于主键[消除非主属性对主码的部分函数依赖] 3NF 非主属性不依赖于其它非主属性[消除了非主属性传递依赖] BCNF &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.ioblog/categories/boost/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/07/06/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8C%83%E5%BC%8F%E7%AC%94%E8%AE%B0/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,32 +111,91 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner">
-	
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">数据库笔记</h1>
+	<div class="entry-content" itemprop="articleBody"><h2>范式比较</h2>
+
+<h3>1NF</h3>
+
+<p>数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值，即实体中的某个属性不能有多个值或者不能有重复的属性。</p>
+
+<h3>2NF</h3>
+
+<p>非主属性完全依赖于主键[消除非主属性对主码的<strong>部分函数依赖</strong>]</p>
+
+<h3>3NF</h3>
+
+<p>非主属性不依赖于其它非主属性[消除了非主属性<strong>传递依赖</strong>]</p>
+
+<h3>BCNF</h3>
+
+<p>所有属性不依赖于任何候选关键字（一个表中只能有一个候选关键字）[消除了主属性<strong>传递依赖</strong>]</p>
+
+<h3>4NF</h3>
+
+<h3>5NF</h3>
+
+<h2>概念定义</h2>
+
+<h3>多值依赖</h3>
+
+<p>设R(U)是一个属性集合U上的一个关系模式，X, Y, 和Z是U的子集，并且Z=U-X-Y，多值依赖X->&ndash;>Y成立当且仅当对R的任一个关系r，r在(X,Z)上的每个值对应一组Y的值，这组值仅仅决定于X值而与Z值无关。
+若X->&ndash;>Y，而Z=空集，则称X->&ndash;>Y为平凡的多值依赖。
+否则，称X->&ndash;>Y为非平凡的多值依赖。</p>
+
+<h3>函数依赖</h3>
+
+<p>可以看出，如果把上面的一组改为一个，那么多值依赖就变成了函数依赖。当然一个值组成的组也是组，所以说，函数依赖是多值依赖的特殊情况。</p>
+
+<h2>TIP</h2>
+
+<ul>
+<li>1NF~BCNF消除函数依赖，4NF~5NF消除多值依赖</li>
+<li>2NF-3NF都消除了数据冗余、更新异常、插入异常和删除异常</li>
+</ul>
 
 
-	
-	
-	<section class="archives"><h1 class="year">2014</h1>
+<h2>参考</h2>
 
-<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<span class="date"><time datetime="2014-07-04T19:25:00+08:00" itemprop="datePublished">Jul  4</time></span>
-		<br>
-		<span class="tags">
+<p><a href="http://www.bkent.net/Doc/simple5.htm">A Simple Guide to Five Normal Forms in Relational Database Theory</a></p>
+</div>
 
-
-	<a class='category' href='/blog/categories/boost/'>boost</a>
-
-
-</span>
-	    
-	    <span class="comments"><a href="/blog/2014/07/04/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%AC%94%E8%AE%B0/#disqus_thread">Comments</a></span>
-	    
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/07/04/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%AC%94%E8%AE%B0/">智能指针笔记</a></h1>
 </article>
 
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">评论</h1>
+    
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'codepeasant'; // required: replace example with your forum shortname
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>

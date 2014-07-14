@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Design Pattern | 乌衣巷]]></title>
+  <link href="http://CodePeasant.github.io/blog/categories/design-pattern/atom.xml" rel="self"/>
+  <link href="http://CodePeasant.github.io/"/>
+  <updated>2014-07-14T20:42:33+08:00</updated>
+  <id>http://CodePeasant.github.io/</id>
+  <author>
+    <name><![CDATA[吴逸翔]]></name>
+    <email><![CDATA[1032197148@qq.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[设计模式笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/07/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-07-10T20:15:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/07/10/设计模式笔记</id>
+    <content type="html"><![CDATA[<h2>分类</h2>
+
+<h3>创建（5+1）</h3>
+
+<ul>
+<li>工厂(Factory)</li>
+<li>简单工厂(Simple Factory)</li>
+<li>抽象工厂(Abstract Factory)</li>
+<li>原型(Protoype)</li>
+<li>单例(Singleton)</li>
+<li>建造者(Builder)</li>
+</ul>
+
+
+<h3>结构（7）</h3>
+
+<ul>
+<li>组合(Composite)</li>
+<li>代理(Proxy)</li>
+<li>装饰(Decorator)</li>
+<li>桥接(Bridge)</li>
+<li>享元(Flyweight)</li>
+<li>适配器(Adaptor)</li>
+<li>外观(Facade)</li>
+</ul>
+
+
+<h3>行为（11）</h3>
+
+<ul>
+<li>模板方法(Template Method)</li>
+<li>状态(State)</li>
+<li>策略(Strategy)</li>
+<li>观察者(Observer)</li>
+<li>迭代器(Iterator)</li>
+<li>责任链(Chain of Responsibility)</li>
+<li>命令(Command)</li>
+<li>访问者(Visitor)</li>
+<li>备忘录(Memento)</li>
+<li>中介者(Mediator)</li>
+<li>解释器(Intepretor)</li>
+</ul>
+
+
+<h2>TIP</h2>
+
+<ul>
+<li>代理模式用于控制访问，用户不知道被代理的对象；装饰器模式用于新增行为，用户知道被被装饰的对象并在构造函数中传递给装饰器。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[设计模式笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/07/10/%E6%A8%A1%E6%9D%BF.md.tmp/"/>
+    <updated>2014-07-10T20:15:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/07/10/模板.md.tmp</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>

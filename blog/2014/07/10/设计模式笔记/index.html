@@ -5,13 +5,18 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>智能指针 - 乌衣巷</title>
+	<title>设计模式笔记 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="智能指针 std::auto_ptr 定义 通过在析构函数里delete实现自动内存释放，实现大概50行代码以内 TIP 一个原始指针只能有一个auto_ptr拥有其所有权
-不支持值语义，赋值、拷贝操作之间转移所有权，原来的autor_ptr拥有一个空指针
-不支持值语义所以不能放入STL容器中 &hellip;">
+	<meta name="description" content="设计模式笔记 分类 创建（5+1） 工厂(Factory)
+简单工厂(Simple Factory)
+抽象工厂(Abstract Factory)
+原型(Protoype)
+单例(Singleton)
+建造者(Builder) 结构（7） 组合(Composite)
+代理(Proxy)
+装饰( &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +26,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/07/04/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/07/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -114,99 +119,55 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">智能指针</h1>
-	<div class="entry-content" itemprop="articleBody"><h1>std::auto_ptr</h1>
+	<h1 class="title" itemprop="name">设计模式笔记</h1>
+	<div class="entry-content" itemprop="articleBody"><h2>分类</h2>
 
-<h2>定义</h2>
-
-<p>通过在析构函数里delete实现自动内存释放，实现大概50行代码以内</p>
-
-<h2>TIP</h2>
+<h3>创建（5+1）</h3>
 
 <ul>
-<li>一个原始指针只能有一个auto_ptr拥有其所有权</li>
-<li>不支持值语义，赋值、拷贝操作之间转移所有权，原来的autor_ptr拥有一个空指针</li>
-<li>不支持值语义所以不能放入STL容器中</li>
-<li>使用delete所以不能传入数组指针</li>
+<li>工厂(Factory)</li>
+<li>简单工厂(Simple Factory)</li>
+<li>抽象工厂(Abstract Factory)</li>
+<li>原型(Protoype)</li>
+<li>单例(Singleton)</li>
+<li>建造者(Builder)</li>
 </ul>
 
 
-<h1>boost::scoped_ptr</h1>
-
-<h2>TIP</h2>
+<h3>结构（7）</h3>
 
 <ul>
-<li>实现原理与auto_ptr类似，不过不支持赋值、拷贝操作，其余类似</li>
-<li>超出智能指针作用域利用析构自动delete故称为scoped，RAII</li>
+<li>组合(Composite)</li>
+<li>代理(Proxy)</li>
+<li>装饰(Decorator)</li>
+<li>桥接(Bridge)</li>
+<li>享元(Flyweight)</li>
+<li>适配器(Adaptor)</li>
+<li>外观(Facade)</li>
 </ul>
 
 
-<h1>boost::scoped_array</h1>
-
-<h2>TIP</h2>
+<h3>行为（11）</h3>
 
 <ul>
-<li>实现与scoped_ptr一样，只不过是用delete[]来释放内存</li>
-<li>一般用vector而不要用这个</li>
+<li>模板方法(Template Method)</li>
+<li>状态(State)</li>
+<li>策略(Strategy)</li>
+<li>观察者(Observer)</li>
+<li>迭代器(Iterator)</li>
+<li>责任链(Chain of Responsibility)</li>
+<li>命令(Command)</li>
+<li>访问者(Visitor)</li>
+<li>备忘录(Memento)</li>
+<li>中介者(Mediator)</li>
+<li>解释器(Intepretor)</li>
 </ul>
 
 
-<h1>boost::shared_ptr</h1>
-
-<h1>定义</h1>
-
-<p>引用计数指针可以分为intrusive和non-intrusive两种，shared_ptr是一种non-instrusive的引用计数智能指针。</p>
-
 <h2>TIP</h2>
 
 <ul>
-<li>一个原始指针只能有可以有多个shared_ptr拥有其所有权</li>
-<li>shared_ptr可以放入容器之中</li>
-<li>类型转换必须用static_pointer_cast</li>
-<li>删除器必须是一个实现了operator()的函数对象或者函数指针</li>
-<li>删除器函数对象示例boost::shared_ptr<FILE> my_shared_file(f,FileCloser());</li>
-<li>删除器函数指针示例boost::shared_ptr<FILE> my_shared_file(f,&amp;fclose);</li>
-<li>使用enable_shared_from_this:因为shared_ptr(T<em>)会认为只有他拥有T</em>，故新建立一个引用计数，为0时进行一次delete；而share_ptr(weak_ptr&lt;T<em>>)沿用原有的weak_ptr计数+1；shared_from_this实际是share_ptr(weak_ptr&lt;T</em>>);故当有函数的参数是shared_ptr<T>的时候T应当继承enable_shared_from_this</li>
-</ul>
-
-
-<h1>boost::shared_array</h1>
-
-<h2>TIP</h2>
-
-<ul>
-<li>实现与shared_ptr一样，只不过是用delete[]来释放内存</li>
-<li>一般用一个指向vector的shared_ptr指针而不要用这个</li>
-</ul>
-
-
-<h1>boost::intrusive_ptr</h1>
-
-<h2>定义</h2>
-
-<p>intrusive的引用计数智能指针，需要用户自己维护一个引用计数，并重载intrusive_ptr_add_ref和instrusive_ptr_release函数</p>
-
-<h2>TIP</h2>
-
-<ul>
-<li>直接可以使用this而不需要像share_ptr要用enable_shared_from_this</li>
-<li>一般还是用shared_ptr</li>
-<li>据说智能指针的大小必须与裸指针的大小相等时也要用instrusive_ptr</li>
-</ul>
-
-
-<h1>boost::weak_ptr</h1>
-
-<h2>定义</h2>
-
-<p>weak_ptr不增加引用计数</p>
-
-<h2>TIP</h2>
-
-<ul>
-<li>可以观察资源并通过expired防止悬空指针</li>
-<li>用于防止循环引用</li>
-<li>生成shared_ptr:(1)通过构造函数构造(为空返回bad_weak_ptr);(2)通过lock方法(为空返回空shared_ptr)</li>
+<li>代理模式用于控制访问，用户不知道被代理的对象；装饰器模式用于新增行为，用户知道被被装饰的对象并在构造函数中传递给装饰器。</li>
 </ul>
 
 </div>
