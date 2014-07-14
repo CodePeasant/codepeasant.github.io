@@ -4,7 +4,7 @@
   <title><![CDATA[Category: script | 乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/blog/categories/script/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2013-12-05T20:56:05+08:00</updated>
+  <updated>2014-07-14T19:52:07+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -70,7 +70,10 @@ ipfw pipe pipe_nr config bw B delay D queue Q plr P
 \#D 是延迟多少 milliseconds (1/1000)
 \#Q 是 queue size 的大小 (单位为 packages 或 Bytes)
 \#P 是要随机丢弃的封包数量。
-</code></li>
+</code>
+*子目录含有.git导致不能加入版本管理
+rm -rf mysubmodule/.gitgit
+rm &mdash;cached mysubmodule</li>
 </ul>
 
 ]]></content>
