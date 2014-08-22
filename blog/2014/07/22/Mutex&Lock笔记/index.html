@@ -5,11 +5,12 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 乌衣巷</title>
+	<title>Mutex&Lock笔记 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content=" Life [ 3 ] Ios [ 1 ] Android [ 1 ] Script [ 2 ] Boost [ 1 ] Db [ 1 ] Design pattern [ 2 ] Os [ 1 ] C++ [ 2 ] ">
+	<meta name="description" content="Mutex&Lock笔记 Mutex Eclusive Ownership mutex，一个简单的mutex只能被锁住一次，假如同一线程试图两次锁定mutex，将会产生死锁。
+recursive mutex，一个线程可以多次锁定一个mutex，但必须以同样的次数对mutex进行解锁， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/categories/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/07/22/Mutex%26Lock%E7%AC%94%E8%AE%B0/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,34 +112,74 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Mutex&Lock笔记</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>Mutex</h1>
 
-    <li><a href="/blog/categories/Life/">Life</a> [ 3 ]</li>
+<h2>Eclusive Ownership</h2>
 
-    <li><a href="/blog/categories/iOS/">Ios</a> [ 1 ]</li>
+<ul>
+<li>mutex，一个简单的mutex只能被锁住一次，假如同一线程试图两次锁定mutex，将会产生死锁。</li>
+<li>recursive mutex，一个线程可以多次锁定一个mutex，但必须以同样的次数对mutex进行解锁，否则其他线程将无法锁定该mutex。</li>
+<li>shared mutex，多个线程读，单个线程写，lock/shared_lock，使用一个unique_lock和一个shared_lock对一个shared_mutex操作可以实现读写锁</li>
+</ul>
 
-    <li><a href="/blog/categories/android/">Android</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/script/">Script</a> [ 2 ]</li>
+<h2>获取锁行为</h2>
 
-    <li><a href="/blog/categories/boost/">Boost</a> [ 1 ]</li>
+<ul>
+<li>等待并试图对mutex加锁，直到没有其他线程锁定mutex；</li>
+<li>试图对mutex加锁，并立即返回，假如其他线程锁定了mutex；</li>
+<li>等待并试图对mutex加锁，直到没有其他线程锁定mutex或者直到规定的时间已过。</li>
+</ul>
 
-    <li><a href="/blog/categories/DB/">Db</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/Design Pattern/">Design pattern</a> [ 2 ]</li>
+<h2>分类</h2>
 
-    <li><a href="/blog/categories/OS/">Os</a> [ 1 ]</li>
+<ul>
+<li>mutex(try_mutex)</li>
+<li>timed_mutex</li>
+<li>recursive_mutex</li>
+<li>recursive_timed_mutex</li>
+<li>shared_mutex</li>
+</ul>
 
-    <li><a href="/blog/categories/c++/">C++</a> [ 2 ]</li>
 
+<h1>Lock</h1>
+
+<h2>分类</h2>
+
+<ul>
+<li>lock_guard 利用RAII的最简单实现</li>
+<li>unique_lock 在lock_guard的基础上提供了try_lock()/timed_lock</li>
+<li>shared_lock 读写锁中的读锁</li>
+<li>upgrade_lock  未明</li>
+</ul>
+
+
+<h1>Reference</h1>
+
+<ul>
+<li><a href="http://www.boost.org/doc/libs/1_41_0/doc/html/thread/synchronization.html">Boost Synchronization</a></li>
+<li><a href="http://zh.highscore.de/cpp/boost/multithreading.html">Boost多线程</a></li>
 </ul>
 
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
 
 
 <section id="comment">
@@ -161,7 +202,6 @@
 
 
 </section>
-
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>

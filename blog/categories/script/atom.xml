@@ -4,7 +4,7 @@
   <title><![CDATA[Category: script | 乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/blog/categories/script/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2014-07-14T20:42:33+08:00</updated>
+  <updated>2014-08-22T21:18:00+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -18,51 +18,36 @@
     <link href="http://CodePeasant.github.io/blog/2013/12/04/script-tips/"/>
     <updated>2013-12-04T20:38:00+08:00</updated>
     <id>http://CodePeasant.github.io/blog/2013/12/04/script-tips</id>
-    <content type="html"><![CDATA[<h2>未熟悉</h2>
-
-<ul>
-<li>在某个目录下查找含有某段文字的文件
+    <content type="html"><![CDATA[<ul>
+<li><p>在某个目录下查找含有某段文字的文件
 <code>bash
 grep QLStagePhoto -rl branches/
-</code></li>
-<li>统计一个命令的运行时间
+</code></p></li>
+<li><p>统计一个命令的运行时间
 <code>bash
 time ls
-</code>
-
-<h2>已掌握</h2></li>
-</ul>
-
-
-<h3>技巧</h3>
-
-<ul>
+</code></p></li>
+<li><p>Ctrl+A 跳到当前行最前</p></li>
 <li>Ctrl+U 清空当前行</li>
 <li>Ctrl+I 清空整屏</li>
-<li>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</li>
-</ul>
-
-
-<h3>命令</h3>
-
-<ul>
-<li>统计字符数/词数/行数
+<li><p>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</p></li>
+<li><p>统计字符数/词数/行数
 <code>sh
 ls|wc -c/w/l
-</code></li>
-<li>重复上个输入的命令
+</code></p></li>
+<li><p>重复上个输入的命令
 <code>sh
 sudo !!
-</code></li>
-<li>以当前目录为根目录启动HTTPServer，端口为8000
+</code></p></li>
+<li><p>以当前目录为根目录启动HTTPServer，端口为8000
 <code>bash
 python -m SimpleHTTPServer
-</code></li>
-<li>统计当前用户最常用的10个命令
+</code></p></li>
+<li><p>统计当前用户最常用的10个命令
 <code>bash
 history | awk '{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] " " CMD[a]/count*100 "% " a }' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n10  
-</code></li>
-<li>降低当前网络速度质量(用于WIFI模拟手机2G环境)
+</code></p></li>
+<li><p>降低当前网络速度质量(用于WIFI模拟手机2G环境)
 <code>bash
 ipfw pipe pipe_nr config bw B delay D queue Q plr P
 \#这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；
@@ -70,12 +55,35 @@ ipfw pipe pipe_nr config bw B delay D queue Q plr P
 \#D 是延迟多少 milliseconds (1/1000)
 \#Q 是 queue size 的大小 (单位为 packages 或 Bytes)
 \#P 是要随机丢弃的封包数量。
-</code>
-*子目录含有.git导致不能加入版本管理
-rm -rf mysubmodule/.gitgit
-rm &mdash;cached mysubmodule</li>
+</code></p></li>
 </ul>
 
+
+<p>*子目录含有.git导致不能加入版本管理
+<code>bash
+rm -rf mysubmodule/.gitgit
+rm --cached mysubmodule
+</code></p>
+
+<p>*查看文件夹大小
+<code>bash
+du -sh * | sort -n
+</code></p>
+
+<p>*查找当前文件夹下含有sr的文件行
+<code>bash
+grep -rn sr .
+</code></p>
+
+<p>*比较区别
+<code>bash
+diff -y a.sr b.sr | nl
+</code></p>
+
+<p>*查看端口占用
+<code>bash
+lsof -i:80
+</code></p>
 ]]></content>
   </entry>
   

@@ -9,8 +9,8 @@
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Jul 12th, 2014 OS Comments IO笔记 Socket基本操作 TCP Server:bind/listen/accept/read(write)/close
-Client:bind/connect/read/write/close UDP Server:bind/ &hellip;">
+	<meta name="description" content="Jul 22nd, 2014 c++ Comments Mutex&Lock笔记 Mutex Eclusive Ownership mutex，一个简单的mutex只能被锁住一次，假如同一线程试图两次锁定mutex，将会产生死锁。
+recursive mutex， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -114,6 +114,157 @@ Client:bind/connect/read/write/close UDP Server:bind/ &hellip;">
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-22T21:15:00+08:00" data-updated="true" itemprop="datePublished">Jul 22<span>nd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-plus-plus/'>c++</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2014/07/22/Mutex%26Lock%E7%AC%94%E8%AE%B0/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/07/22/Mutex%26Lock%E7%AC%94%E8%AE%B0/" itemprop="url">Mutex&Lock笔记</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h1>Mutex</h1>
+
+<h2>Eclusive Ownership</h2>
+
+<ul>
+<li>mutex，一个简单的mutex只能被锁住一次，假如同一线程试图两次锁定mutex，将会产生死锁。</li>
+<li>recursive mutex，一个线程可以多次锁定一个mutex，但必须以同样的次数对mutex进行解锁，否则其他线程将无法锁定该mutex。</li>
+<li>shared mutex，多个线程读，单个线程写，lock/shared_lock，使用一个unique_lock和一个shared_lock对一个shared_mutex操作可以实现读写锁</li>
+</ul>
+
+
+<h2>获取锁行为</h2>
+
+<ul>
+<li>等待并试图对mutex加锁，直到没有其他线程锁定mutex；</li>
+<li>试图对mutex加锁，并立即返回，假如其他线程锁定了mutex；</li>
+<li>等待并试图对mutex加锁，直到没有其他线程锁定mutex或者直到规定的时间已过。</li>
+</ul>
+
+
+<h2>分类</h2>
+
+<ul>
+<li>mutex(try_mutex)</li>
+<li>timed_mutex</li>
+<li>recursive_mutex</li>
+<li>recursive_timed_mutex</li>
+<li>shared_mutex</li>
+</ul>
+
+
+<h1>Lock</h1>
+
+<h2>分类</h2>
+
+<ul>
+<li>lock_guard 利用RAII的最简单实现</li>
+<li>unique_lock 在lock_guard的基础上提供了try_lock()/timed_lock</li>
+<li>shared_lock 读写锁中的读锁</li>
+<li>upgrade_lock  未明</li>
+</ul>
+
+
+<h1>Reference</h1>
+
+<ul>
+<li><a href="http://www.boost.org/doc/libs/1_41_0/doc/html/thread/synchronization.html">Boost Synchronization</a></li>
+<li><a href="http://zh.highscore.de/cpp/boost/multithreading.html">Boost多线程</a></li>
+</ul>
+
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-22T21:12:00+08:00" data-updated="true" itemprop="datePublished">Jul 22<span>nd</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-plus-plus/'>c++</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2014/07/22/cpp-tips/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/07/22/cpp-tips/" itemprop="url">C++ Tip</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h1>C++</h1>
+
+<ul>
+<li>虚函数是为了用基类指针能调用子类函数，虚函数必须有实现</li>
+<li>纯虚函数是为了使类不能被实例化定义接口。纯虚函数只有声明</li>
+<li>基类向下转型成派生类</li>
+<li>定义构造函数、复制构造函数、或赋值操作符三个中的任意一个,你也需要定义另外两个</li>
+<li>使用class a:private boost::non copyable</li>
+<li>泛型是水平的，把各种不同的互相没有什么关系的类型应用于同一种算法；继承是垂直的，从抽象到具体，子类和父类是有关系的。</li>
+</ul>
+
+
+<h1>Linux</h1>
+
+<ul>
+<li>一个线程结束时要通过pthread_join或者pthread_detach(pthread_self())来释放8K左右的堆栈和线程描述符</li>
+<li>interrupt只有在代码执行到wait/join/sleep这三种检查点的时候才会中断</li>
+</ul>
+
+
+<h1>Others</h1>
+
+<ul>
+<li>聚合：离散聚合/累积聚合/滑动聚合</li>
+<li>旋转：开放架构(id/attr/val)与Cube</li>
+<li>UnitTest:Setup/Exercice/Verify/Teardown</li>
+<li>gtest事件：Enviroment(SetUp/TearDown)/TestSuite(SetUp/TearDownTestCase)/TestCase(SetUp/TearDown)</li>
+</ul>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -613,9 +764,7 @@ Client:bind/connect/read/write/close UDP Server:bind/ &hellip;">
 	</div>
 	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/script-tips/" itemprop="url">有用的Shell命令和小技巧</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<h2>未熟悉</h2>
-
-<ul>
+		<ul>
 <li>在某个目录下查找含有某段文字的文件</li>
 </ul>
 
@@ -635,21 +784,12 @@ Client:bind/connect/read/write/close UDP Server:bind/ &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>已掌握</h2>
-
-<h3>技巧</h3>
-
 <ul>
+<li>Ctrl+A 跳到当前行最前</li>
 <li>Ctrl+U 清空当前行</li>
 <li>Ctrl+I 清空整屏</li>
-<li>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</li>
-</ul>
-
-
-<h3>命令</h3>
-
-<ul>
-<li>统计字符数/词数/行数</li>
+<li><p>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</p></li>
+<li><p>统计字符数/词数/行数</p></li>
 </ul>
 
 
@@ -708,9 +848,44 @@ Client:bind/connect/read/write/close UDP Server:bind/ &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>*子目录含有.git导致不能加入版本管理
-rm -rf mysubmodule/.gitgit
-rm &mdash;cached mysubmodule</p>
+<p>*子目录含有.git导致不能加入版本管理</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -rf mysubmodule/.gitgit
+</span><span class='line'>rm --cached mysubmodule
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看文件夹大小</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>du -sh * | sort -n
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查找当前文件夹下含有sr的文件行</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grep -rn sr .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*比较区别</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>diff -y a.sr b.sr | nl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看端口占用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>lsof -i:80
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 		
 		
@@ -785,108 +960,6 @@ rm &mdash;cached mysubmodule</p>
 	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/android/" itemprop="url">Android</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>Android基本上是在热聊被叫停后基本没什么事干的时候学的，就写了几个HelloWorld程序和复习了一遍OpenES,不过<a href="http://developer.android.com/training/index.html">Goodle的安卓学习课程</a>的确很赞，入门很不错.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-04T19:25:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ios/'>iOS</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2013/12/04/ios/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/ios/" itemprop="url">iOS</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>从理论上讲，我在爱奇艺的职位应该是iOS工程师，入职前的实习本来是做服务器端的，入职后奇谈的移动端缺人就改到白玉的小组做iOS了，虽然我没有半点移动开发的经验@@，感谢白玉的教材和指点。IOS其实上手还是挺简单的，开发逻辑也类似于MFC，学了两个星期就开始开发<a href="https://itunes.apple.com/cn/app/ai-qi-yi-re-liao/id663264968?mt=8">热聊</a>的剧照模块，然后又做了两个星期做好了以后就做一些直播、截图之类的下个版本的视频特性的试验。然后过了一段时间主程序员跑路了就负责交接XMPP的模块。再后来热聊就被叫停了&hellip;然后就换到了现在的部门，现在的工作留待以后再写。发一个热聊的遗照，纪念我做的第一个iOS项目.</p>
-
-<p><img src="/images/page/hotChat.jpg" alt="热聊" /></p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-17T00:00:00+08:00" data-updated="true" itemprop="datePublished">Oct 17<span>th</span>, 2012</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/life/'>Life</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2012/10/17/%E5%A4%A7%E5%9B%9B/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2012/10/17/%E5%A4%A7%E5%9B%9B/" itemprop="url">大四</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<h2>20120101</h2>
-
-<p>新年新气象，写个记录。最终工作还是违约了IW改签了爱奇艺，IW的HRMM态度很好还免了违约金，很是感谢。过年后去北京实习，要北漂了，加油呀。</p>
-
-<h2>20121121</h2>
-
-<p>距离笔试一个月后，收到爱奇艺offer，工作内容比较喜欢，钱比较多，工作地点在北京一般，总评不错。</p>
-
-<h2>20121025</h2>
-
-<p>南航的offer拖了3个星期终于发了，工作内容一般，钱一般，工作地点在广州不错，总评一般，可惜我已经卖掉了@@。</p>
-
-<h2>20121022</h2>
-
-<p>三方发了，卖给IW，工作地点改上海，@@，开始过年&hellip;</p>
-
-<h2>20121018</h2>
-
-<p>今天跑了两趟西十二，百度还是不让霸笔， ，目测只能等下一个机会了。。。中午回来顺路去TPLink打了一下酱油意外收获第二个offer，工作内容一般，钱少的可怜，工作地点在深圳还不错，总评一般。</p>
-
-<h2>20121017</h2>
-
-<p>收到第一个offer，IW，工作内容比较喜欢，钱一般，工作地点在北京不想去，总评一般。</p>
-
-<p>过了一个多月边考研边找工作的生活，想想还是找工作吧。一直在纠结，定下来也好，态度不端正感觉找工作还是有点难。找个一个月工作，海投了40多家，工作找起来也没原预期的势如破竹拿遍各种offer反而各种网申挂、笔试挂、一面挂、二面挂、三面挂、HR面挂，悲催如斯。仔细反思了一下，感觉海投还是不好，一天奔三四场宣讲笔试面试，在华科武大珞珈山酒店间跑来跑去，略累，也没有哪家公司是有好好准备的（又想起我亲爱的度娘， ）。笔试面试做起题来感觉还不如大二那会的水平。。。一年多没写什么代码，C++好多东西都忘了，STL和BOOST都用不顺手了，不止一次想不起容器的操作方法，感觉略坑。操作系统神马也不像大二考完软设、系分那么熟，好多东西都不会了，一问三不知，伤不起伤不起</p>
-
-<p>看来还是得停业整顿，删掉一些公司，好好复习一下，再重新上路，加油。</p>
 
 		
 		

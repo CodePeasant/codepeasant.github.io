@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2014-07-14T20:42:33+08:00</updated>
+  <updated>2014-08-22T21:18:00+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mutex&Lock笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/07/22/Mutex%26Lock%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-07-22T21:15:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/07/22/Mutex&Lock笔记</id>
+    <content type="html"><![CDATA[<h1>Mutex</h1>
+
+<h2>Eclusive Ownership</h2>
+
+<ul>
+<li>mutex，一个简单的mutex只能被锁住一次，假如同一线程试图两次锁定mutex，将会产生死锁。</li>
+<li>recursive mutex，一个线程可以多次锁定一个mutex，但必须以同样的次数对mutex进行解锁，否则其他线程将无法锁定该mutex。</li>
+<li>shared mutex，多个线程读，单个线程写，lock/shared_lock，使用一个unique_lock和一个shared_lock对一个shared_mutex操作可以实现读写锁</li>
+</ul>
+
+
+<h2>获取锁行为</h2>
+
+<ul>
+<li>等待并试图对mutex加锁，直到没有其他线程锁定mutex；</li>
+<li>试图对mutex加锁，并立即返回，假如其他线程锁定了mutex；</li>
+<li>等待并试图对mutex加锁，直到没有其他线程锁定mutex或者直到规定的时间已过。</li>
+</ul>
+
+
+<h2>分类</h2>
+
+<ul>
+<li>mutex(try_mutex)</li>
+<li>timed_mutex</li>
+<li>recursive_mutex</li>
+<li>recursive_timed_mutex</li>
+<li>shared_mutex</li>
+</ul>
+
+
+<h1>Lock</h1>
+
+<h2>分类</h2>
+
+<ul>
+<li>lock_guard 利用RAII的最简单实现</li>
+<li>unique_lock 在lock_guard的基础上提供了try_lock()/timed_lock</li>
+<li>shared_lock 读写锁中的读锁</li>
+<li>upgrade_lock  未明</li>
+</ul>
+
+
+<h1>Reference</h1>
+
+<ul>
+<li><a href="http://www.boost.org/doc/libs/1_41_0/doc/html/thread/synchronization.html">Boost Synchronization</a></li>
+<li><a href="http://zh.highscore.de/cpp/boost/multithreading.html">Boost多线程</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C++ Tip]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/07/22/cpp-tips/"/>
+    <updated>2014-07-22T21:12:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/07/22/cpp-tips</id>
+    <content type="html"><![CDATA[<h1>C++</h1>
+
+<ul>
+<li>虚函数是为了用基类指针能调用子类函数，虚函数必须有实现</li>
+<li>纯虚函数是为了使类不能被实例化定义接口。纯虚函数只有声明</li>
+<li>基类向下转型成派生类</li>
+<li>定义构造函数、复制构造函数、或赋值操作符三个中的任意一个,你也需要定义另外两个</li>
+<li>使用class a:private boost::non copyable</li>
+<li>泛型是水平的，把各种不同的互相没有什么关系的类型应用于同一种算法；继承是垂直的，从抽象到具体，子类和父类是有关系的。</li>
+</ul>
+
+
+<h1>Linux</h1>
+
+<ul>
+<li>一个线程结束时要通过pthread_join或者pthread_detach(pthread_self())来释放8K左右的堆栈和线程描述符</li>
+<li>interrupt只有在代码执行到wait/join/sleep这三种检查点的时候才会中断</li>
+</ul>
+
+
+<h1>Others</h1>
+
+<ul>
+<li>聚合：离散聚合/累积聚合/滑动聚合</li>
+<li>旋转：开放架构(id/attr/val)与Cube</li>
+<li>UnitTest:Setup/Exercice/Verify/Teardown</li>
+<li>gtest事件：Enviroment(SetUp/TearDown)/TestSuite(SetUp/TearDownTestCase)/TestCase(SetUp/TearDown)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[IO笔记]]></title>
@@ -347,9 +442,7 @@
     <link href="http://CodePeasant.github.io/blog/2013/12/04/script-tips/"/>
     <updated>2013-12-04T20:38:00+08:00</updated>
     <id>http://CodePeasant.github.io/blog/2013/12/04/script-tips</id>
-    <content type="html"><![CDATA[<h2>未熟悉</h2>
-
-<ul>
+    <content type="html"><![CDATA[<ul>
 <li>在某个目录下查找含有某段文字的文件</li>
 </ul>
 
@@ -369,21 +462,12 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>已掌握</h2>
-
-<h3>技巧</h3>
-
 <ul>
+<li>Ctrl+A 跳到当前行最前</li>
 <li>Ctrl+U 清空当前行</li>
 <li>Ctrl+I 清空整屏</li>
-<li>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</li>
-</ul>
-
-
-<h3>命令</h3>
-
-<ul>
-<li>统计字符数/词数/行数</li>
+<li><p>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</p></li>
+<li><p>统计字符数/词数/行数</p></li>
 </ul>
 
 
@@ -442,9 +526,44 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>*子目录含有.git导致不能加入版本管理
-rm -rf mysubmodule/.gitgit
-rm &mdash;cached mysubmodule</p>
+<p>*子目录含有.git导致不能加入版本管理</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -rf mysubmodule/.gitgit
+</span><span class='line'>rm --cached mysubmodule
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看文件夹大小</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>du -sh * | sort -n
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查找当前文件夹下含有sr的文件行</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grep -rn sr .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*比较区别</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>diff -y a.sr b.sr | nl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看端口占用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>lsof -i:80
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   

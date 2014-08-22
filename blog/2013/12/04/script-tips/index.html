@@ -9,9 +9,10 @@
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="有用的Shell命令和小技巧 未熟悉 在某个目录下查找含有某段文字的文件 1
+	<meta name="description" content="有用的Shell命令和小技巧 在某个目录下查找含有某段文字的文件 1
 grep QLStagePhoto -rl branches/ 统计一个命令的运行时间 1
-time ls 已掌握 技巧 Ctrl+U 清空当前行
+time ls Ctrl+A 跳到当前行最前
+Ctrl+U 清空当前行
 Ctrl+I 清空整屏
 一般输入某个命令加- &hellip;">
 	
@@ -117,9 +118,7 @@ Ctrl+I 清空整屏
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 	<h1 class="title" itemprop="name">有用的Shell命令和小技巧</h1>
-	<div class="entry-content" itemprop="articleBody"><h2>未熟悉</h2>
-
-<ul>
+	<div class="entry-content" itemprop="articleBody"><ul>
 <li>在某个目录下查找含有某段文字的文件</li>
 </ul>
 
@@ -139,21 +138,12 @@ Ctrl+I 清空整屏
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>已掌握</h2>
-
-<h3>技巧</h3>
-
 <ul>
+<li>Ctrl+A 跳到当前行最前</li>
 <li>Ctrl+U 清空当前行</li>
 <li>Ctrl+I 清空整屏</li>
-<li>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</li>
-</ul>
-
-
-<h3>命令</h3>
-
-<ul>
-<li>统计字符数/词数/行数</li>
+<li><p>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</p></li>
+<li><p>统计字符数/词数/行数</p></li>
 </ul>
 
 
@@ -212,9 +202,44 @@ Ctrl+I 清空整屏
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>*子目录含有.git导致不能加入版本管理
-rm -rf mysubmodule/.gitgit
-rm &mdash;cached mysubmodule</p>
+<p>*子目录含有.git导致不能加入版本管理</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -rf mysubmodule/.gitgit
+</span><span class='line'>rm --cached mysubmodule
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看文件夹大小</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>du -sh * | sort -n
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查找当前文件夹下含有sr的文件行</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grep -rn sr .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*比较区别</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>diff -y a.sr b.sr | nl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看端口占用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>lsof -i:80
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
 
 </article>

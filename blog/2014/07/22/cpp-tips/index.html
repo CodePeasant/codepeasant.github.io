@@ -5,11 +5,15 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 乌衣巷</title>
+	<title>C++ Tip - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content=" Life [ 3 ] Ios [ 1 ] Android [ 1 ] Script [ 2 ] Boost [ 1 ] Db [ 1 ] Design pattern [ 2 ] Os [ 1 ] C++ [ 2 ] ">
+	<meta name="description" content="C++ Tip C++ 虚函数是为了用基类指针能调用子类函数，虚函数必须有实现
+纯虚函数是为了使类不能被实例化定义接口。纯虚函数只有声明
+基类向下转型成派生类
+定义构造函数、复制构造函数、或赋值操作符三个中的任意一个,你也需要定义另外两个
+使用class a:private boost::non &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +23,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/categories/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/07/22/cpp-tips/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,34 +115,53 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">C++ Tip</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>C++</h1>
 
-    <li><a href="/blog/categories/Life/">Life</a> [ 3 ]</li>
+<ul>
+<li>虚函数是为了用基类指针能调用子类函数，虚函数必须有实现</li>
+<li>纯虚函数是为了使类不能被实例化定义接口。纯虚函数只有声明</li>
+<li>基类向下转型成派生类</li>
+<li>定义构造函数、复制构造函数、或赋值操作符三个中的任意一个,你也需要定义另外两个</li>
+<li>使用class a:private boost::non copyable</li>
+<li>泛型是水平的，把各种不同的互相没有什么关系的类型应用于同一种算法；继承是垂直的，从抽象到具体，子类和父类是有关系的。</li>
+</ul>
 
-    <li><a href="/blog/categories/iOS/">Ios</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/android/">Android</a> [ 1 ]</li>
+<h1>Linux</h1>
 
-    <li><a href="/blog/categories/script/">Script</a> [ 2 ]</li>
+<ul>
+<li>一个线程结束时要通过pthread_join或者pthread_detach(pthread_self())来释放8K左右的堆栈和线程描述符</li>
+<li>interrupt只有在代码执行到wait/join/sleep这三种检查点的时候才会中断</li>
+</ul>
 
-    <li><a href="/blog/categories/boost/">Boost</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/DB/">Db</a> [ 1 ]</li>
+<h1>Others</h1>
 
-    <li><a href="/blog/categories/Design Pattern/">Design pattern</a> [ 2 ]</li>
-
-    <li><a href="/blog/categories/OS/">Os</a> [ 1 ]</li>
-
-    <li><a href="/blog/categories/c++/">C++</a> [ 2 ]</li>
-
+<ul>
+<li>聚合：离散聚合/累积聚合/滑动聚合</li>
+<li>旋转：开放架构(id/attr/val)与Cube</li>
+<li>UnitTest:Setup/Exercice/Verify/Teardown</li>
+<li>gtest事件：Enviroment(SetUp/TearDown)/TestSuite(SetUp/TearDownTestCase)/TestCase(SetUp/TearDown)</li>
 </ul>
 
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
 
 
 <section id="comment">
@@ -161,7 +184,6 @@
 
 
 </section>
-
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
