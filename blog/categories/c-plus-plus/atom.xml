@@ -4,7 +4,7 @@
   <title><![CDATA[Category: c++ | 乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/blog/categories/c-plus-plus/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2014-08-22T21:18:00+08:00</updated>
+  <updated>2014-08-22T21:20:39+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[C++类型转换笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/07/22/C%2B%2B%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-07-22T21:19:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/07/22/C++类型转换笔记</id>
+    <content type="html"><![CDATA[<h1>C语言默认</h1>
+
+<ul>
+<li>int(a)</li>
+<li>(int)a</li>
+</ul>
+
+
+<h1>std::static_cast</h1>
+
+<ul>
+<li>效果同C语言默认</li>
+<li>派生类向上转换为基类（安全）</li>
+<li>基类向下转换为派生类（不安全，必须程序员保证）</li>
+</ul>
+
+
+<h1>std::dynamic_cast</h1>
+
+<ul>
+<li>基类向下转换为派生类（安全）</li>
+<li>引用的话抛出std::bad_cast，指针返回空指针</li>
+<li>运行时检查，依赖于虚函数表，基类必须有虚函数，效率比static_cast低</li>
+</ul>
+
+
+<h1>std::reinterpret_cast</h1>
+
+<ul>
+<li>把任意一个指针或算术类型转为任意其他指针或算术类型</li>
+<li>一般只用于把指针转为int或int转为指针</li>
+</ul>
+
+
+<h1>std::const_cast</h1>
+
+<ul>
+<li>用来去掉变量的const/volatile属性</li>
+</ul>
+
+
+<h1>boost::polymorphic_cast</h1>
+
+<ul>
+<li>与dynamic_cast类型，但指针和引用转换失败都抛出std::bad_cast</li>
+</ul>
+
+
+<h1>boost::polymorphic_downcast</h1>
+
+<ul>
+<li>debug使用dynamic_cast，release使用static_cast</li>
+<li>貌似能提高效率，但一般不要使用</li>
+</ul>
+
+
+<h1>boost::numeric_cast</h1>
+
+<ul>
+<li>用来防止较大的类型转成较小类型的数值回绕问题和有符号数转为无符号数的符号错误，失败抛出boost::bad_numeric_cast</li>
+<li>doulbe转成float如果只是损失小数点精度的话不会抛出异常</li>
+<li>sizeof(T)/std::numeric_limits<T>::max()获得类型的大小</li>
+</ul>
+
+
+<h1>boost::lexical_cast</h1>
+
+<ul>
+<li>把数值类型转为字符串类型 string a = boost::lexical_cast<string>(123)</li>
+<li>把字符串类型转为数值类型 int a = boost::lexical_cast<int>(&ldquo;12&rdquo;)</li>
+<li>失败抛出bad_lexical_cast</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mutex&Lock笔记]]></title>
