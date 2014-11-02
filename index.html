@@ -9,10 +9,8 @@
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Jul 22nd, 2014 c++ Comments C++类型转换笔记 C语言默认 int(a)
-(int)a std::static_cast 效果同C语言默认
-派生类向上转换为基类（安全）
-基类向下转换为派生类（不安全，必须程序员保证） std::dynamic_cast &hellip;">
+	<meta name="description" content="Oct 31st, 2014 c++ Comments APUE笔记 APUE笔记 UNIX System Overview Nonfatal error(man 3 errno) EAGAIN/EWOULDBLOCK
+ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -116,6 +114,202 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-31T21:15:00+08:00" data-updated="true" itemprop="datePublished">Oct 31<span>st</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-plus-plus/'>c++</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2014/10/31/APUE%E7%AC%94%E8%AE%B0%28Chapter1%7E6%29/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/10/31/APUE%E7%AC%94%E8%AE%B0%28Chapter1%7E6%29/" itemprop="url">APUE笔记</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h1>APUE笔记</h1>
+
+<h2>UNIX System Overview</h2>
+
+<h3>Nonfatal error(man 3 errno)</h3>
+
+<ul>
+<li>EAGAIN/EWOULDBLOCK</li>
+<li>ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY</li>
+</ul>
+
+
+<h2>键盘信号</h2>
+
+<ul>
+<li>Ctrl+Z SIGTSTP</li>
+<li>Ctrl+C SIGINT</li>
+<li>Ctrl+D EOF</li>
+<li>Ctrl+/ SIGQUIT</li>
+</ul>
+
+
+<h2>UNIX Standardization and Implementations</h2>
+
+<ul>
+<li>ISO C/POSIX/XSI</li>
+<li>FreeBSD/Linux/MacOS/Solaris</li>
+<li>gcc -D_POSIX_C_SOURCE=200112 file.c</li>
+</ul>
+
+
+<h2>File I/O</h2>
+
+<h3>open/close</h3>
+
+<ul>
+<li>O_RDONLY/O_WRONLY/O_RDWR</li>
+<li>O_APPEND/O_TRUNC/O_CREAT/O_EXCL/O_NONBLOCK</li>
+<li>O_SYNC(write data&amp;attr)/O_DSYNC(write data)/O_RSYNC(read)</li>
+<li>sync(all)/fsync(single)/fdatasync</li>
+</ul>
+
+
+<h3>read/write</h3>
+
+<h3>lseek</h3>
+
+<ul>
+<li>SEEK_CUR/SEEK_SET/SEEK_END</li>
+<li>pread/pwrite: lseek+read/write</li>
+</ul>
+
+
+<h3>dup/dup2</h3>
+
+<ul>
+<li>dup(fd): fcntl(fd, O_DUPFD, 0)</li>
+<li>dup2(fd1, fd2): close(fd2);fcntl(fd1, O_DUPFD, fd2)</li>
+</ul>
+
+
+<h3>fcntl</h3>
+
+<ul>
+<li>F_DUPFD</li>
+<li>F_GETFD/F_SETFD(file descriptor, FD_CLOEXEC only)</li>
+<li>F_GETFL/F_SETFL(file status, O_NONBLOCK and so on)</li>
+<li>F_GETOWN/F_SETOWN</li>
+<li>F_GETLK/F_SETLK/F_SETLKW</li>
+<li>ioctl(driver, no need to known)</li>
+</ul>
+
+
+<h2>Files and Directories</h2>
+
+<h3>stat(file path)/fstat(file decriptor id)/lstat(show symbolic link)</h3>
+
+<ul>
+<li>st_mode(file type&amp;permission)</li>
+<li>st_ino/st_dev/st_rdev</li>
+<li>st_nlink</li>
+<li>st_uid/st_gid</li>
+<li>st_size</li>
+<li>st_atime[ls -u] last access , read()</li>
+<li>st_mtime[ls] last modify, write()</li>
+<li>st_ctime[ls -c] last inode status chagne, chown()</li>
+<li>st_blksize</li>
+<li>st_blocks(number of disk block allocate)</li>
+</ul>
+
+
+<h3>File Type</h3>
+
+<ul>
+<li>Regular file(S_ISREG)</li>
+<li>Directory file(S_ISDIR)</li>
+<li>Block special file(S_ISBLK)</li>
+<li>Character special file(S_ISCHR)</li>
+<li>FIFO(S_ISFIFO)[named pipe]</li>
+<li>Socket(S_ISSOCK)</li>
+<li>Symbolic link(S_ISLNK)</li>
+</ul>
+
+
+<h3>IPC</h3>
+
+<ul>
+<li>MQ message queue</li>
+<li>SEM semaphore</li>
+<li>SHM shared memory object</li>
+</ul>
+
+
+<h3>Process uid/gid</h3>
+
+<ul>
+<li>real userID/groudID(who excute the process)</li>
+<li>effective userID/groupID(the permisson check)[by default is real userID/groupID, use set-user-id to be the file owner]</li>
+<li>saved set-user-ID/groud-ID(save the last effective when effective change)</li>
+<li>supplement group IDs</li>
+</ul>
+
+
+<h3>File Access Permissions</h3>
+
+<ul>
+<li>R:4, W :2, X:1</li>
+<li>S_I(R/W/X)(USR/GRP/OTH)</li>
+<li>open file need X for directory(if you known this file, R is no need)</li>
+<li>list file need R for directory</li>
+<li>create/ delete file need W&amp;X for directory, W for file is no need</li>
+<li>access(path, mode): access permission test</li>
+<li>umask(cmask): set the access permission for file this process create, turn off the bit in cmask</li>
+<li>fchmod(fd, mode)</li>
+</ul>
+
+
+<h3>chown/fchown/lchown</h3>
+
+<ul>
+<li>chwon(path,owner,group)</li>
+<li>chown -R user:group file/directory</li>
+</ul>
+
+
+<h3>file system</h3>
+
+<ul>
+<li>driver/parition(one file system per partition)/cylinde/(inodes+blocks)</li>
+<li>a inode is a file, point to many data block</li>
+<li>a inode can be link from many directory, when not process open the file and all directory unlink, delete the inode, but the data block still exist[hard link, just add st_nlink, create hard link for directory is not allowed]</li>
+<li>symbolic link: add a new inode point to source file path, no add st_nlink</li>
+<li>link(oldpath,newpath), symlink(actualpath,sympath), unlink(path), remove(path), rename(old,new)</li>
+<li>mkdir/rmdir/chdir/fchdir/getcwd</li>
+<li>opendir/readdir/rewinddir/closedir/telldir/seekdir</li>
+<li>DIR structure like FILE, with the offset</li>
+<li>st_dev: major is the disk num, minor is the filesystem num</li>
+<li>st_rdev: valid for character device &amp; block device, the real device it is on</li>
+</ul>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -997,43 +1191,6 @@
 
 
 
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-04T20:36:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/script/'>script</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2013/12/04/script/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/script/" itemprop="url">Script</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<h2><a href="/blog/2013/12/04/script-tips">常用脚本命令</a></h2>
 
 		
 		
