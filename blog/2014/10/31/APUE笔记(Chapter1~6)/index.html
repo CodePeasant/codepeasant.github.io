@@ -5,12 +5,12 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>APUE笔记 - 乌衣巷</title>
+	<title>APUE笔记(Chapter 1~6) - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="APUE笔记 APUE笔记 UNIX System Overview Nonfatal error(man 3 errno) EAGAIN/EWOULDBLOCK
-ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
+	<meta name="description" content="APUE笔记(Chapter 1~6) APUE笔记(Chapter 1~6) 1.UNIX System Overview Nonfatal error(man 3 errno) EAGAIN/EWOULDBLOCK
+ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,10 +113,10 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">APUE笔记</h1>
-	<div class="entry-content" itemprop="articleBody"><h1>APUE笔记</h1>
+	<h1 class="title" itemprop="name">APUE笔记(Chapter 1~6)</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>APUE笔记(Chapter 1~6)</h1>
 
-<h2>UNIX System Overview</h2>
+<h2>1.UNIX System Overview</h2>
 
 <h3>Nonfatal error(man 3 errno)</h3>
 
@@ -126,7 +126,7 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 </ul>
 
 
-<h2>键盘信号</h2>
+<h3>键盘信号</h3>
 
 <ul>
 <li>Ctrl+Z SIGTSTP</li>
@@ -136,7 +136,7 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 </ul>
 
 
-<h2>UNIX Standardization and Implementations</h2>
+<h2>2.UNIX Standardization and Implementations</h2>
 
 <ul>
 <li>ISO C/POSIX/XSI</li>
@@ -145,7 +145,7 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 </ul>
 
 
-<h2>File I/O</h2>
+<h2>3.File I/O</h2>
 
 <h3>open/close</h3>
 
@@ -187,7 +187,7 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 </ul>
 
 
-<h2>Files and Directories</h2>
+<h2>4.Files and Directories</h2>
 
 <h3>stat(file path)/fstat(file decriptor id)/lstat(show symbolic link)</h3>
 
@@ -272,6 +272,115 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 <li>DIR structure like FILE, with the offset</li>
 <li>st_dev: major is the disk num, minor is the filesystem num</li>
 <li>st_rdev: valid for character device &amp; block device, the real device it is on</li>
+</ul>
+
+
+<h2>5.Standard I/O Library</h2>
+
+<h3>Stream Buffer</h3>
+
+<ul>
+<li>Fully Buffered</li>
+<li>Line Buffered</li>
+<li>Unbuffered</li>
+</ul>
+
+
+<h3>Stream Read&amp;Write</h3>
+
+<h4>Character-at-a-time I/O:</h4>
+
+<ul>
+<li>getc(fp)/fgetc(fp)/getchar()</li>
+<li>getchar()=getc(STDIN)</li>
+<li>getc is macro and fgetc is function, they are same</li>
+<li>ungetc(c,fp)[put char back into stream]</li>
+<li>putc(c, fp)/fputc(c, fp)/putchar&copy;</li>
+</ul>
+
+
+<h4>Line-at-a-time I/O:</h4>
+
+<ul>
+<li>fgets(buf,n,fp)</li>
+<li>fputs(str,fp)</li>
+</ul>
+
+
+<h4>Direct I/O(Binary I/O):</h4>
+
+<ul>
+<li>fread(ptr, size, n, fp)</li>
+<li>fwrite(ptr, size, n, fp)</li>
+<li>ftell(fp)/fseek(fp, offset, whence)/rewind(fp)</li>
+</ul>
+
+
+<h3>Formatted I/O</h3>
+
+<ul>
+<li>printf(format, &hellip;)</li>
+<li>fprintf(fp, format, ..)</li>
+<li>sprintf(buf, format, ..)</li>
+<li>snprintf(buf, n, format, &hellip;)</li>
+<li>scanf(format, &hellip;)</li>
+<li>fscanf(fp, format, &hellip;)</li>
+<li>sscanf(buf, format, &hellip;)</li>
+</ul>
+
+
+<h3>Temporary Files</h3>
+
+<ul>
+<li>char *tmpname(ptr)</li>
+<li>char *tempnam(directory, prefix)</li>
+<li>File* tmpfile()</li>
+<li>int mktemp(template)[return fd]</li>
+<li>tmpname&amp;tempnam都有time window问题，应使用temfile&amp;mktemp</li>
+</ul>
+
+
+<h2>6.System Data Files and Information</h2>
+
+<h3>Password File</h3>
+
+<ul>
+<li>passwd <em>getpwuid(uid)/passwd </em>getpwnam(name)</li>
+<li>passwd *getpwent()[get by next, null return by end]</li>
+<li>setpwent()[open/rewind]</li>
+<li>endpwent()[close]</li>
+</ul>
+
+
+<h3>Shadow File(保存加密后的密码)</h3>
+
+<ul>
+<li>spwd *getspnam(name)</li>
+<li>spwd *getspent()/setspent()/endspent()</li>
+</ul>
+
+
+<h3>Group File</h3>
+
+<ul>
+<li>group <em>getgrgid(gid)/group </em>getgrnam(name)</li>
+<li>group *getgpent()/setgrent()/endgrent()</li>
+<li>char **group->gr_mem指向属于本group的user_name</li>
+<li>Supplementary Group IDs make a user can belong up to 16 addtional groups</li>
+</ul>
+
+
+<h3>Datetime</h3>
+
+<ul>
+<li>time_t time(time_t *) seconds from Epoch</li>
+<li>gettimeofday(timeval *, NULL) seconds &amp; microseconds from Epoch</li>
+<li>tm <em>gmtime(time_t </em>) time_t to tm UTC(calendar form)</li>
+<li>tm <em>localtime(time_t </em>) time_t to tm local timezone</li>
+<li>time_t mktime(tm *) tm to time_t</li>
+<li>char <em>asctime(tm </em>) tm to string</li>
+<li>char <em>ctime(time_t </em>) time_t to string</li>
+<li>strftime(buf, maxsize, format, tm*) tm to format string</li>
 </ul>
 
 </div>
