@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2014-11-04T18:48:00+08:00</updated>
+  <updated>2014-11-20T17:13:55+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -14,11 +14,362 @@
 
   
   <entry>
-    <title type="html"><![CDATA[APUE笔记(Chapter 1~6)]]></title>
-    <link href="http://CodePeasant.github.io/blog/2014/10/31/APUE%E7%AC%94%E8%AE%B0%28Chapter1%7E6%29/"/>
+    <title type="html"><![CDATA[概率论与数理统计笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/11/20/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-11-20T21:34:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/11/20/概率论与数理统计笔记</id>
+    <content type="html"><![CDATA[<h1>概率论与数理统计笔记</h1>
+
+<h2>1.随机事件与概率</h2>
+
+<h3>随机试验</h3>
+
+<ul>
+<li>可在相同条件下重复</li>
+<li>每次试验可出现不同结果，试验之前不能确定是哪种结果</li>
+<li>试验之前可以知道所有可能的结果</li>
+</ul>
+
+
+<h3>随机事件</h3>
+
+<ul>
+<li>随机试验的每一个可能的结果称为一个随机事件，简称事件</li>
+<li>事件分为基本事件和复合事件</li>
+<li>必然事件: Ω</li>
+<li>不可能事件: Ø</li>
+<li>A∩B = ∅，则A与B为互斥事件</li>
+<li>A∩B = ∅且A∪B = Ω，则A与B为对立事件/互为逆事件，B = Ã</li>
+</ul>
+
+
+<h3>概率</h3>
+
+<ul>
+<li>非负性，0&lt;=P(A)&lt;=1</li>
+<li>规范性，P(Ω)=1</li>
+<li>可列可加性，所有互斥事件的概率可以叠加</li>
+</ul>
+
+
+<h3>古典概型</h3>
+
+<ul>
+<li>有限性，基本事件总数有限</li>
+<li>等可能性，每个基本事件出现的可能性相同</li>
+</ul>
+
+
+<h3>超几何分布</h3>
+
+<p>一批产品有M件正品，N件次品，从中取n件，有k件次品的概率:
+P(A)= C[k,N]*C[n-k,M]/C[n,M+N]</p>
+
+<h3>几何概型</h3>
+
+<ul>
+<li>无限性，使用面积来描述</li>
+<li>等可能性</li>
+</ul>
+
+
+<h3>条件概率</h3>
+
+<ul>
+<li>条件概率公式: P(AB) = P(B) * P(A|B)</li>
+<li>全概率公式: P(B) = sum(P(B|Ai)*P(Ai))</li>
+<li>Ai为样本空间的一个划分，Bj为事件，则A->B:先验概率，B->A:后验概率</li>
+<li>后验概率使用贝叶斯公式解决: P(Ai|Bj) = P(Bj|Ai)<em>P(Ai)/sum(P(Bj|Ai)</em>P(Ai))</li>
+<li>P(AB) = P(A)*P(B)或P(B) = P(B|A)，则事件AB互相独立</li>
+</ul>
+
+
+<h2>2.随机变量及其分布</h2>
+
+<ul>
+<li>随机变量: E为随机试验，Ω={w}为其样本空间，对于任意w，都有唯一实数X(w)与之对应，则称X(w)为随机变量</li>
+<li>分布函数: F(x) = P(X&lt;=x), F(-∞)=0, F(+∞)=1</li>
+</ul>
+
+
+<h3>离散型随机变量</h3>
+
+<h4>两点分布/(0-1)分布</h4>
+
+<ul>
+<li>P(0) = 1-p, P(1) = p, 则称X服从两点分布，X~(0-1)</li>
+</ul>
+
+
+<h4>二项分布/B(n,p)</h4>
+
+<ul>
+<li>一次试验只有两种可能的结果的试验称为伯努利试验</li>
+<li>P(X=k) = C[n,k]<em>p<sup>k</sup></em>(1-p)<sup>n-k</sup>，X~B(n,k)</li>
+<li>最可能出现次数: (n+1)*p</li>
+<li>当n>=20, p&lt;=0.05时，二项分布近似于泊松分布，且λ=np</li>
+</ul>
+
+
+<h4>泊松分布/P(λ)</h4>
+
+<ul>
+<li>P(X=k) = λ<sup>k</sup>*e<sup>-λ</sup>/k!, X~P(λ)</li>
+<li>λ是泊松分布的均值，也是方差，用来描述单位时间内随机事件的平均发生率</li>
+</ul>
+
+
+<h4>几何分布/G(p)</h4>
+
+<ul>
+<li>P(X=k) = (1-p)<sup>k-1</sup>*p</li>
+<li>无穷次伯努利试验中事件A首次发生的概率</li>
+</ul>
+
+
+<h3>连续型随机变量</h3>
+
+<ul>
+<li>F(x)为概率分布函数，f(x)为概率密度函数，F(x)是f(x)的积</li>
+</ul>
+
+
+<h4>均匀分布/U[a,b]</h4>
+
+<ul>
+<li>f(x)=1/(b-a), F(x) = (x-a)/(b-a)</li>
+</ul>
+
+
+<h4>指数分布/E(λ)</h4>
+
+<ul>
+<li>f(x)=λ*e<sup>-λx</sup>, F(x)=1-e<sup>-λx</sup></li>
+<li>指数分布是一段时间内发生故障的概率上的连续，泊松分布是故障发生次数的离散，都用于描述泊松过程</li>
+</ul>
+
+
+<h4>正态分布/N(μ,σ)</h4>
+
+<ul>
+<li>f(x) = e^[&ndash;(x-μ)<sup>2</sup>/(2σ<sup>2</sup>]/[σ*(2π)<sup>&frac12;</sup>]</li>
+<li>期望/众数为μ, 标准差为σ，最大值为σ*(2π)<sup>&frac12;</sup>，当μ=σ<sup>2</sup>且μ->∞时变成泊松分布</li>
+</ul>
+
+
+<h2>4.数字特征</h2>
+
+<h3>数学期望</h3>
+
+<ul>
+<li>EX: sum(xi*pi), 简称期望/均值</li>
+<li>X~(0-1), EX=p</li>
+<li>X~B(n,p), EX=np</li>
+<li>X~P(λ), EX=λ</li>
+<li>X~G(p), EX=1/p</li>
+<li>X~U[a,b], EX=(a+b)/2</li>
+<li>X~E(λ), EX=1/λ</li>
+<li>X~N(μ,σ<sup>2</sup>), EX=μ</li>
+</ul>
+
+
+<h3>方差</h3>
+
+<ul>
+<li>DX=E((X-EX)<sup>2</sup>)=E(X<sup>2</sup>)&ndash;(EX)<sup>2</sup>, 称为方差</li>
+<li>X~(0-1), DX=pq</li>
+<li>X~B(n,p), DX=npq</li>
+<li>X~P(λ), DX=λ</li>
+<li>X~G(λ), DX=q/(p<sup>2</sup>)</li>
+<li>X~U[a,b], DX=[(b-a)<sup>2</sup>]/12</li>
+<li>X~E(λ), DX= 1/(λ<sup>2</sup>)</li>
+<li>X~N(μ,σ<sup>2</sup>), DX=σ<sup>2</sup></li>
+</ul>
+
+
+<h3>协方差</h3>
+
+<ul>
+<li>协方差:(X,Y)为二维随机变量，Cov(X,Y)=E((X-EX)*(Y-EY))=E(XY)-EXEY，用于衡量X,Y之间的线性关系，当Cov(X,Y)=0时X,Y独立[但可能有非线性关系]</li>
+<li>相关系数:ρ(X,Y)=Cov(X,Y)/[(DX*DY)<sup>2</sup>]，标准化后的协方差；|1|为完全正/负相关，0为不相关</li>
+<li>协方差矩阵:对于X,Y为n元向量，则有n*n的协方差矩阵，第i行j列的元素为e(i,j)=Cov(Xi,Yj)</li>
+</ul>
+
+
+<h3>中心极限定理</h3>
+
+<ul>
+<li>大量相互独立的随机变量，其均值的分布以正态分布为极限，EX=sum(EX), DX=sum(DX)</li>
+</ul>
+
+
+<h3>大数定理</h3>
+
+<ul>
+<li>随着试验次数增多，事件发生的频率依机率收敛于事件的概率(频率的数学期望)</li>
+</ul>
+
+
+<h2>6.数理统计的基本概念</h2>
+
+<h3>基本概念</h3>
+
+<ul>
+<li>研究对象全体的集合称为总体，总体中的每个元素称为个体</li>
+<li>从总体中抽取部分的过程称为抽样</li>
+<li>总体的分布称为理论分布，样本的分布称为经验分布</li>
+<li>样本: X1&hellip;Xn相互独立且与总体X同分布，则(X1,&hellip;,Xn)是总体X的容量为n的简单随机样本</li>
+<li>样本观测值: X1&hellip;Xn取一组常数时的值</li>
+</ul>
+
+
+<h3>简单随机抽样</h3>
+
+<ul>
+<li>随机性: 每次抽样，总体中每个个体都有同等机会被抽取</li>
+<li>独立性: 每次抽取的结果既不影响其他各次抽取的结果，也不瘦其他各次抽取结果的影响</li>
+<li>当样本数小于总体数1/10时，可以把不放回抽样近似作为放回抽样(简单随机抽样)处理</li>
+</ul>
+
+
+<h3>统计量</h3>
+
+<ul>
+<li>样本均值: ▔X = sum(Xi)/n</li>
+<li>样本方差: S<sup>2</sup> = sum((Xi &ndash; ▔X)<sup>2</sup>)/(n-1)</li>
+<li>样本标准差: S = [sum((Xi &ndash; ▔X)<sup>2</sup>)/(n-1)]^(&frac12;)</li>
+<li>样本k阶原点矩: Ak = sum(Xi<sup>k</sup>)/n</li>
+<li>样本k阶中心矩: Bk = sum((Xi &ndash; ▔X)<sup>k</sup>)/n</li>
+</ul>
+
+
+<h3>χ2分布</h3>
+
+<ul>
+<li>Xi~N(0,1), 统计量χ2=sum(Xi<sup>2</sup>), 则χ2服从自由度为n的χ2分布，记为χ2~χ2(n)</li>
+<li>自由度n为平方和中随机变量的个数</li>
+<li>Eχ2=n, Dχ2=2n</li>
+</ul>
+
+
+<h3>t分布</h3>
+
+<ul>
+<li>X~N(0,1), Y~χ2(n), 且X，Y相互独立，则T=X/(Y/n)<sup>&frac12;</sup>服从自由度为n的t(student)分布，记为T~t(n)</li>
+<li>t分布是小样本(n&lt;45)下的分布，n->∞时，t分布接近于正态分布</li>
+<li>Et=0</li>
+</ul>
+
+
+<h3>F分布</h3>
+
+<ul>
+<li>X~χ2(m), Y~χ2(n)，且X，Y相互独立，则F=(X/m)/(Y/n)服从自由度为(m,n)的F分布，记为F~F(m,n)</li>
+<li>F(m,n) = 1/(F(n,m))</li>
+</ul>
+
+
+<h3>正态分布的样本均值与样本方差分布</h3>
+
+<ul>
+<li>总体的期望与方差为μ,σ<sup>2</sup>; 样本的期望与方差为▔X,S<sup>2</sup></li>
+<li>▔X与S<sup>2</sup>相互独立</li>
+<li>Xi~N(μ,σ<sup>2</sup>), 则▔X~N(μ,σ<sup>2</sup>/n)</li>
+<li>(n-1)S<sup>2</sup>/σ<sup>2</sup> ~ χ2(n-1)</li>
+<li>(▔X-μ)/S*n<sup>&frac12;</sup> ~ t(n-1)</li>
+<li>(S1<sup>2</sup>/S2<sup>2</sup>)/(σ1<sup>2</sup>/σ2<sup>2</sup>) ~ F(n1-1,n2-1)</li>
+</ul>
+
+
+<h2>7.参数估计</h2>
+
+<h3>估计量的评选原则</h3>
+
+<ul>
+<li>无偏性: 期望无偏</li>
+<li>有效性: 无偏前提下选择方差最小，最小方差无偏估计量</li>
+<li>一致性: 当样本数增大时，估计量的值能稳定为真实值的值</li>
+</ul>
+
+
+<h3>点估计</h3>
+
+<ul>
+<li>点估计: 用一个数值来a估计某个参数θ，主要包括点估计和极大似然估计</li>
+<li>矩估计: 根据大数定理，随着样本增大，样本矩会逼近总体矩，故用样本矩估计总体矩</li>
+<li>极大似然估计: 在一次抽样中，如果得到样本观测值(x1,&hellip;xn), 则选择(θ1,&hellip;θn)的θ估计，使得(x1,&hellip;xn)出现的概率最大</li>
+</ul>
+
+
+<h3>区间估计</h3>
+
+<ul>
+<li>区间估计: 求出一个区间(θ1,θ2), 使得参数θ以概率1-α被该区间覆盖，P(θ1&lt;θ&lt;θ2)=1-α，区间(θ1,θ2)称为θ的置信水平为1-α的置信区间，θ1/θ2分别为置信下限和置信上限，1-α称为置信水平</li>
+</ul>
+
+
+<h4>单个正态总体均值(σ<sup>2</sup>已知)</h4>
+
+<ul>
+<li>▔X~N(μ,σ<sup>2</sup>/n), (▔X-μ)*n<sup>&frac12;</sup>/σ ~ N(0,1)</li>
+<li>置信区间为(▔X-σ/(n<sup>&frac12;</sup>)<em>u[α/2], ▔X+σ/(n<sup>&frac12;</sup>)</em>u[α/2])</li>
+<li>置信区间长度l = 2σ/(n<sup>&frac12;</sup>)*u[α/2]，与σ成正比，与n<sup>&frac12;</sup>成反比</li>
+</ul>
+
+
+<h4>单个正态总体均值(σ<sup>2</sup>未知)</h4>
+
+<ul>
+<li>(▔X-μ)*n<sup>&frac12;</sup>/S ~ t(n-1)</li>
+<li>置信区间为(▔X-t[α/2](n-1)<em>S/(N<sup>&frac12;</sup>),▔X+t[α/2](n-1)</em>S/(N<sup>&frac12;</sup>))</li>
+</ul>
+
+
+<h4>单个正态总体方差(μ未知)</h4>
+
+<ul>
+<li>(n-1)S<sup>2</sup>/σ<sup>2</sup> ~ χ2(n-1)</li>
+<li>置信区间为((S<em>(n-1)<sup>&frac12;</sup>/(χ2[α/2](n-1))<sup>&frac12;</sup>),(S</em>(n-1)<sup>&frac12;</sup>/(χ2[1-α/2](n-1))<sup>&frac12;</sup>))</li>
+</ul>
+
+
+<h2>8.假设检验</h2>
+
+<ul>
+<li>原假设: H0, 如μ=μ0=0.5</li>
+<li>备择假设: H1, 原假设的对立假设</li>
+<li>检验统计量: 构造小概率事件用的统计量，如μ</li>
+<li>接受域/拒绝域/临界点</li>
+</ul>
+
+
+<h3>两类错误</h3>
+
+<ul>
+<li>第一类错误: 弃真，P(拒绝H0|H0为真)=α</li>
+<li>第二类错误: 存伪，P(接受H0|H0不为真)=β</li>
+<li>显著性检验只控制第一类错误的α而不考虑第二类错误</li>
+</ul>
+
+
+<h3>假设检验步骤</h3>
+
+<ul>
+<li>根据实际问题提出原假设H0和备择假设H1</li>
+<li>构造适当的检验统计量θ，在H0为真时其分布已知</li>
+<li>对于给定置信水平α确定拒绝域W</li>
+<li>根据统计量的观测值确定是接收H0还是拒绝H0</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[APUE笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/10/31/APUE%E7%AC%94%E8%AE%B0/"/>
     <updated>2014-10-31T21:15:00+08:00</updated>
-    <id>http://CodePeasant.github.io/blog/2014/10/31/APUE笔记(Chapter1~6)</id>
-    <content type="html"><![CDATA[<h1>APUE笔记(Chapter 1~6)</h1>
+    <id>http://CodePeasant.github.io/blog/2014/10/31/APUE笔记</id>
+    <content type="html"><![CDATA[<h1>APUE笔记</h1>
 
 <h2>1.UNIX System Overview</h2>
 
@@ -287,6 +638,445 @@
 <li>strftime(buf, maxsize, format, tm*) tm to format string</li>
 </ul>
 
+
+<h2>7.Process Environment</h2>
+
+<h3>Process Termination</h3>
+
+<ul>
+<li>terminate method</li>
+<li>return from main()</li>
+<li>return from last thread</li>
+<li>call exit()</li>
+<li>call <em>exit()/</em>Exit()</li>
+<li>call pthread_exit()</li>
+<li>call abort</li>
+<li>receipt a signal</li>
+<li>last thread response for a cancel request</li>
+<li>exit(0) is same as return 0 by main</li>
+<li>exit will call exit handle register by atexit() and clean up standard I/O, <em>exit &amp; </em>Exit will not</li>
+</ul>
+
+
+<h3>Memory Layout(From low address to high)</h3>
+
+<ul>
+<li>Text Segment(Code Segment)</li>
+<li>Initialized Data Segment(Data Segment)</li>
+<li>Uninitialized Data Segment(Block Started by Symbol, BSS)</li>
+<li>Heap</li>
+<li>Stack</li>
+</ul>
+
+
+<h3>Memory Allocate</h3>
+
+<ul>
+<li>malloc(size)</li>
+<li>cmalloc(nobj, size) malloc+memset(0)</li>
+<li>remalloc(ptr,size)</li>
+<li>free(ptr)</li>
+</ul>
+
+
+<h3>Environment Variables</h3>
+
+<ul>
+<li>int main(int argc, char <em>argv[], char </em>envp[])</li>
+<li>getenv(name)/putenv(name=value)/setenv(name,value)/unsetenv(name)</li>
+</ul>
+
+
+<h3>Others</h3>
+
+<ul>
+<li>goto only available in same function, use setjmp/longjmp to cross function</li>
+<li>getrlimit/setrlimit, return resource limit for the process(rlimit)</li>
+<li>struct rlimit{
+  rlim_t rlim_cur; //soft limit
+  rlim_t rlim_max; //hard limit
+}</li>
+<li>soft limit should lower or equal to hard limit, only root user can change hard limit</li>
+</ul>
+
+
+<h2>8.Process Control</h2>
+
+<h3>Process Identifier</h3>
+
+<ul>
+<li>getpid()/getppid()</li>
+<li>getuid()/geteuid()</li>
+<li>getgid()/getegid()</li>
+</ul>
+
+
+<h3>Process Creation</h3>
+
+<ul>
+<li>fork(), call once, return twice</li>
+<li>parent &amp; child process by fork share Text Segment, other segment are independent, copy on write</li>
+<li>parent &amp; child process share file discriptors open</li>
+<li>signal &amp; File Lock are not inherited from parent to child</li>
+<li>vfork(), the parent and child share all resource, the parent wait unit child exit, it always use to call exec()</li>
+</ul>
+
+
+<h3>Process Termination</h3>
+
+<ul>
+<li>wait(&amp;return_status), wait for any child terminated, return by the first child</li>
+<li>waitpid(pid,&amp;return_status,option), wait for the specified child terminated</li>
+<li>init process become parent for whos parent terminated</li>
+<li>child process will be zombie when it terminate but parent not wait for it</li>
+<li>child terminated then the process will receive SIGCHLD, default behavior is ignore it</li>
+</ul>
+
+
+<h3>Exec Function</h3>
+
+<ul>
+<li>exec[l/v]<a href="filepath,%20argv[],%20envp[]"> /e/p</a>, only execve is system call</li>
+<li>exec function replace the text segment/data segment/bss/heap/stack by the programe specified by filepath</li>
+<li>exec keep the file discriptor open, but fcntl FD_CLOEXEC can close them</li>
+<li>#! /bin/sh</li>
+<li>system = fork + exec + waitpid</li>
+</ul>
+
+
+<h3>Change user IDs and group IDs</h3>
+
+<ul>
+<li>setuid/setgid</li>
+<li>uid or gid only can be set by root, or set to real-user/saved-user/file-owner-user</li>
+</ul>
+
+
+<h3>Accounting</h3>
+
+<ul>
+<li>real(实际运行时间)</li>
+<li>user(用户态CPU时间)</li>
+<li>sys(内核态CPU时间)</li>
+</ul>
+
+
+<h2>9.Process Relationships</h2>
+
+<ul>
+<li>ssh beyond tcp protocol</li>
+<li>Terminal Login &amp; NetworkLogin(Pseudo Terminal)</li>
+<li>a login is a session, a session contain some foreground/backgroud process groups, process groups include one or more process</li>
+<li>$ proc1 | proc2 &amp; : proc1 and proc2 consist of a backgound group</li>
+<li>$ proc3 | proc4 : proc3 and proc4 consist of a foregound group</li>
+<li>Ctrl + C/Delete: send SIGINT to all foreground process</li>
+<li>Ctrl + /: send SIGQUIT to all foreground process</li>
+<li>Ctrl + Z: send SIGTSTP to all foreground process, 使用bg命令查询有哪些挂起的，使用fg命令重新带回前台</li>
+<li>background process input/oupt to terminal wil send SIGTTIN/SIGTTOUT and then stop until use fg command to bring them to foreground</li>
+</ul>
+
+
+<h2>10.Signals</h2>
+
+<h3>Generate</h3>
+
+<ul>
+<li>User inout from terminal</li>
+<li>Hardware exception(invalid memory)</li>
+<li>kill(1, command)/(2, function)</li>
+<li>Software condition(SIGPIPE)</li>
+</ul>
+
+
+<h3>Behavior</h3>
+
+<ul>
+<li>Ignore(SIGKILL/SIGSTOP can&rsquo;t ignore)[SIG_IGN]</li>
+<li>catch and deal[void (*func)(int)]</li>
+<li>default action[SIG_DFL]</li>
+</ul>
+
+
+<h3>Default Action</h3>
+
+<ul>
+<li>terminate(SIGHUP)</li>
+<li>terminate+core(SIGABRT/SIGFPE/SIGSEGV/SIGSYS/SIGXCPU/SIGXFSZ)</li>
+<li>continue process</li>
+<li>stop process</li>
+<li>ignore</li>
+</ul>
+
+
+<h3>Slow System Calls</h3>
+
+<ul>
+<li>read/write</li>
+<li>open</li>
+<li>pause</li>
+<li>ioctl</li>
+<li>some IPC funcitons</li>
+<li>the slow system calls will be restart after the signal</li>
+</ul>
+
+
+<h3>Reentrant Functions</h3>
+
+<ul>
+<li>文件操作/Socket操作/进程操作系列函数是Reentrant的</li>
+<li>malloc/free/标准IO(printf)/errno/使用全局数据结构的函数是非Reentrant的</li>
+</ul>
+
+
+<h3>可重入与线程安全</h3>
+
+<ul>
+<li>可重入：有一类重要的线程安全函数，叫做可重入函数，其特点在于它们具有一种属性：当它们被多个线程调用时，不会引用任何共享的数据。与多线程无关，一个函数被多次调用[信号中断]但结果具有可重现性[没有全局数据，不调用非可重入函数]，不会受其他函数影响，输入输出一对一，Linux以_r结尾的函数是可重入的</li>
+<li>线程安全：一个函数同时被多个线程调用而得到正确结果[使用互斥锁保证，访问全局数据]，同样的输入可能有不同的输出</li>
+<li>可重入是线程安全的子集，</li>
+</ul>
+
+
+<h2>signal/kill</h2>
+
+<ul>
+<li>Linux的signal函数内部调用sigaction，不需要每次调用后重置信号行为且是可靠的</li>
+<li>kill(pid, sig) pid>0进程号为pid的进程;pid=0同一进程组进程;pid&lt;0进程组为-pid的进程;pid=-1发给除了自身外所有id>1的进程</li>
+<li>非root权限的进程只能发信号给同一个session或者同一个用户的进程</li>
+<li>多线程程序共享同样的信号处理函数，一个进程中有多个线程则会随机使用一个线程进行处理</li>
+</ul>
+
+
+<h2>alarm&amp;pause</h2>
+
+<ul>
+<li>多个信号同时发生会发生类似于栈嵌套执行，即一个信号处理一半中断了处理新收到的信号，处理返回处理栈上一个信号，待所有信号处理完再运行进程的代码</li>
+<li>alarm(second)，second秒后产生一个SIGALRM，一个进程只能有一个alarm，一个新的alarm生效前一个则会失效，sleep内部也是使用alarm实现，所以不要混用sleep和alarm</li>
+<li>pause函数使进程进入睡眠状态直到捕获任何信号</li>
+</ul>
+
+
+<h2>block sign</h2>
+
+<ul>
+<li>sigemptyset/sigfillset/sigaddset/sigdelset/sigismember</li>
+<li>sigprocmask Block/Unblock哪些信号</li>
+<li>sigpending 返回被Block的信号</li>
+</ul>
+
+
+<h2>11.Threads</h2>
+
+<h3>Thread Identification</h3>
+
+<ul>
+<li>pthread_equal/pthread_self</li>
+<li>每一个线程拥有自己的stack/register value/signal mask/errno</li>
+</ul>
+
+
+<h3>Thread Creation&amp;Termination</h3>
+
+<ul>
+<li>pthread_create</li>
+<li>pthread_exit/pthread_cancel</li>
+<li>pthread_cleanup_push/pthread_cleanup_pop</li>
+<li>pthread_join/pthread_detach</li>
+</ul>
+
+
+<h3>Thread Synchronization</h3>
+
+<h4>Mutex</h4>
+
+<ul>
+<li>pthread_mutex_init/pthread_mutex_destroy/PTHREAD_MUTEX_DESTORY</li>
+<li>pthread_mutex_lock/pthread_mutex_unlock/pthread_mutex_try_lock</li>
+</ul>
+
+
+<h4>Reader-Writer Locks</h4>
+
+<ul>
+<li>pthread_rwlock_init/pthread_rwlock_destory</li>
+<li>pthread_rwlock_rdlock/pthread_rwlock_wrlock/pthread_rwlock_unlock</li>
+<li>pthread_rwlock_tryrdlock/pthread_rwlock_trywrlock</li>
+</ul>
+
+
+<h4>Condition Variables</h4>
+
+<ul>
+<li>pthread_cond_init/pthread_cond_destory</li>
+<li>pthread_cond_wait/pthread_cond_timewait</li>
+<li>pthread_cond_signal/pthread_cond_broadcast</li>
+</ul>
+
+
+<h2>hange the attribute appear in Chapter 11</h2>
+
+<ul>
+<li>pthread_once:某个函数只执行一次，用于单例模式</li>
+<li>__thread声明的变量每个线程拥有独立的值</li>
+</ul>
+
+
+<h2>13.Daemon Process</h2>
+
+<h3>Coding Rules</h3>
+
+<ul>
+<li>umask(0) 清除不必要的权限位</li>
+<li>fork+parent exit</li>
+<li>setsid 创建新会话，脱离中断</li>
+<li>chdir(/) 当前目录可能重启后不存在(如果是挂载的)</li>
+<li>close unneeded file discriptor</li>
+<li>open 0/&frac12; to /dev/null 防止读写终端</li>
+</ul>
+
+
+<h3>Error Logging</h3>
+
+<ul>
+<li>syslog(level, fmt, &hellip;)</li>
+</ul>
+
+
+<h3>TIP</h3>
+
+<ul>
+<li>调用系统函数daemon(int nochdir, int noclose)直接完成该功能</li>
+<li>用于服务器端程序</li>
+<li>使用基于File的RecordLock来生成单例Daemon</li>
+</ul>
+
+
+<h3>Daemon Conventions</h3>
+
+<ul>
+<li>lock file in /var/run/name.pid</li>
+<li>config file in /etc/name.conf</li>
+<li>auto-start script in /etc/rc<em> or /etc/init.d/</em> or /etc/inittab</li>
+<li>use SIGHUP to notify the daemon reload config file</li>
+</ul>
+
+
+<h2>14.Advanced I/O</h2>
+
+<h3>Nonblock I/O</h3>
+
+<ul>
+<li>set with open(fd, O_NONBLOCK)</li>
+<li>set with fcntl()</li>
+</ul>
+
+
+<h3>Record Lock</h3>
+
+<ul>
+<li>支持对一个文件的区域进行锁</li>
+</ul>
+
+
+<h3>STREAMS</h3>
+
+<h3>I/O Multiplexing</h3>
+
+<ul>
+<li>select/poll</li>
+<li>readv/writev/readn/writen</li>
+</ul>
+
+
+<h3>Memory-Mapped I/O</h3>
+
+<ul>
+<li>mmap</li>
+</ul>
+
+
+<h2>15.Interprocess Communication</h2>
+
+<h3>Default IPC</h3>
+
+<h4>Pipes</h4>
+
+<ul>
+<li>pipe(field[2])</li>
+<li>打开后使用/read/write操作，最后一个使用进程退出会自动关闭</li>
+<li>half-duplex</li>
+<li>work between process have a common ancestor</li>
+<li>is a file discriptor</li>
+<li>popen/pclose</li>
+</ul>
+
+
+<h4>FIFOS(named pipes)</h4>
+
+<ul>
+<li>mkfifo</li>
+<li>打开后使用open/read/write操作</li>
+<li>cross process without a common ancester</li>
+<li><ul>
+<li>is a file discriptor</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>SIGNAL</h4>
+
+<h3>XSI IPC</h3>
+
+<h4>Message Queue</h4>
+
+<h4>Semaphore</h4>
+
+<h4>Shared Memory</h4>
+
+<h4>Advantage&amp;Disadvantage</h4>
+
+<ul>
+<li>XSI IPC是全局的，需要手动关闭</li>
+<li>使用full-duplex pipe替换MQ</li>
+<li>使用record-lock替换semaphore</li>
+<li>使用mmap替换shared memory</li>
+</ul>
+
+
+<h2>16.Network IPC: Sockets</h2>
+
+<h3>TCP Status</h3>
+
+<h4>起始</h4>
+
+<ul>
+<li>CLOSED</li>
+</ul>
+
+
+<h4>连接</h4>
+
+<ul>
+<li>被动打开: LISTEN/SYN_RCVD</li>
+<li>主动打开: SYN_SENT</li>
+</ul>
+
+
+<h4>传输中</h4>
+
+<ul>
+<li>ESTABLISHED</li>
+</ul>
+
+
+<h4>断开</h4>
+
+<ul>
+<li>主动断开:FIN_WAIT_1/FIN_WAIT_2/CLOSING(同时断开)/TIME_WAIT</li>
+<li>被动断开:CLOSE_WAIT/LAST_ACK</li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -463,6 +1253,71 @@
 <li>gtest事件：Enviroment(SetUp/TearDown)/TestSuite(SetUp/TearDownTestCase)/TestCase(SetUp/TearDown)</li>
 </ul>
 
+
+<h2>Redis数据类型</h2>
+
+<ul>
+<li>String: set/get/desc/incr/mget</li>
+<li>List: lpush/rpush/lpop/rpop/lrange</li>
+<li>Hash: hget/hset/hgetall/hmset/hmget</li>
+<li>Set: sadd/spop/smembers/sunion</li>
+<li>Sorted Set: zadd/zrem/zrange</li>
+<li>Sorted Set由HashSet(正排，key:score)+SkipList构成(倒排, score:key，类似平衡树，查找复杂度O(logn))</li>
+</ul>
+
+
+<h2>CouchBase数据类型</h2>
+
+<ul>
+<li>redis提供各种数据结构但CouchBase都是JSON</li>
+<li>bucket 相当于数据库的db+table</li>
+<li>set/add/replace</li>
+<li>cas(key, oldval, newval) 替换为新值的时候值必须为旧值，保证数据一致性</li>
+<li>get/delete/touch</li>
+<li>append/prepend/incr/decr</li>
+<li>lock(key, ttl)/unlock</li>
+<li>with pipeline可以实现get_multi/set_multi等的批处理效果</li>
+<li>通过MapReduce实现条件查询[View必须预先定义好，一个DesignDocument包括多个View], map函数中通过emit返回符合条件的数据进行reduce</li>
+<li>开发模式增量数据会自动进行MapRedure加到View索引中，开发模式则不会</li>
+</ul>
+
+
+<h2>CAP</h2>
+
+<ul>
+<li>Consistency</li>
+<li>Availability[快速获得数据]</li>
+<li>Tolerance of network Partition[分布式]</li>
+<li>一个分布式系统只能满足其中两个，不可能全部满足</li>
+<li>CA:传统数据库</li>
+<li>AP:K-V数据库</li>
+</ul>
+
+
+<h2>BASE</h2>
+
+<ul>
+<li>Base Availble</li>
+<li>Soft-state(无连接)</li>
+<li>Eventual Consistency</li>
+</ul>
+
+
+<h2>死锁形成条件(一个不符合则不会死锁)</h2>
+
+<ul>
+<li>资源互斥性[A占有B就不能占有]</li>
+<li>资源不可剥夺</li>
+<li>请求且保持[等待一个资源的时候不释放当前占有的资源]</li>
+<li>循环等待</li>
+</ul>
+
+
+<h2>TCP/IP</h2>
+
+<p>ESTABLISHED 表示正在通信，TIME_WAIT 表示主动关闭，CLOSE_WAIT 表示被动关闭。
+ps -fu wuyixiang 查找我的进程
+cat /proc/[pid]/status 查看pid的进程占用的内存大小(当前，峰值)</p>
 ]]></content>
   </entry>
   
@@ -792,6 +1647,68 @@
 <li>生成shared_ptr:(1)通过构造函数构造(为空返回bad_weak_ptr);(2)通过lock方法(为空返回空shared_ptr)</li>
 </ul>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[子串&子序列系列问题的动态规划转移方程]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/05/18/%E5%AD%90%E4%B8%B2%26%E5%AD%90%E5%BA%8F%E5%88%97%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B/"/>
+    <updated>2014-05-18T21:34:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/05/18/子串&子序列系列问题的动态规划转移方程</id>
+    <content type="html"><![CDATA[<h1>子串&amp;子序列系列问题的动态规划转移方程</h1>
+
+<h2>问题分类</h2>
+
+<h3>子串/子序列</h3>
+
+<ul>
+<li>子串: 必须是连续的</li>
+<li>子序列: 可以是离散的</li>
+<li>子串计算过程中中断会归零，但子序列是从头累加</li>
+</ul>
+
+
+<h3>最大和/最大递增/最长相同字符串</h3>
+
+<ul>
+<li>最大和</li>
+<li>最大递增</li>
+<li>最长公共字符串</li>
+</ul>
+
+
+<h2>最大子序列和 O(n)</h2>
+
+<p>无意义，取所有不为负的即可</p>
+
+<h2>最大子串和</h2>
+
+<p>f(i) = max(f(i-1), 0), f(i)=sum(a[j]),j&lt;=i
+maxV = f(n)</p>
+
+<h2>最大递增子串</h2>
+
+<p>f(i) = a[i]>a[i-1]?f(i-1) + 1:1, f(i)是以a[i]结尾的递增子串
+maxV = max(f(i))</p>
+
+<h2>最大递增子序列</h2>
+
+<p>f(i) = max(f(j)) + 1, f(j)是以a[j]结尾的递增子序列，且a[j]&lt;a[i], j&lt;i
+maxV = max(f(i))</p>
+
+<h2>最长公共子串</h2>
+
+<p>f(i,j) = a[i]==b[j]?f(i-1, j-1) + 1:0, f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子串
+maxV = max(f(i,j))</p>
+
+<h2>最长公共子序列</h2>
+
+<p>f(i,j) = max(f(i-1,j),f(i,j-1),f(i-1,j-1)+C), f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子序列，C = a[i]==b[j]?1:0
+maxV = f(m,n)</p>
+
+<h2>字符串编辑距离</h2>
+
+<p>f(i,i) = min(f(i-1,j)+1,f(i,j-1)+1,f(i-1,j-1)+C) f(i,j)是以a[i]结尾的a和以b[j]结尾的b的字符串编辑距离，C = a[i]==b[j]?1:0</p>
 ]]></content>
   </entry>
   

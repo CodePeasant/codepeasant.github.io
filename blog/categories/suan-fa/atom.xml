@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 算法 | 乌衣巷]]></title>
+  <link href="http://CodePeasant.github.io/blog/categories/suan-fa/atom.xml" rel="self"/>
+  <link href="http://CodePeasant.github.io/"/>
+  <updated>2014-11-20T17:13:55+08:00</updated>
+  <id>http://CodePeasant.github.io/</id>
+  <author>
+    <name><![CDATA[吴逸翔]]></name>
+    <email><![CDATA[1032197148@qq.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[概率论与数理统计笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/11/20/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-11-20T21:34:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/11/20/概率论与数理统计笔记</id>
+    <content type="html"><![CDATA[<h1>概率论与数理统计笔记</h1>
+
+<h2>1.随机事件与概率</h2>
+
+<h3>随机试验</h3>
+
+<ul>
+<li>可在相同条件下重复</li>
+<li>每次试验可出现不同结果，试验之前不能确定是哪种结果</li>
+<li>试验之前可以知道所有可能的结果</li>
+</ul>
+
+
+<h3>随机事件</h3>
+
+<ul>
+<li>随机试验的每一个可能的结果称为一个随机事件，简称事件</li>
+<li>事件分为基本事件和复合事件</li>
+<li>必然事件: Ω</li>
+<li>不可能事件: Ø</li>
+<li>A∩B = ∅，则A与B为互斥事件</li>
+<li>A∩B = ∅且A∪B = Ω，则A与B为对立事件/互为逆事件，B = Ã</li>
+</ul>
+
+
+<h3>概率</h3>
+
+<ul>
+<li>非负性，0&lt;=P(A)&lt;=1</li>
+<li>规范性，P(Ω)=1</li>
+<li>可列可加性，所有互斥事件的概率可以叠加</li>
+</ul>
+
+
+<h3>古典概型</h3>
+
+<ul>
+<li>有限性，基本事件总数有限</li>
+<li>等可能性，每个基本事件出现的可能性相同</li>
+</ul>
+
+
+<h3>超几何分布</h3>
+
+<p>一批产品有M件正品，N件次品，从中取n件，有k件次品的概率:
+P(A)= C[k,N]*C[n-k,M]/C[n,M+N]</p>
+
+<h3>几何概型</h3>
+
+<ul>
+<li>无限性，使用面积来描述</li>
+<li>等可能性</li>
+</ul>
+
+
+<h3>条件概率</h3>
+
+<ul>
+<li>条件概率公式: P(AB) = P(B) * P(A|B)</li>
+<li>全概率公式: P(B) = sum(P(B|Ai)*P(Ai))</li>
+<li>Ai为样本空间的一个划分，Bj为事件，则A->B:先验概率，B->A:后验概率</li>
+<li>后验概率使用贝叶斯公式解决: P(Ai|Bj) = P(Bj|Ai)<em>P(Ai)/sum(P(Bj|Ai)</em>P(Ai))</li>
+<li>P(AB) = P(A)*P(B)或P(B) = P(B|A)，则事件AB互相独立</li>
+</ul>
+
+
+<h2>2.随机变量及其分布</h2>
+
+<ul>
+<li>随机变量: E为随机试验，Ω={w}为其样本空间，对于任意w，都有唯一实数X(w)与之对应，则称X(w)为随机变量</li>
+<li>分布函数: F(x) = P(X&lt;=x), F(-∞)=0, F(+∞)=1</li>
+</ul>
+
+
+<h3>离散型随机变量</h3>
+
+<h4>两点分布/(0-1)分布</h4>
+
+<ul>
+<li>P(0) = 1-p, P(1) = p, 则称X服从两点分布，X~(0-1)</li>
+</ul>
+
+
+<h4>二项分布/B(n,p)</h4>
+
+<ul>
+<li>一次试验只有两种可能的结果的试验称为伯努利试验</li>
+<li>P(X=k) = C[n,k]<em>p<sup>k</sup></em>(1-p)<sup>n-k</sup>，X~B(n,k)</li>
+<li>最可能出现次数: (n+1)*p</li>
+<li>当n>=20, p&lt;=0.05时，二项分布近似于泊松分布，且λ=np</li>
+</ul>
+
+
+<h4>泊松分布/P(λ)</h4>
+
+<ul>
+<li>P(X=k) = λ<sup>k</sup>*e<sup>-λ</sup>/k!, X~P(λ)</li>
+<li>λ是泊松分布的均值，也是方差，用来描述单位时间内随机事件的平均发生率</li>
+</ul>
+
+
+<h4>几何分布/G(p)</h4>
+
+<ul>
+<li>P(X=k) = (1-p)<sup>k-1</sup>*p</li>
+<li>无穷次伯努利试验中事件A首次发生的概率</li>
+</ul>
+
+
+<h3>连续型随机变量</h3>
+
+<ul>
+<li>F(x)为概率分布函数，f(x)为概率密度函数，F(x)是f(x)的积</li>
+</ul>
+
+
+<h4>均匀分布/U[a,b]</h4>
+
+<ul>
+<li>f(x)=1/(b-a), F(x) = (x-a)/(b-a)</li>
+</ul>
+
+
+<h4>指数分布/E(λ)</h4>
+
+<ul>
+<li>f(x)=λ*e<sup>-λx</sup>, F(x)=1-e<sup>-λx</sup></li>
+<li>指数分布是一段时间内发生故障的概率上的连续，泊松分布是故障发生次数的离散，都用于描述泊松过程</li>
+</ul>
+
+
+<h4>正态分布/N(μ,σ)</h4>
+
+<ul>
+<li>f(x) = e^[&ndash;(x-μ)<sup>2</sup>/(2σ<sup>2</sup>]/[σ*(2π)<sup>&frac12;</sup>]</li>
+<li>期望/众数为μ, 标准差为σ，最大值为σ*(2π)<sup>&frac12;</sup>，当μ=σ<sup>2</sup>且μ->∞时变成泊松分布</li>
+</ul>
+
+
+<h2>4.数字特征</h2>
+
+<h3>数学期望</h3>
+
+<ul>
+<li>EX: sum(xi*pi), 简称期望/均值</li>
+<li>X~(0-1), EX=p</li>
+<li>X~B(n,p), EX=np</li>
+<li>X~P(λ), EX=λ</li>
+<li>X~G(p), EX=1/p</li>
+<li>X~U[a,b], EX=(a+b)/2</li>
+<li>X~E(λ), EX=1/λ</li>
+<li>X~N(μ,σ<sup>2</sup>), EX=μ</li>
+</ul>
+
+
+<h3>方差</h3>
+
+<ul>
+<li>DX=E((X-EX)<sup>2</sup>)=E(X<sup>2</sup>)&ndash;(EX)<sup>2</sup>, 称为方差</li>
+<li>X~(0-1), DX=pq</li>
+<li>X~B(n,p), DX=npq</li>
+<li>X~P(λ), DX=λ</li>
+<li>X~G(λ), DX=q/(p<sup>2</sup>)</li>
+<li>X~U[a,b], DX=[(b-a)<sup>2</sup>]/12</li>
+<li>X~E(λ), DX= 1/(λ<sup>2</sup>)</li>
+<li>X~N(μ,σ<sup>2</sup>), DX=σ<sup>2</sup></li>
+</ul>
+
+
+<h3>协方差</h3>
+
+<ul>
+<li>协方差:(X,Y)为二维随机变量，Cov(X,Y)=E((X-EX)*(Y-EY))=E(XY)-EXEY，用于衡量X,Y之间的线性关系，当Cov(X,Y)=0时X,Y独立[但可能有非线性关系]</li>
+<li>相关系数:ρ(X,Y)=Cov(X,Y)/[(DX*DY)<sup>2</sup>]，标准化后的协方差；|1|为完全正/负相关，0为不相关</li>
+<li>协方差矩阵:对于X,Y为n元向量，则有n*n的协方差矩阵，第i行j列的元素为e(i,j)=Cov(Xi,Yj)</li>
+</ul>
+
+
+<h3>中心极限定理</h3>
+
+<ul>
+<li>大量相互独立的随机变量，其均值的分布以正态分布为极限，EX=sum(EX), DX=sum(DX)</li>
+</ul>
+
+
+<h3>大数定理</h3>
+
+<ul>
+<li>随着试验次数增多，事件发生的频率依机率收敛于事件的概率(频率的数学期望)</li>
+</ul>
+
+
+<h2>6.数理统计的基本概念</h2>
+
+<h3>基本概念</h3>
+
+<ul>
+<li>研究对象全体的集合称为总体，总体中的每个元素称为个体</li>
+<li>从总体中抽取部分的过程称为抽样</li>
+<li>总体的分布称为理论分布，样本的分布称为经验分布</li>
+<li>样本: X1&hellip;Xn相互独立且与总体X同分布，则(X1,&hellip;,Xn)是总体X的容量为n的简单随机样本</li>
+<li>样本观测值: X1&hellip;Xn取一组常数时的值</li>
+</ul>
+
+
+<h3>简单随机抽样</h3>
+
+<ul>
+<li>随机性: 每次抽样，总体中每个个体都有同等机会被抽取</li>
+<li>独立性: 每次抽取的结果既不影响其他各次抽取的结果，也不瘦其他各次抽取结果的影响</li>
+<li>当样本数小于总体数1/10时，可以把不放回抽样近似作为放回抽样(简单随机抽样)处理</li>
+</ul>
+
+
+<h3>统计量</h3>
+
+<ul>
+<li>样本均值: ▔X = sum(Xi)/n</li>
+<li>样本方差: S<sup>2</sup> = sum((Xi &ndash; ▔X)<sup>2</sup>)/(n-1)</li>
+<li>样本标准差: S = [sum((Xi &ndash; ▔X)<sup>2</sup>)/(n-1)]^(&frac12;)</li>
+<li>样本k阶原点矩: Ak = sum(Xi<sup>k</sup>)/n</li>
+<li>样本k阶中心矩: Bk = sum((Xi &ndash; ▔X)<sup>k</sup>)/n</li>
+</ul>
+
+
+<h3>χ2分布</h3>
+
+<ul>
+<li>Xi~N(0,1), 统计量χ2=sum(Xi<sup>2</sup>), 则χ2服从自由度为n的χ2分布，记为χ2~χ2(n)</li>
+<li>自由度n为平方和中随机变量的个数</li>
+<li>Eχ2=n, Dχ2=2n</li>
+</ul>
+
+
+<h3>t分布</h3>
+
+<ul>
+<li>X~N(0,1), Y~χ2(n), 且X，Y相互独立，则T=X/(Y/n)<sup>&frac12;</sup>服从自由度为n的t(student)分布，记为T~t(n)</li>
+<li>t分布是小样本(n&lt;45)下的分布，n->∞时，t分布接近于正态分布</li>
+<li>Et=0</li>
+</ul>
+
+
+<h3>F分布</h3>
+
+<ul>
+<li>X~χ2(m), Y~χ2(n)，且X，Y相互独立，则F=(X/m)/(Y/n)服从自由度为(m,n)的F分布，记为F~F(m,n)</li>
+<li>F(m,n) = 1/(F(n,m))</li>
+</ul>
+
+
+<h3>正态分布的样本均值与样本方差分布</h3>
+
+<ul>
+<li>总体的期望与方差为μ,σ<sup>2</sup>; 样本的期望与方差为▔X,S<sup>2</sup></li>
+<li>▔X与S<sup>2</sup>相互独立</li>
+<li>Xi~N(μ,σ<sup>2</sup>), 则▔X~N(μ,σ<sup>2</sup>/n)</li>
+<li>(n-1)S<sup>2</sup>/σ<sup>2</sup> ~ χ2(n-1)</li>
+<li>(▔X-μ)/S*n<sup>&frac12;</sup> ~ t(n-1)</li>
+<li>(S1<sup>2</sup>/S2<sup>2</sup>)/(σ1<sup>2</sup>/σ2<sup>2</sup>) ~ F(n1-1,n2-1)</li>
+</ul>
+
+
+<h2>7.参数估计</h2>
+
+<h3>估计量的评选原则</h3>
+
+<ul>
+<li>无偏性: 期望无偏</li>
+<li>有效性: 无偏前提下选择方差最小，最小方差无偏估计量</li>
+<li>一致性: 当样本数增大时，估计量的值能稳定为真实值的值</li>
+</ul>
+
+
+<h3>点估计</h3>
+
+<ul>
+<li>点估计: 用一个数值来a估计某个参数θ，主要包括点估计和极大似然估计</li>
+<li>矩估计: 根据大数定理，随着样本增大，样本矩会逼近总体矩，故用样本矩估计总体矩</li>
+<li>极大似然估计: 在一次抽样中，如果得到样本观测值(x1,&hellip;xn), 则选择(θ1,&hellip;θn)的θ估计，使得(x1,&hellip;xn)出现的概率最大</li>
+</ul>
+
+
+<h3>区间估计</h3>
+
+<ul>
+<li>区间估计: 求出一个区间(θ1,θ2), 使得参数θ以概率1-α被该区间覆盖，P(θ1&lt;θ&lt;θ2)=1-α，区间(θ1,θ2)称为θ的置信水平为1-α的置信区间，θ1/θ2分别为置信下限和置信上限，1-α称为置信水平</li>
+</ul>
+
+
+<h4>单个正态总体均值(σ<sup>2</sup>已知)</h4>
+
+<ul>
+<li>▔X~N(μ,σ<sup>2</sup>/n), (▔X-μ)*n<sup>&frac12;</sup>/σ ~ N(0,1)</li>
+<li>置信区间为(▔X-σ/(n<sup>&frac12;</sup>)<em>u[α/2], ▔X+σ/(n<sup>&frac12;</sup>)</em>u[α/2])</li>
+<li>置信区间长度l = 2σ/(n<sup>&frac12;</sup>)*u[α/2]，与σ成正比，与n<sup>&frac12;</sup>成反比</li>
+</ul>
+
+
+<h4>单个正态总体均值(σ<sup>2</sup>未知)</h4>
+
+<ul>
+<li>(▔X-μ)*n<sup>&frac12;</sup>/S ~ t(n-1)</li>
+<li>置信区间为(▔X-t[α/2](n-1)<em>S/(N<sup>&frac12;</sup>),▔X+t[α/2](n-1)</em>S/(N<sup>&frac12;</sup>))</li>
+</ul>
+
+
+<h4>单个正态总体方差(μ未知)</h4>
+
+<ul>
+<li>(n-1)S<sup>2</sup>/σ<sup>2</sup> ~ χ2(n-1)</li>
+<li>置信区间为((S<em>(n-1)<sup>&frac12;</sup>/(χ2[α/2](n-1))<sup>&frac12;</sup>),(S</em>(n-1)<sup>&frac12;</sup>/(χ2[1-α/2](n-1))<sup>&frac12;</sup>))</li>
+</ul>
+
+
+<h2>8.假设检验</h2>
+
+<ul>
+<li>原假设: H0, 如μ=μ0=0.5</li>
+<li>备择假设: H1, 原假设的对立假设</li>
+<li>检验统计量: 构造小概率事件用的统计量，如μ</li>
+<li>接受域/拒绝域/临界点</li>
+</ul>
+
+
+<h3>两类错误</h3>
+
+<ul>
+<li>第一类错误: 弃真，P(拒绝H0|H0为真)=α</li>
+<li>第二类错误: 存伪，P(接受H0|H0不为真)=β</li>
+<li>显著性检验只控制第一类错误的α而不考虑第二类错误</li>
+</ul>
+
+
+<h3>假设检验步骤</h3>
+
+<ul>
+<li>根据实际问题提出原假设H0和备择假设H1</li>
+<li>构造适当的检验统计量θ，在H0为真时其分布已知</li>
+<li>对于给定置信水平α确定拒绝域W</li>
+<li>根据统计量的观测值确定是接收H0还是拒绝H0</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[子串&子序列系列问题的动态规划转移方程]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/05/18/%E5%AD%90%E4%B8%B2%26%E5%AD%90%E5%BA%8F%E5%88%97%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B/"/>
+    <updated>2014-05-18T21:34:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/05/18/子串&子序列系列问题的动态规划转移方程</id>
+    <content type="html"><![CDATA[<h1>子串&amp;子序列系列问题的动态规划转移方程</h1>
+
+<h2>问题分类</h2>
+
+<h3>子串/子序列</h3>
+
+<ul>
+<li>子串: 必须是连续的</li>
+<li>子序列: 可以是离散的</li>
+<li>子串计算过程中中断会归零，但子序列是从头累加</li>
+</ul>
+
+
+<h3>最大和/最大递增/最长相同字符串</h3>
+
+<ul>
+<li>最大和</li>
+<li>最大递增</li>
+<li>最长公共字符串</li>
+</ul>
+
+
+<h2>最大子序列和 O(n)</h2>
+
+<p>无意义，取所有不为负的即可</p>
+
+<h2>最大子串和</h2>
+
+<p>f(i) = max(f(i-1), 0), f(i)=sum(a[j]),j&lt;=i
+maxV = f(n)</p>
+
+<h2>最大递增子串</h2>
+
+<p>f(i) = a[i]>a[i-1]?f(i-1) + 1:1, f(i)是以a[i]结尾的递增子串
+maxV = max(f(i))</p>
+
+<h2>最大递增子序列</h2>
+
+<p>f(i) = max(f(j)) + 1, f(j)是以a[j]结尾的递增子序列，且a[j]&lt;a[i], j&lt;i
+maxV = max(f(i))</p>
+
+<h2>最长公共子串</h2>
+
+<p>f(i,j) = a[i]==b[j]?f(i-1, j-1) + 1:0, f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子串
+maxV = max(f(i,j))</p>
+
+<h2>最长公共子序列</h2>
+
+<p>f(i,j) = max(f(i-1,j),f(i,j-1),f(i-1,j-1)+C), f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子序列，C = a[i]==b[j]?1:0
+maxV = f(m,n)</p>
+
+<h2>字符串编辑距离</h2>
+
+<p>f(i,i) = min(f(i-1,j)+1,f(i,j-1)+1,f(i-1,j-1)+C) f(i,j)是以a[i]结尾的a和以b[j]结尾的b的字符串编辑距离，C = a[i]==b[j]?1:0</p>
+]]></content>
+  </entry>
+  
+</feed>

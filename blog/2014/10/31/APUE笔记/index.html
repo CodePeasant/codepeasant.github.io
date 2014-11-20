@@ -5,12 +5,12 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>APUE笔记(Chapter 1~6) - 乌衣巷</title>
+	<title>APUE笔记 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="APUE笔记(Chapter 1~6) APUE笔记(Chapter 1~6) 1.UNIX System Overview Nonfatal error(man 3 errno) EAGAIN/EWOULDBLOCK
-ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ &hellip;">
+	<meta name="description" content="APUE笔记 APUE笔记 1.UNIX System Overview Nonfatal error(man 3 errno) EAGAIN/EWOULDBLOCK
+ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ENOMEM/EBUSY 键盘信号 Ctrl+Z &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ &hellip;">
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/10/31/APUE%E7%AC%94%E8%AE%B0%28Chapter1%7E6%29/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/10/31/APUE%E7%AC%94%E8%AE%B0/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -113,8 +113,8 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ &hellip;">
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">APUE笔记(Chapter 1~6)</h1>
-	<div class="entry-content" itemprop="articleBody"><h1>APUE笔记(Chapter 1~6)</h1>
+	<h1 class="title" itemprop="name">APUE笔记</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>APUE笔记</h1>
 
 <h2>1.UNIX System Overview</h2>
 
@@ -381,6 +381,445 @@ ENFILE/ENOBUFS/ENOLCK/ENOSPC/ENOSR/ &hellip;">
 <li>char <em>asctime(tm </em>) tm to string</li>
 <li>char <em>ctime(time_t </em>) time_t to string</li>
 <li>strftime(buf, maxsize, format, tm*) tm to format string</li>
+</ul>
+
+
+<h2>7.Process Environment</h2>
+
+<h3>Process Termination</h3>
+
+<ul>
+<li>terminate method</li>
+<li>return from main()</li>
+<li>return from last thread</li>
+<li>call exit()</li>
+<li>call <em>exit()/</em>Exit()</li>
+<li>call pthread_exit()</li>
+<li>call abort</li>
+<li>receipt a signal</li>
+<li>last thread response for a cancel request</li>
+<li>exit(0) is same as return 0 by main</li>
+<li>exit will call exit handle register by atexit() and clean up standard I/O, <em>exit &amp; </em>Exit will not</li>
+</ul>
+
+
+<h3>Memory Layout(From low address to high)</h3>
+
+<ul>
+<li>Text Segment(Code Segment)</li>
+<li>Initialized Data Segment(Data Segment)</li>
+<li>Uninitialized Data Segment(Block Started by Symbol, BSS)</li>
+<li>Heap</li>
+<li>Stack</li>
+</ul>
+
+
+<h3>Memory Allocate</h3>
+
+<ul>
+<li>malloc(size)</li>
+<li>cmalloc(nobj, size) malloc+memset(0)</li>
+<li>remalloc(ptr,size)</li>
+<li>free(ptr)</li>
+</ul>
+
+
+<h3>Environment Variables</h3>
+
+<ul>
+<li>int main(int argc, char <em>argv[], char </em>envp[])</li>
+<li>getenv(name)/putenv(name=value)/setenv(name,value)/unsetenv(name)</li>
+</ul>
+
+
+<h3>Others</h3>
+
+<ul>
+<li>goto only available in same function, use setjmp/longjmp to cross function</li>
+<li>getrlimit/setrlimit, return resource limit for the process(rlimit)</li>
+<li>struct rlimit{
+  rlim_t rlim_cur; //soft limit
+  rlim_t rlim_max; //hard limit
+}</li>
+<li>soft limit should lower or equal to hard limit, only root user can change hard limit</li>
+</ul>
+
+
+<h2>8.Process Control</h2>
+
+<h3>Process Identifier</h3>
+
+<ul>
+<li>getpid()/getppid()</li>
+<li>getuid()/geteuid()</li>
+<li>getgid()/getegid()</li>
+</ul>
+
+
+<h3>Process Creation</h3>
+
+<ul>
+<li>fork(), call once, return twice</li>
+<li>parent &amp; child process by fork share Text Segment, other segment are independent, copy on write</li>
+<li>parent &amp; child process share file discriptors open</li>
+<li>signal &amp; File Lock are not inherited from parent to child</li>
+<li>vfork(), the parent and child share all resource, the parent wait unit child exit, it always use to call exec()</li>
+</ul>
+
+
+<h3>Process Termination</h3>
+
+<ul>
+<li>wait(&amp;return_status), wait for any child terminated, return by the first child</li>
+<li>waitpid(pid,&amp;return_status,option), wait for the specified child terminated</li>
+<li>init process become parent for whos parent terminated</li>
+<li>child process will be zombie when it terminate but parent not wait for it</li>
+<li>child terminated then the process will receive SIGCHLD, default behavior is ignore it</li>
+</ul>
+
+
+<h3>Exec Function</h3>
+
+<ul>
+<li>exec[l/v]<a href="filepath,%20argv[],%20envp[]"> /e/p</a>, only execve is system call</li>
+<li>exec function replace the text segment/data segment/bss/heap/stack by the programe specified by filepath</li>
+<li>exec keep the file discriptor open, but fcntl FD_CLOEXEC can close them</li>
+<li>#! /bin/sh</li>
+<li>system = fork + exec + waitpid</li>
+</ul>
+
+
+<h3>Change user IDs and group IDs</h3>
+
+<ul>
+<li>setuid/setgid</li>
+<li>uid or gid only can be set by root, or set to real-user/saved-user/file-owner-user</li>
+</ul>
+
+
+<h3>Accounting</h3>
+
+<ul>
+<li>real(实际运行时间)</li>
+<li>user(用户态CPU时间)</li>
+<li>sys(内核态CPU时间)</li>
+</ul>
+
+
+<h2>9.Process Relationships</h2>
+
+<ul>
+<li>ssh beyond tcp protocol</li>
+<li>Terminal Login &amp; NetworkLogin(Pseudo Terminal)</li>
+<li>a login is a session, a session contain some foreground/backgroud process groups, process groups include one or more process</li>
+<li>$ proc1 | proc2 &amp; : proc1 and proc2 consist of a backgound group</li>
+<li>$ proc3 | proc4 : proc3 and proc4 consist of a foregound group</li>
+<li>Ctrl + C/Delete: send SIGINT to all foreground process</li>
+<li>Ctrl + /: send SIGQUIT to all foreground process</li>
+<li>Ctrl + Z: send SIGTSTP to all foreground process, 使用bg命令查询有哪些挂起的，使用fg命令重新带回前台</li>
+<li>background process input/oupt to terminal wil send SIGTTIN/SIGTTOUT and then stop until use fg command to bring them to foreground</li>
+</ul>
+
+
+<h2>10.Signals</h2>
+
+<h3>Generate</h3>
+
+<ul>
+<li>User inout from terminal</li>
+<li>Hardware exception(invalid memory)</li>
+<li>kill(1, command)/(2, function)</li>
+<li>Software condition(SIGPIPE)</li>
+</ul>
+
+
+<h3>Behavior</h3>
+
+<ul>
+<li>Ignore(SIGKILL/SIGSTOP can&rsquo;t ignore)[SIG_IGN]</li>
+<li>catch and deal[void (*func)(int)]</li>
+<li>default action[SIG_DFL]</li>
+</ul>
+
+
+<h3>Default Action</h3>
+
+<ul>
+<li>terminate(SIGHUP)</li>
+<li>terminate+core(SIGABRT/SIGFPE/SIGSEGV/SIGSYS/SIGXCPU/SIGXFSZ)</li>
+<li>continue process</li>
+<li>stop process</li>
+<li>ignore</li>
+</ul>
+
+
+<h3>Slow System Calls</h3>
+
+<ul>
+<li>read/write</li>
+<li>open</li>
+<li>pause</li>
+<li>ioctl</li>
+<li>some IPC funcitons</li>
+<li>the slow system calls will be restart after the signal</li>
+</ul>
+
+
+<h3>Reentrant Functions</h3>
+
+<ul>
+<li>文件操作/Socket操作/进程操作系列函数是Reentrant的</li>
+<li>malloc/free/标准IO(printf)/errno/使用全局数据结构的函数是非Reentrant的</li>
+</ul>
+
+
+<h3>可重入与线程安全</h3>
+
+<ul>
+<li>可重入：有一类重要的线程安全函数，叫做可重入函数，其特点在于它们具有一种属性：当它们被多个线程调用时，不会引用任何共享的数据。与多线程无关，一个函数被多次调用[信号中断]但结果具有可重现性[没有全局数据，不调用非可重入函数]，不会受其他函数影响，输入输出一对一，Linux以_r结尾的函数是可重入的</li>
+<li>线程安全：一个函数同时被多个线程调用而得到正确结果[使用互斥锁保证，访问全局数据]，同样的输入可能有不同的输出</li>
+<li>可重入是线程安全的子集，</li>
+</ul>
+
+
+<h2>signal/kill</h2>
+
+<ul>
+<li>Linux的signal函数内部调用sigaction，不需要每次调用后重置信号行为且是可靠的</li>
+<li>kill(pid, sig) pid>0进程号为pid的进程;pid=0同一进程组进程;pid&lt;0进程组为-pid的进程;pid=-1发给除了自身外所有id>1的进程</li>
+<li>非root权限的进程只能发信号给同一个session或者同一个用户的进程</li>
+<li>多线程程序共享同样的信号处理函数，一个进程中有多个线程则会随机使用一个线程进行处理</li>
+</ul>
+
+
+<h2>alarm&amp;pause</h2>
+
+<ul>
+<li>多个信号同时发生会发生类似于栈嵌套执行，即一个信号处理一半中断了处理新收到的信号，处理返回处理栈上一个信号，待所有信号处理完再运行进程的代码</li>
+<li>alarm(second)，second秒后产生一个SIGALRM，一个进程只能有一个alarm，一个新的alarm生效前一个则会失效，sleep内部也是使用alarm实现，所以不要混用sleep和alarm</li>
+<li>pause函数使进程进入睡眠状态直到捕获任何信号</li>
+</ul>
+
+
+<h2>block sign</h2>
+
+<ul>
+<li>sigemptyset/sigfillset/sigaddset/sigdelset/sigismember</li>
+<li>sigprocmask Block/Unblock哪些信号</li>
+<li>sigpending 返回被Block的信号</li>
+</ul>
+
+
+<h2>11.Threads</h2>
+
+<h3>Thread Identification</h3>
+
+<ul>
+<li>pthread_equal/pthread_self</li>
+<li>每一个线程拥有自己的stack/register value/signal mask/errno</li>
+</ul>
+
+
+<h3>Thread Creation&amp;Termination</h3>
+
+<ul>
+<li>pthread_create</li>
+<li>pthread_exit/pthread_cancel</li>
+<li>pthread_cleanup_push/pthread_cleanup_pop</li>
+<li>pthread_join/pthread_detach</li>
+</ul>
+
+
+<h3>Thread Synchronization</h3>
+
+<h4>Mutex</h4>
+
+<ul>
+<li>pthread_mutex_init/pthread_mutex_destroy/PTHREAD_MUTEX_DESTORY</li>
+<li>pthread_mutex_lock/pthread_mutex_unlock/pthread_mutex_try_lock</li>
+</ul>
+
+
+<h4>Reader-Writer Locks</h4>
+
+<ul>
+<li>pthread_rwlock_init/pthread_rwlock_destory</li>
+<li>pthread_rwlock_rdlock/pthread_rwlock_wrlock/pthread_rwlock_unlock</li>
+<li>pthread_rwlock_tryrdlock/pthread_rwlock_trywrlock</li>
+</ul>
+
+
+<h4>Condition Variables</h4>
+
+<ul>
+<li>pthread_cond_init/pthread_cond_destory</li>
+<li>pthread_cond_wait/pthread_cond_timewait</li>
+<li>pthread_cond_signal/pthread_cond_broadcast</li>
+</ul>
+
+
+<h2>hange the attribute appear in Chapter 11</h2>
+
+<ul>
+<li>pthread_once:某个函数只执行一次，用于单例模式</li>
+<li>__thread声明的变量每个线程拥有独立的值</li>
+</ul>
+
+
+<h2>13.Daemon Process</h2>
+
+<h3>Coding Rules</h3>
+
+<ul>
+<li>umask(0) 清除不必要的权限位</li>
+<li>fork+parent exit</li>
+<li>setsid 创建新会话，脱离中断</li>
+<li>chdir(/) 当前目录可能重启后不存在(如果是挂载的)</li>
+<li>close unneeded file discriptor</li>
+<li>open 0/&frac12; to /dev/null 防止读写终端</li>
+</ul>
+
+
+<h3>Error Logging</h3>
+
+<ul>
+<li>syslog(level, fmt, &hellip;)</li>
+</ul>
+
+
+<h3>TIP</h3>
+
+<ul>
+<li>调用系统函数daemon(int nochdir, int noclose)直接完成该功能</li>
+<li>用于服务器端程序</li>
+<li>使用基于File的RecordLock来生成单例Daemon</li>
+</ul>
+
+
+<h3>Daemon Conventions</h3>
+
+<ul>
+<li>lock file in /var/run/name.pid</li>
+<li>config file in /etc/name.conf</li>
+<li>auto-start script in /etc/rc<em> or /etc/init.d/</em> or /etc/inittab</li>
+<li>use SIGHUP to notify the daemon reload config file</li>
+</ul>
+
+
+<h2>14.Advanced I/O</h2>
+
+<h3>Nonblock I/O</h3>
+
+<ul>
+<li>set with open(fd, O_NONBLOCK)</li>
+<li>set with fcntl()</li>
+</ul>
+
+
+<h3>Record Lock</h3>
+
+<ul>
+<li>支持对一个文件的区域进行锁</li>
+</ul>
+
+
+<h3>STREAMS</h3>
+
+<h3>I/O Multiplexing</h3>
+
+<ul>
+<li>select/poll</li>
+<li>readv/writev/readn/writen</li>
+</ul>
+
+
+<h3>Memory-Mapped I/O</h3>
+
+<ul>
+<li>mmap</li>
+</ul>
+
+
+<h2>15.Interprocess Communication</h2>
+
+<h3>Default IPC</h3>
+
+<h4>Pipes</h4>
+
+<ul>
+<li>pipe(field[2])</li>
+<li>打开后使用/read/write操作，最后一个使用进程退出会自动关闭</li>
+<li>half-duplex</li>
+<li>work between process have a common ancestor</li>
+<li>is a file discriptor</li>
+<li>popen/pclose</li>
+</ul>
+
+
+<h4>FIFOS(named pipes)</h4>
+
+<ul>
+<li>mkfifo</li>
+<li>打开后使用open/read/write操作</li>
+<li>cross process without a common ancester</li>
+<li><ul>
+<li>is a file discriptor</li>
+</ul>
+</li>
+</ul>
+
+
+<h4>SIGNAL</h4>
+
+<h3>XSI IPC</h3>
+
+<h4>Message Queue</h4>
+
+<h4>Semaphore</h4>
+
+<h4>Shared Memory</h4>
+
+<h4>Advantage&amp;Disadvantage</h4>
+
+<ul>
+<li>XSI IPC是全局的，需要手动关闭</li>
+<li>使用full-duplex pipe替换MQ</li>
+<li>使用record-lock替换semaphore</li>
+<li>使用mmap替换shared memory</li>
+</ul>
+
+
+<h2>16.Network IPC: Sockets</h2>
+
+<h3>TCP Status</h3>
+
+<h4>起始</h4>
+
+<ul>
+<li>CLOSED</li>
+</ul>
+
+
+<h4>连接</h4>
+
+<ul>
+<li>被动打开: LISTEN/SYN_RCVD</li>
+<li>主动打开: SYN_SENT</li>
+</ul>
+
+
+<h4>传输中</h4>
+
+<ul>
+<li>ESTABLISHED</li>
+</ul>
+
+
+<h4>断开</h4>
+
+<ul>
+<li>主动断开:FIN_WAIT_1/FIN_WAIT_2/CLOSING(同时断开)/TIME_WAIT</li>
+<li>被动断开:CLOSE_WAIT/LAST_ACK</li>
 </ul>
 
 </div>

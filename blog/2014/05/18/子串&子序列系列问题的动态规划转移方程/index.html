@@ -5,15 +5,15 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>C++ Tip - 乌衣巷</title>
+	<title>子串&子序列系列问题的动态规划转移方程 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="C++ Tip C++ 虚函数是为了用基类指针能调用子类函数，虚函数必须有实现
-纯虚函数是为了使类不能被实例化定义接口。纯虚函数只有声明
-基类向下转型成派生类
-定义构造函数、复制构造函数、或赋值操作符三个中的任意一个,你也需要定义另外两个
-使用class a:private boost::non &hellip;">
+	<meta name="description" content="子串&子序列系列问题的动态规划转移方程 子串&amp;子序列系列问题的动态规划转移方程 问题分类 子串/子序列 子串: 必须是连续的
+子序列: 可以是离散的
+子串计算过程中中断会归零，但子序列是从头累加 最大和/最大递增/最长相同字符串 最大和
+最大递增
+最长公共字符串 最大子序列和 O(n) &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +23,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/07/22/cpp-tips/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/05/18/%E5%AD%90%E4%B8%B2%26%E5%AD%90%E5%BA%8F%E5%88%97%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -116,101 +116,61 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">C++ Tip</h1>
-	<div class="entry-content" itemprop="articleBody"><h1>C++</h1>
+	<h1 class="title" itemprop="name">子串&子序列系列问题的动态规划转移方程</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>子串&amp;子序列系列问题的动态规划转移方程</h1>
+
+<h2>问题分类</h2>
+
+<h3>子串/子序列</h3>
 
 <ul>
-<li>虚函数是为了用基类指针能调用子类函数，虚函数必须有实现</li>
-<li>纯虚函数是为了使类不能被实例化定义接口。纯虚函数只有声明</li>
-<li>基类向下转型成派生类</li>
-<li>定义构造函数、复制构造函数、或赋值操作符三个中的任意一个,你也需要定义另外两个</li>
-<li>使用class a:private boost::non copyable</li>
-<li>泛型是水平的，把各种不同的互相没有什么关系的类型应用于同一种算法；继承是垂直的，从抽象到具体，子类和父类是有关系的。</li>
+<li>子串: 必须是连续的</li>
+<li>子序列: 可以是离散的</li>
+<li>子串计算过程中中断会归零，但子序列是从头累加</li>
 </ul>
 
 
-<h1>Linux</h1>
+<h3>最大和/最大递增/最长相同字符串</h3>
 
 <ul>
-<li>一个线程结束时要通过pthread_join或者pthread_detach(pthread_self())来释放8K左右的堆栈和线程描述符</li>
-<li>interrupt只有在代码执行到wait/join/sleep这三种检查点的时候才会中断</li>
+<li>最大和</li>
+<li>最大递增</li>
+<li>最长公共字符串</li>
 </ul>
 
 
-<h1>Others</h1>
+<h2>最大子序列和 O(n)</h2>
 
-<ul>
-<li>聚合：离散聚合/累积聚合/滑动聚合</li>
-<li>旋转：开放架构(id/attr/val)与Cube</li>
-<li>UnitTest:Setup/Exercice/Verify/Teardown</li>
-<li>gtest事件：Enviroment(SetUp/TearDown)/TestSuite(SetUp/TearDownTestCase)/TestCase(SetUp/TearDown)</li>
-</ul>
+<p>无意义，取所有不为负的即可</p>
 
+<h2>最大子串和</h2>
 
-<h2>Redis数据类型</h2>
+<p>f(i) = max(f(i-1), 0), f(i)=sum(a[j]),j&lt;=i
+maxV = f(n)</p>
 
-<ul>
-<li>String: set/get/desc/incr/mget</li>
-<li>List: lpush/rpush/lpop/rpop/lrange</li>
-<li>Hash: hget/hset/hgetall/hmset/hmget</li>
-<li>Set: sadd/spop/smembers/sunion</li>
-<li>Sorted Set: zadd/zrem/zrange</li>
-<li>Sorted Set由HashSet(正排，key:score)+SkipList构成(倒排, score:key，类似平衡树，查找复杂度O(logn))</li>
-</ul>
+<h2>最大递增子串</h2>
 
+<p>f(i) = a[i]>a[i-1]?f(i-1) + 1:1, f(i)是以a[i]结尾的递增子串
+maxV = max(f(i))</p>
 
-<h2>CouchBase数据类型</h2>
+<h2>最大递增子序列</h2>
 
-<ul>
-<li>redis提供各种数据结构但CouchBase都是JSON</li>
-<li>bucket 相当于数据库的db+table</li>
-<li>set/add/replace</li>
-<li>cas(key, oldval, newval) 替换为新值的时候值必须为旧值，保证数据一致性</li>
-<li>get/delete/touch</li>
-<li>append/prepend/incr/decr</li>
-<li>lock(key, ttl)/unlock</li>
-<li>with pipeline可以实现get_multi/set_multi等的批处理效果</li>
-<li>通过MapReduce实现条件查询[View必须预先定义好，一个DesignDocument包括多个View], map函数中通过emit返回符合条件的数据进行reduce</li>
-<li>开发模式增量数据会自动进行MapRedure加到View索引中，开发模式则不会</li>
-</ul>
+<p>f(i) = max(f(j)) + 1, f(j)是以a[j]结尾的递增子序列，且a[j]&lt;a[i], j&lt;i
+maxV = max(f(i))</p>
 
+<h2>最长公共子串</h2>
 
-<h2>CAP</h2>
+<p>f(i,j) = a[i]==b[j]?f(i-1, j-1) + 1:0, f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子串
+maxV = max(f(i,j))</p>
 
-<ul>
-<li>Consistency</li>
-<li>Availability[快速获得数据]</li>
-<li>Tolerance of network Partition[分布式]</li>
-<li>一个分布式系统只能满足其中两个，不可能全部满足</li>
-<li>CA:传统数据库</li>
-<li>AP:K-V数据库</li>
-</ul>
+<h2>最长公共子序列</h2>
 
+<p>f(i,j) = max(f(i-1,j),f(i,j-1),f(i-1,j-1)+C), f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子序列，C = a[i]==b[j]?1:0
+maxV = f(m,n)</p>
 
-<h2>BASE</h2>
+<h2>字符串编辑距离</h2>
 
-<ul>
-<li>Base Availble</li>
-<li>Soft-state(无连接)</li>
-<li>Eventual Consistency</li>
-</ul>
-
-
-<h2>死锁形成条件(一个不符合则不会死锁)</h2>
-
-<ul>
-<li>资源互斥性[A占有B就不能占有]</li>
-<li>资源不可剥夺</li>
-<li>请求且保持[等待一个资源的时候不释放当前占有的资源]</li>
-<li>循环等待</li>
-</ul>
-
-
-<h2>TCP/IP</h2>
-
-<p>ESTABLISHED 表示正在通信，TIME_WAIT 表示主动关闭，CLOSE_WAIT 表示被动关闭。
-ps -fu wuyixiang 查找我的进程
-cat /proc/[pid]/status 查看pid的进程占用的内存大小(当前，峰值)</p>
+<p>f(i,i) = min(f(i-1,j)+1,f(i,j-1)+1,f(i-1,j-1)+C) f(i,j)是以a[i]结尾的a和以b[j]结尾的b的字符串编辑距离，C = a[i]==b[j]?1:0</p>
 </div>
 
 </article>

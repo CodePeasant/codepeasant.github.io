@@ -9,7 +9,9 @@
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Dec 4th, 2013 script Comments Script 常用脚本命令 Dec 4th, 2013 android Comments Android Android基本上是在热聊被叫停后基本没什么事干的时候学的，就写了几个HelloWorld程序和复习了一遍OpenES, &hellip;">
+	<meta name="description" content="May 18th, 2014 算法 Comments 子串&子序列系列问题的动态规划转移方程 子串&amp;子序列系列问题的动态规划转移方程 问题分类 子串/子序列 子串: 必须是连续的
+子序列: 可以是离散的
+子串计算过程中中断会归零，但子序列是从头累加 最大和/最大递增/最长相同字符串 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,6 +115,254 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-18T21:34:00+08:00" data-updated="true" itemprop="datePublished">May 18<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/suan-fa/'>算法</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2014/05/18/%E5%AD%90%E4%B8%B2%26%E5%AD%90%E5%BA%8F%E5%88%97%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/05/18/%E5%AD%90%E4%B8%B2%26%E5%AD%90%E5%BA%8F%E5%88%97%E7%B3%BB%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B/" itemprop="url">子串&子序列系列问题的动态规划转移方程</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h1>子串&amp;子序列系列问题的动态规划转移方程</h1>
+
+<h2>问题分类</h2>
+
+<h3>子串/子序列</h3>
+
+<ul>
+<li>子串: 必须是连续的</li>
+<li>子序列: 可以是离散的</li>
+<li>子串计算过程中中断会归零，但子序列是从头累加</li>
+</ul>
+
+
+<h3>最大和/最大递增/最长相同字符串</h3>
+
+<ul>
+<li>最大和</li>
+<li>最大递增</li>
+<li>最长公共字符串</li>
+</ul>
+
+
+<h2>最大子序列和 O(n)</h2>
+
+<p>无意义，取所有不为负的即可</p>
+
+<h2>最大子串和</h2>
+
+<p>f(i) = max(f(i-1), 0), f(i)=sum(a[j]),j&lt;=i
+maxV = f(n)</p>
+
+<h2>最大递增子串</h2>
+
+<p>f(i) = a[i]>a[i-1]?f(i-1) + 1:1, f(i)是以a[i]结尾的递增子串
+maxV = max(f(i))</p>
+
+<h2>最大递增子序列</h2>
+
+<p>f(i) = max(f(j)) + 1, f(j)是以a[j]结尾的递增子序列，且a[j]&lt;a[i], j&lt;i
+maxV = max(f(i))</p>
+
+<h2>最长公共子串</h2>
+
+<p>f(i,j) = a[i]==b[j]?f(i-1, j-1) + 1:0, f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子串
+maxV = max(f(i,j))</p>
+
+<h2>最长公共子序列</h2>
+
+<p>f(i,j) = max(f(i-1,j),f(i,j-1),f(i-1,j-1)+C), f(i,j)是以a[i]结尾的a和以b[j]结尾的b的最大公共子序列，C = a[i]==b[j]?1:0
+maxV = f(m,n)</p>
+
+<h2>字符串编辑距离</h2>
+
+<p>f(i,i) = min(f(i-1,j)+1,f(i,j-1)+1,f(i-1,j-1)+C) f(i,j)是以a[i]结尾的a和以b[j]结尾的b的字符串编辑距离，C = a[i]==b[j]?1:0</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-04T20:38:00+08:00" data-updated="true" itemprop="datePublished">Dec 4<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/script/'>script</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2013/12/04/script-tips/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/12/04/script-tips/" itemprop="url">有用的Shell命令和小技巧</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<ul>
+<li>在某个目录下查找含有某段文字的文件</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grep QLStagePhoto -rl branches/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>统计一个命令的运行时间</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">time </span>ls
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Ctrl+A 跳到当前行最前</li>
+<li>Ctrl+U 清空当前行</li>
+<li>Ctrl+I 清空整屏</li>
+<li><p>一般输入某个命令加-h选项可以以利于人类阅读的方式显示，如ll -h/df -h</p></li>
+<li><p>统计字符数/词数/行数</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ls|wc -c/w/l
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>重复上个输入的命令</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo !!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>以当前目录为根目录启动HTTPServer，端口为8000</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>python -m SimpleHTTPServer
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>统计当前用户最常用的10个命令</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">history</span> | awk <span class="s1">&#39;{CMD[$2]++;count++;} END { for (a in CMD )print CMD[a] &quot; &quot; CMD[a]/count*100 &quot;% &quot; a }&#39;</span> | grep -v <span class="s2">&quot;./&quot;</span> | column -c3 -s <span class="s2">&quot; &quot;</span> -t | sort -nr | nl | head -n10
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>降低当前网络速度质量(用于WIFI模拟手机2G环境)</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ipfw pipe pipe_nr config bw B delay D queue Q plr P
+</span><span class='line'><span class="se">\#</span>这里的 pipe_nr 指的是 pipe 规则编号，从 1~65535；
+</span><span class='line'><span class="se">\#</span>B 是指频宽，可以表示为 bit/s、Kbit/s、Mbit/s、Bytes/s、KBytes/s、或 MBytes/s
+</span><span class='line'><span class="se">\#</span>D 是延迟多少 milliseconds <span class="o">(</span>1/1000<span class="o">)</span>
+</span><span class='line'><span class="se">\#</span>Q 是 queue size 的大小 <span class="o">(</span>单位为 packages 或 Bytes<span class="o">)</span>
+</span><span class='line'><span class="se">\#</span>P 是要随机丢弃的封包数量。
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*子目录含有.git导致不能加入版本管理</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rm -rf mysubmodule/.gitgit
+</span><span class='line'>rm --cached mysubmodule
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看文件夹大小</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>du -sh * | sort -n
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查找当前文件夹下含有sr的文件行</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>grep -rn sr .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*比较区别</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>diff -y a.sr b.sr | nl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>*查看端口占用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>lsof -i:80
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
