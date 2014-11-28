@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2014-11-20T17:13:55+08:00</updated>
+  <updated>2014-11-28T18:51:24+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -12,6 +12,232 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hadoop权威指南笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/11/28/Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-11-28T19:32:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/11/28/Hadoop权威指南笔记</id>
+    <content type="html"><![CDATA[<h1>Hadoop权威指南笔记</h1>
+
+<h2>1.&amp;2.关于MapReduce</h2>
+
+<ul>
+<li>数据本地化是MapReduce的核心特征，hadoop通过显式网络拓扑结构在存储数据附近的机器上进行运算任务，避免把数据复制来复制去耗尽网络带宽</li>
+<li>把数据从Mapper传给Reducer称为Shuffle</li>
+</ul>
+
+
+<h2>3.HDFS</h2>
+
+<ul>
+<li>namenode负责维护所有文件和目录的文件树，datanode负责存储实际的数据块* HDFS提供了POSIX文件接口，通过操作url hdfs://path可以像操作本地文件一样操作文件，并实现本地和hdfs文件的互传</li>
+<li>通过FUSE(Filesystem in Userspace)可以把hdfs挂载到unix系统上</li>
+<li>HDFS默认提供Java API访问，其他语言要使用thrift</li>
+<li>HDFS的写操作只有三个datanode都写成功了才会返回，如果有一个写失败了则会删除该节点并新建一个节点</li>
+<li>每个块的元数据都会存储在namenode的内存中，因此HDFS存储小文件的效率很低</li>
+</ul>
+
+
+<h2>4.Hadoop I/O</h2>
+
+<ul>
+<li>数据完整性用CRC32的checksum</li>
+<li>Hadoop会自动识别被压缩了的文件并进行解压缩，对于不可切分的压缩格式如gzip/LZO/DEFLATE无法启动并行处理，可以使用可切分的bz2</li>
+<li>通过Writable/Readble接口实现序列号/反序列号</li>
+<li>序列化/RPC框架: Avro/Thrfit/ProtoBuf</li>
+<li>基于文件的数据结构: SequenceFile/MapFile</li>
+</ul>
+
+
+<h2>6.MapReduce工作机制</h2>
+
+<ul>
+<li>4大组件: client/jobtracker/tasktracker/HDFS</li>
+<li>调度算法:FIFO/Fair Scheduler(支持抢占)</li>
+</ul>
+
+
+<h2>9.构建Hadoop集群</h2>
+
+<ul>
+<li>服务器类型: namenode/datanode/jobtracker/tasktracker</li>
+<li>使用Kerbros来实现访问控制</li>
+</ul>
+
+
+<h2>12.Hive</h2>
+
+<ul>
+<li>使用类似SQL的语法来运行MapReduce查询HDFS，用于数据仓库的离线数据分析</li>
+</ul>
+
+
+<h2>13.HBase</h2>
+
+<ul>
+<li>列存储，类似于key-value数据库，提供良好的扩展性和硬盘存储，可以存储几个T的数据</li>
+</ul>
+
+
+<h2>14.Zookeeper</h2>
+
+<ul>
+<li>配置管理/锁服务</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Effective C++读书笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/11/27/Effective+C%2B%2B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-11-27T23:34:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/11/27/Effective C++读书笔记</id>
+    <content type="html"><![CDATA[<h1>Effective C++读书笔记</h1>
+
+<h2>1.让自己习惯C++</h2>
+
+<ul>
+<li>声明与定义: 对象(包括原生)/函数/类/模板</li>
+<li>C++范型: 过程/面向对象/范型/元编程(Boost.MPL,利用编译期生成)</li>
+<li>使用const/enum/inline替换#define</li>
+<li>类的const函数返回值如果是成员变量的引用也设为const防止改变返回</li>
+<li>函数参数和返回值使用传const引用提高效率</li>
+<li>mutable的成员变量在类的const函数中也能被修改</li>
+<li>类可以对成员函数进行const重载，当一个对象是const的时候调用的是const函数，否则调用non-const函数</li>
+<li>对于全局变量使用包装函数(原生类型)或者单件模式(类)</li>
+</ul>
+
+
+<h2>2.构造/析构/赋值函数</h2>
+
+<ul>
+<li>default: construct/destruct/copy/copy assignment</li>
+<li>copy assignment并不生成新对象，只是单纯地赋值，返回*this</li>
+<li>class base:private boost::noncopyable, noncopyable把construct/destruct设为protected，把copy/copy assignment设为private并且只有声明无实现</li>
+<li>多态基类必须带有虚析构函数，STL/string等类没有定义虚析构函数不适合继承</li>
+<li>析构函数中应当捕获异常让其不再向上传播，选择不处理或者abort退出</li>
+<li>构造和析构函数中不要调用virtual函数，必须调用的共同代码改为non-virtual或者采用两段式构造</li>
+<li>operator=返回一个reference to *this以支持链式操作</li>
+<li>operator=对指针进行new/delete需要注意自我赋值，采用identity test或者采用一个temp变量来具备异常安全性(或者是整体的copy and swap)</li>
+<li>copy函数(当前对象还没构造)，copy assignment(当前对象已经构造)，故两个函数间不能相互调用，对于相同的代码应当抽离作为一个init函数被这两个函数调用</li>
+<li>copy/copy assignment函数[合称为copying函数]应当复制所有成员变量（新增变量时需要修改copying函数），调用所有base class的copying函数</li>
+</ul>
+
+
+<h2>3.资源管理</h2>
+
+<ul>
+<li>采用RAII来管理资源：获得资源后立刻放入管理对象，管理对象运用析构函数确保资源被释放</li>
+<li>shared_ptr析构时调用的是delete，故不能用于管理数组，数组使用vector</li>
+<li>auto_ptr只能有一个指向对象，复制时原来的auto_ptr会变成null，shared_ptr拥有正确的复制行为，可以被放进STL中</li>
+<li>一个RAII对象默认不应该被复制，需要复制时对管理的资源采用RCSP管理</li>
+<li>RAII对象显式提供一个get函数提供内部资源的访问</li>
+<li>share_ptr<A> a(new A());应当写成独立一行防止失败造成内存泄露</li>
+</ul>
+
+
+<h2>4.设计与声明</h2>
+
+<ul>
+<li>让接口容易被正确使用，不易被误用</li>
+<li>返回一个绑定了删除器的share_ptr比返回原始指针好</li>
+<li>使用pass-by-reference-to-const替换pass-by-value，提高传递效率同时防止派生类被slice成基类导致虚函数调用错误</li>
+<li>返回值一般返回value而不是reference/pointer，返回reference可能是返回了一个局部变量的reference</li>
+<li>成员变量声明为private，protected会影响派生类，并不比public安全多少</li>
+<li>使用non-member non-friend函数代替member函数，不访问private变量的函数都不应该写成member函数，减少member函数的数量有利于类的封装和弹性，这类函数称为便利函数</li>
+<li>把便利函数和原生类组织在同一个namespace下，把不同功能的便利函数分布到不同的头文件中但共享同一个namespace</li>
+<li>默认的swap函数要求类型T支持copying操作</li>
+<li>默认的swap效率不足时为自己的class添加一个swap的member函数，再在同一命名空间中添加一个non-member的swap函数调用类的swap函数</li>
+</ul>
+
+
+<h2>5.实现</h2>
+
+<ul>
+<li>尽可能延后变量的定义，一个循环中使用的变量除非对于效率很敏感，一般写在循环的作用域中而不是之外</li>
+<li>尽可能少用转型，用的时候也把它显式声明出来（如static_cast），不要隐式转型</li>
+<li>尽可能不要返回类的成员变量的reference/pointer（即使是const），防止dangling handles</li>
+<li>异常安全的三种渐进保证：(1)保证抛出异常数据不遭到破坏；(2)保证函数要么完全成功要么抛出异常回到调用前的状态[使用copy and swap技术，所有操作都在copy的对象上操作，操作完再swap]；(3)函数不抛出异常</li>
+<li>运行期的virtual函数无法进行编译期的inline</li>
+<li>使用声明式类代替定义式类减少编译依存性，提高编译速度，使用Handle Class[pImpl]或者Interface Class[pure virtual class]技术来完成该目的
+b
+
+<h2>6.继承与面向对象设计</h2></li>
+<li>public继承意味着is-a关系，Liskov Substitution Principle</li>
+<li>private成员意味着has-a关系</li>
+<li>派生类定义的函数会覆盖所有基类同样名字的函数，即使基类对该名字进行了参数重载，为了避免该问题需要在派生类中使用using Base::func引入名字</li>
+<li>pure-virtual function只提供一个接口的继承;impure-virtual function提供一个接口和一份缺省实现[多态];non-virtual function提供一个接口和一份强制实现[覆盖]</li>
+<li>模板模式:使用一个public的函数来调用各个private的virtual子函数实现模板模式</li>
+<li>策略模式:在构造函数中传入策略函数的指针/boost::function对象并保存起来</li>
+<li>不要覆盖继承而来的non-virtual函数，防止在不同指针类型上表现不一</li>
+<li>virtual函数的缺省值是静态绑定，virtual函数是动态绑定，因此不要修改virtual函数的缺省参数的值，否则会导致用子类的virtual函数但参数却还是基类的默认值</li>
+<li>多重继承应该只用于public继承一个interface和private继承一个协助实现的类</li>
+</ul>
+
+
+<h2>7.模板与泛型编程</h2>
+
+<ul>
+<li>继承：基于函数签名的显式接口&amp;运行期多态</li>
+<li>模板：基于有效表达式的隐式接口&amp;编译期多态</li>
+<li>typename与class可以互换，但嵌套模板类型前必须加上typename，如typename T::type a;</li>
+<li>template会导致代码膨胀，和inline一样</li>
+<li>模板的特化:template&lt;>class A<Class B></li>
+<li>数字模板化:template<class T, size_t n></li>
+<li>派生类模板要调用基类模板方法必须使用this->func()</li>
+<li>traits使用typedef+template/template特化+函数重载实现</li>
+<li>typeid发生在运行期，函数重载发生在编译期</li>
+<li>Template Metaprogramming(模板元编程)将工作从运行期移往编译期，便于较早发现错误和更高的执行效率</li>
+<li>TMP属于函数式编程语言，通过递归实现循环</li>
+</ul>
+
+
+<h2>8.定制new和delete</h2>
+
+<ul>
+<li>set_new_handle提供一个全局的处理new异常的函数，通过RAII可以为每个类订制各自的set_new_handler</li>
+<li>static void* Base::operator new(size_t size) throw(std::bad_alloc);</li>
+<li>static void Base::operator delete(void *rawMemory, size_t size) throw();</li>
+<li>placement new/delete可以在指定的指针地址上分配内存，必须结对出现：ClassA *a = new(buf) ClassA;</li>
+</ul>
+
+
+<h2>9.杂项</h2>
+
+<ul>
+<li>不要忽视编译器警告</li>
+<li>熟悉STL/tr1/boost</li>
+</ul>
+
+
+<h3>STL</h3>
+
+<ul>
+<li>container: vector/string/map</li>
+<li>container adapter: stack/priority_queue</li>
+<li>iterator</li>
+<li>algorithm: find/sort/transform</li>
+<li>function object: less/greater</li>
+<li>function object adapter: mem_fun/notl</li>
+</ul>
+
+
+<h3>tr1</h3>
+
+<ul>
+<li>smart pointers: shared_ptr/weak_ptr</li>
+<li>function/bind</li>
+<li>hash tables: unordered_set/unordered_multiset/unordered_map/unordered_multimap</li>
+<li>regular exporess</li>
+<li>tuple/array/mem_fn/reference_wrapper</li>
+<li>math function</li>
+<li>type traits/result_of</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[概率论与数理统计笔记]]></title>

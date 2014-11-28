@@ -5,11 +5,12 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 乌衣巷</title>
+	<title>Hadoop权威指南笔记 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content=" Life [ 3 ] Ios [ 1 ] Android [ 1 ] Script [ 2 ] 算法 [ 2 ] Boost [ 1 ] Db [ 1 ] Design pattern [ 2 ] Os [ 1 ] C++ [ 4 ] C++ [ 1 ] Others [ 1 ] ">
+	<meta name="description" content="Hadoop权威指南笔记 Hadoop权威指南笔记 1.&amp;2.关于MapReduce 数据本地化是MapReduce的核心特征，hadoop通过显式网络拓扑结构在存储数据附近的机器上进行运算任务，避免把数据复制来复制去耗尽网络带宽
+把数据从Mapper传给Reducer称为Shuffle &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/categories/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/11/28/Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,40 +112,92 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Hadoop权威指南笔记</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>Hadoop权威指南笔记</h1>
 
-    <li><a href="/blog/categories/Life/">Life</a> [ 3 ]</li>
+<h2>1.&amp;2.关于MapReduce</h2>
 
-    <li><a href="/blog/categories/iOS/">Ios</a> [ 1 ]</li>
+<ul>
+<li>数据本地化是MapReduce的核心特征，hadoop通过显式网络拓扑结构在存储数据附近的机器上进行运算任务，避免把数据复制来复制去耗尽网络带宽</li>
+<li>把数据从Mapper传给Reducer称为Shuffle</li>
+</ul>
 
-    <li><a href="/blog/categories/android/">Android</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/script/">Script</a> [ 2 ]</li>
+<h2>3.HDFS</h2>
 
-    <li><a href="/blog/categories/算法/">算法</a> [ 2 ]</li>
+<ul>
+<li>namenode负责维护所有文件和目录的文件树，datanode负责存储实际的数据块* HDFS提供了POSIX文件接口，通过操作url hdfs://path可以像操作本地文件一样操作文件，并实现本地和hdfs文件的互传</li>
+<li>通过FUSE(Filesystem in Userspace)可以把hdfs挂载到unix系统上</li>
+<li>HDFS默认提供Java API访问，其他语言要使用thrift</li>
+<li>HDFS的写操作只有三个datanode都写成功了才会返回，如果有一个写失败了则会删除该节点并新建一个节点</li>
+<li>每个块的元数据都会存储在namenode的内存中，因此HDFS存储小文件的效率很低</li>
+</ul>
 
-    <li><a href="/blog/categories/boost/">Boost</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/DB/">Db</a> [ 1 ]</li>
+<h2>4.Hadoop I/O</h2>
 
-    <li><a href="/blog/categories/Design Pattern/">Design pattern</a> [ 2 ]</li>
+<ul>
+<li>数据完整性用CRC32的checksum</li>
+<li>Hadoop会自动识别被压缩了的文件并进行解压缩，对于不可切分的压缩格式如gzip/LZO/DEFLATE无法启动并行处理，可以使用可切分的bz2</li>
+<li>通过Writable/Readble接口实现序列号/反序列号</li>
+<li>序列化/RPC框架: Avro/Thrfit/ProtoBuf</li>
+<li>基于文件的数据结构: SequenceFile/MapFile</li>
+</ul>
 
-    <li><a href="/blog/categories/OS/">Os</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/c++/">C++</a> [ 4 ]</li>
+<h2>6.MapReduce工作机制</h2>
 
-    <li><a href="/blog/categories/C++/">C++</a> [ 1 ]</li>
+<ul>
+<li>4大组件: client/jobtracker/tasktracker/HDFS</li>
+<li>调度算法:FIFO/Fair Scheduler(支持抢占)</li>
+</ul>
 
-    <li><a href="/blog/categories/others/">Others</a> [ 1 ]</li>
 
+<h2>9.构建Hadoop集群</h2>
+
+<ul>
+<li>服务器类型: namenode/datanode/jobtracker/tasktracker</li>
+<li>使用Kerbros来实现访问控制</li>
+</ul>
+
+
+<h2>12.Hive</h2>
+
+<ul>
+<li>使用类似SQL的语法来运行MapReduce查询HDFS，用于数据仓库的离线数据分析</li>
+</ul>
+
+
+<h2>13.HBase</h2>
+
+<ul>
+<li>列存储，类似于key-value数据库，提供良好的扩展性和硬盘存储，可以存储几个T的数据</li>
+</ul>
+
+
+<h2>14.Zookeeper</h2>
+
+<ul>
+<li>配置管理/锁服务</li>
 </ul>
 
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
 
 
 <section id="comment">
@@ -167,7 +220,6 @@
 
 
 </section>
-
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>

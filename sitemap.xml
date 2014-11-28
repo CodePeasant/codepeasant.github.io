@@ -85,12 +85,24 @@
         <lastmod>2014-11-20T17:13:40+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://CodePeasant.github.io/blog/2014/11/27/Effective+C%2B%2B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/
+        </loc>
+        <lastmod>2014-11-27T14:20:20+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://CodePeasant.github.io/blog/2014/11/28/Hadoop%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/
+        </loc>
+        <lastmod>2014-11-28T18:50:25+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://CodePeasant.github.io/aboutme/</loc>
         <lastmod>2013-11-26T15:37:40+08:00</lastmod>
     </url>
     <url>
         <loc>http://CodePeasant.github.io/blog/archives/</loc>
-        <lastmod>2014-11-20T17:13:40+08:00</lastmod>
+        <lastmod>2014-11-28T18:50:25+08:00</lastmod>
     </url>
     <url>
         <loc>http://CodePeasant.github.io/blog/categories/</loc>
@@ -98,7 +110,7 @@
     </url>
     <url>
         <loc>http://CodePeasant.github.io/</loc>
-        <lastmod>2014-11-20T17:13:40+08:00</lastmod>
+        <lastmod>2014-11-28T18:50:25+08:00</lastmod>
     </url>
     <url>
         <loc>http://CodePeasant.github.io/management/</loc>
