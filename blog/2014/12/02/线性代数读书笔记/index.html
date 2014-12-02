@@ -5,11 +5,14 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Categories - 乌衣巷</title>
+	<title>线性代数读书笔记 - 乌衣巷</title>
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content=" Life [ 3 ] Ios [ 1 ] Android [ 1 ] Script [ 2 ] 算法 [ 2 ] Boost [ 1 ] Db [ 1 ] Design pattern [ 2 ] Os [ 1 ] C++ [ 4 ] C++ [ 1 ] Others [ 2 ] ">
+	<meta name="description" content="线性代数读书笔记 线性代数读书笔记 1.行列式 D= |a11 a12|=a11*a22-a21*a12称为二阶行列式 |a21 a22|
+n阶行列式D：n阶行列式由n行n列组成，供n2个元素
+余子式Mij：划去第i行第j列剩余的n-1阶行列式称为元素aij的余子式
+代数余子式Aij：(-1)i &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +22,7 @@
 
 	<link href="" rel="alternate" title="乌衣巷" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://CodePeasant.github.io/blog/categories/">
+	<link rel="canonical" href="http://CodePeasant.github.io/blog/2014/12/02/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -111,40 +114,84 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner"><article class="page">
-    
-    <h1 class="title">Categories</h1>
-    
-    <div class="entry-content"><ul>
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">线性代数读书笔记</h1>
+	<div class="entry-content" itemprop="articleBody"><h1>线性代数读书笔记</h1>
 
-    <li><a href="/blog/categories/Life/">Life</a> [ 3 ]</li>
+<h2>1.行列式</h2>
 
-    <li><a href="/blog/categories/iOS/">Ios</a> [ 1 ]</li>
+<ul>
+<li>D= |a11 a12|=a11*a22-a21*a12称为二阶行列式
+ |a21 a22|</li>
+<li>n阶行列式D：n阶行列式由n行n列组成，供n<sup>2</sup>个元素</li>
+<li>余子式Mij：划去第i行第j列剩余的n-1阶行列式称为元素aij的余子式</li>
+<li>代数余子式Aij：(-1)<sup>i+j</sup>*Mij称为元素aij的代数余子式</li>
+<li>高阶行列式的展开降阶：D=a1j*A1j+&hellip;+anj*Anj</li>
+<li>行列式与其转置行列式值相等，即D=DT</li>
+<li>行列式的行与列地位相同，可以按行展开也可以按列展开</li>
+<li>kD等于对某一行或者某一列乘以k</li>
+<li>行列式某一列为0则行列式为0</li>
+<li>行列式交换两行，则值取反号</li>
+<li>行列式两行相同或成比例则值为0</li>
+<li>行列式把某一行的元素的k倍加到另一行上，其值不变</li>
+<li>Cramer法则，xj=Dj/D 其中Dj是用常数列替换D的第j列</li>
+</ul>
 
-    <li><a href="/blog/categories/android/">Android</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/script/">Script</a> [ 2 ]</li>
+<h2>2.矩阵</h2>
 
-    <li><a href="/blog/categories/算法/">算法</a> [ 2 ]</li>
+<ul>
+<li>m行n列的矩阵称为m*n矩阵</li>
+<li>若两矩阵行列数分别相等，则称它们是同型矩阵</li>
+<li>零矩阵：所有元素为0</li>
+<li>n阶方阵：n*n矩阵</li>
+<li>单位矩阵：主对角线元素为1，其他元素为0的n阶方阵，记为I</li>
+<li>对角矩阵/上(下)三角形矩阵/行矩阵(行向量)/列矩阵(列向量)</li>
+<li>矩阵的加法/数量乘积/</li>
+<li>矩阵乘法不满足交换律和消除律，但满足分配律和结合律</li>
+<li>转置矩阵:ATT=A,(A+B)T = AT+BT, (AB)T = BTAT</li>
+<li>对称矩阵:AT=A，反称矩阵:AT=-A</li>
+<li>可逆矩阵:A为n阶方阵，A(-1) * A = A * A(-1)= I，则称A为可逆矩阵/满秩矩阵/非奇异矩阵</li>
+<li>伴随矩阵A*:A的每个元素aij都替换成其代数余子式Aij组成的矩阵</li>
+<li>A(-1) = A*/|A|, A*是A的伴随矩阵，|A|是A的行列式值</li>
+<li><p>n阶方阵可逆的充要条件是方阵的行列式值不为0</p></li>
+<li><p>矩阵的初等变换</p></li>
+<li>互换矩阵的第i行(列)与第j行(列)的位置，记为ri&lt;&ndash;>rj(ci&lt;&ndash;>cj)</li>
+<li>用一个非零常数k乘矩阵的第i行(列)，记为kri(kci)</li>
+<li><p>将矩阵的第j行(列)的k倍加到第i行(列)上，记为ri+k*rj (记为ci+k*cj)</p></li>
+<li><p>矩阵的行初等变换与列初等变换统称为矩阵的初等变换，行初等变换可以把矩阵变成行阶梯形矩阵和行标准形，进一步加上列初等变换可以变成矩阵的标准形</p></li>
+<li>对单位矩阵I施行一次初等变换得到的矩阵称为初等矩阵，包括：Rij, Ri(k), Ri+j(k)</li>
+<li>对矩阵A施行一次行初等变换，相当于用相应的初等矩阵左乘A，施行一次列初等变换相当于用相应的初等矩阵右乘A</li>
+<li>初等变换求逆法</li>
+<li>从一个m行n列的矩阵A中任意抽取k行k列按原来的相对位置构成的行列式称为A的一个k阶子式</li>
+<li>矩阵A中不等于0的子式的最大阶数称为矩阵A的秩，记为r(A)，故可逆矩阵又称为满秩矩阵</li>
+<li>初等变换不改变矩阵的秩，故用初等变换在变换到行阶梯形乃至标准形的过程中可以看出矩阵的秩</li>
+</ul>
 
-    <li><a href="/blog/categories/boost/">Boost</a> [ 1 ]</li>
 
-    <li><a href="/blog/categories/DB/">Db</a> [ 1 ]</li>
+<h2>5.相似矩阵</h2>
 
-    <li><a href="/blog/categories/Design Pattern/">Design pattern</a> [ 2 ]</li>
-
-    <li><a href="/blog/categories/OS/">Os</a> [ 1 ]</li>
-
-    <li><a href="/blog/categories/c++/">C++</a> [ 4 ]</li>
-
-    <li><a href="/blog/categories/C++/">C++</a> [ 1 ]</li>
-
-    <li><a href="/blog/categories/others/">Others</a> [ 2 ]</li>
-
+<ul>
+<li>AX=λX，则称数λ为矩阵A的特征值，非零向量X为矩阵A对应特征值λ的特征向量* f(λ)=|λI-A|称为n阶矩阵A的特征多项式，f(λ)=0在复数域内有n个解，即A的n个特征值</li>
+<li>对于n阶方阵A、B，若有可逆的n阶方阵P，使得P(-1)*A*P=B，则称A与B相似，记为A~B，可逆矩阵P称为相似变换矩阵</li>
 </ul>
 
 </div>
+
 </article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
 
 
 <section id="comment">
@@ -167,7 +214,6 @@
 
 
 </section>
-
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
