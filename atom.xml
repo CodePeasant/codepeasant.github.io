@@ -4,7 +4,7 @@
   <title><![CDATA[乌衣巷]]></title>
   <link href="http://CodePeasant.github.io/atom.xml" rel="self"/>
   <link href="http://CodePeasant.github.io/"/>
-  <updated>2014-12-02T15:23:35+08:00</updated>
+  <updated>2014-12-18T15:23:49+08:00</updated>
   <id>http://CodePeasant.github.io/</id>
   <author>
     <name><![CDATA[吴逸翔]]></name>
@@ -12,6 +12,275 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[数据挖掘导论笔记]]></title>
+    <link href="http://CodePeasant.github.io/blog/2014/12/18/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0/"/>
+    <updated>2014-12-18T11:25:00+08:00</updated>
+    <id>http://CodePeasant.github.io/blog/2014/12/18/数据挖掘导论笔记</id>
+    <content type="html"><![CDATA[<h1>数据挖掘导论笔记</h1>
+
+<h2>1.绪论&amp;2.数据</h2>
+
+<h3>定义</h3>
+
+<ul>
+<li>数据挖掘与信息检索/统计的区别</li>
+<li>数据挖掘[Data Mining]:从数据库的大量数据中揭示出隐含的、先前未知的并有潜在价值的信息的非平凡过程，又称为KDD[Knowledege Discovery in Database]</li>
+</ul>
+
+
+<h3>数据挖掘任务</h3>
+
+<ul>
+<li>预测建模[离散:分类; 连续:回归]</li>
+<li>聚类分析</li>
+<li>关联分析</li>
+<li>异常检测</li>
+</ul>
+
+
+<h3>属性类型</h3>
+
+<ul>
+<li>Normal: 标称(==, !=),众数</li>
+<li>Ordinal: 序数(&lt;, >),中位数</li>
+<li>Interval: 区间(+, &ndash;),算术平均数</li>
+<li>Ratio: 比率(*, /),几何平均数</li>
+</ul>
+
+
+<h3>数据质量</h3>
+
+<ul>
+<li>Precision: 精度，标准差</li>
+<li>Bias: 偏倚，均值与实际值的差</li>
+</ul>
+
+
+<h3>数据预处理</h3>
+
+<ul>
+<li>聚集</li>
+<li>抽样</li>
+<li>维归约</li>
+<li>特征子集选择</li>
+<li>特征创建</li>
+<li>离散化和二元化</li>
+<li>变量变换（规范化，映射）</li>
+</ul>
+
+
+<h3>相似度</h3>
+
+<ul>
+<li>Minkowski Distance(n=1,街区距离;n=2,欧几里得距离)</li>
+<li>Simple Matching Coefficient: SMC=(f11+f00)/(f10+f01+f11+f00)</li>
+<li>Jaccard Coefficient: J=f11/(f10+f01+f11+f00)</li>
+<li>Cosine Similarity: cos(x,y)=x<em>y/(|x|</em>|y|)</li>
+<li>Pearson&rsquo;s Correlation: corr(x,y)=covariance(x,y)/(standard_deviation(x)*standard_deviation(y))</li>
+</ul>
+
+
+<h2>3.探索数据</h2>
+
+<h3>汇总统计</h3>
+
+<ul>
+<li>mode(众数)/median(中位数)/mean(均值)</li>
+<li>range(极差)/variance(方差)/standard deviation(标准差)</li>
+<li>covariance matrix(协方差矩阵)</li>
+</ul>
+
+
+<h3>可视化</h3>
+
+<ul>
+<li>stem and leaf plot(茎叶图)</li>
+<li>histogram(直方图)</li>
+<li>box plot(盒状图)</li>
+<li>pie chart</li>
+<li>contour plot(等高线图)</li>
+</ul>
+
+
+<h3>多维数据</h3>
+
+<ul>
+<li>data cube(数据立方体): 数据的多维表示，连同可能的总和（聚集/维归约</li>
+<li>pivoting(转轴): 除了两个维之外所有维的聚集</li>
+<li>slicing(切片): 对一个或多个维指定值进行聚集</li>
+<li>dicing(切块): 对一个或多个维指定区间进行聚集</li>
+<li>roll up(上卷): 聚集</li>
+<li>drill down(下钻): 分解</li>
+</ul>
+
+
+<h2>4.分类: 使用决策树</h2>
+
+<h3>预备知识</h3>
+
+<ul>
+<li>classification(分类): 通过学习得到一个目标函数/分类模型(target function)，把每个属性集x映射到一个预先定义的类标号y</li>
+<li>描述性建模/预测性建模</li>
+<li>训练集(training set)/检验集(test set)</li>
+<li>混淆矩阵(confusion matrix)</li>
+</ul>
+
+
+<h3>决策树终止条件</h3>
+
+<ul>
+<li>没有符合条件的记录</li>
+<li>所有记录都有相同的类标号</li>
+</ul>
+
+
+<h3>划分度量</h3>
+
+<ul>
+<li>Entropy(t) = -sum(p(i|t)*log2(p(i|t)))</li>
+<li>Gini(t) = 1-sum(p(i|t)<sup>2</sup>)</li>
+<li>Classification errorz(t) = 1-max(p(i|t))</li>
+<li>信息增益Δinfo=I(parent) &ndash; sum(p(son)*I(son))</li>
+<li>增益率Gain Ratio = Δinfo/Split Info, Split Info = -sum(p(v)*log2(p(v))</li>
+<li>数据碎片：某些叶节点记录太少，不能做出具有统计意义的判决</li>
+</ul>
+
+
+<h3>误差</h3>
+
+<ul>
+<li>training error(训练误差)</li>
+<li>generalization error(泛化误差)</li>
+</ul>
+
+
+<h3>拟合</h3>
+
+<ul>
+<li>model underfitting: 模型拟合不足，一开始模型没有学习到数据的真实结构，在训练集和检验集上的误差都很大</li>
+<li>model overfitting: 模型过度拟合，一旦树的规模变的太大，虽然训练误差还在降低，但检验误差会开始增大</li>
+<li>Occam&rsquo;s razor: 奥卡姆剃刀，给定两个具有相同泛化误差的模型，较简单的模型比较复杂的模型更可取</li>
+<li>Minimum Description Length(MDL): Cost(Data, Model) = Cost(Model) + Cost(Data|Model)</li>
+<li>解决拟合的方法：(1)先剪枝，提前终止；(2)后剪枝，子树提升/子树替换</li>
+</ul>
+
+
+<h3>分类器评估</h3>
+
+<ul>
+<li>Holdout(保持方法): 一部分划为训练集，一部分划为检验集</li>
+<li>Random Subsampling(随机二次抽样): 进行多次保持方法</li>
+<li>k-Cross-Validation(k折交叉验证): 把所有数据分为k个大小相同的子集，1份用于检验，其他的用于训练</li>
+<li>置信区间: 综合考虑样本数和准确率</li>
+</ul>
+
+
+<h2>5.分类: 其他技术</h2>
+
+<h3>分类器分类</h3>
+
+<ul>
+<li>积极学习方法(eager learner): 从训练数据中建立输入属性到类标号的映射模型</li>
+<li>消极学习方法(lazy learner): 推迟对训练数据的建模直到进行分类测试时才进行</li>
+</ul>
+
+
+<h3>基于规则的分类器</h3>
+
+<ul>
+<li>规则分类器使用if&hellip;then&hellip;进行分类，但所有的规则加起来并不一定能覆盖所有的记录</li>
+</ul>
+
+
+<h3>最近邻分类器(K-Nearest-Neighbor)</h3>
+
+<ul>
+<li>使用k个与待分类点z最近距离的数据点采用多数表决方案来判定类标号</li>
+<li>k值太小易受噪声影响产生过分拟合，太大会忽视局部信息错误分类</li>
+<li>一个改进是对使用与距离平方成反比的加权</li>
+</ul>
+
+
+<h3>贝叶斯分类器(Beyesian)</h3>
+
+<ul>
+<li>X为属性集，Y为类标号，P(Y|X)称为Y的后验概率，P(Y)称为Y的先验概率，P(X|Y)称为类条件概率，则P(Y|X) = P(X|Y)*P(Y)/P(X)</li>
+<li>对于某些属性样本缺失和样本数量较少，使用m-estimate比较好</li>
+<li>朴素贝叶斯(Naive Beyesian)分类器要求各属性条件独立，贝叶斯信念网络(Beyesian Belief Networks)不要求</li>
+</ul>
+
+
+<h3>人工神经网络(Artifical Neural Network)</h3>
+
+<ul>
+<li>人的大脑通过在同个脉冲下反复刺激改变神经元之间的连接强度，故使用激活函数y = sign(w*x) w为连接强度的权重向量，x为输入属性向量</li>
+<li>每次更新采用w[i+1,k] = w[i,k] + λ<em>(y-^y)</em>x[i,k]来迭代更新权重，λ称为学习率，在0~1之间，y为预测值，<sup>y</sup>为实际值</li>
+<li>感知器模型(Perceptron)与多层人工神经网络</li>
+</ul>
+
+
+<h3>支持向量机(Support Vector Machine)</h3>
+
+<ul>
+<li>决策边界:理想状况下把两种类标号恰好分布在决策边界的两侧（也允许存在噪声），距离两类类标号最小距离最大的决策边界称为最大边缘超平面（maximal margin hyperplane）</li>
+<li>线性支持向量机</li>
+<li>非线性支持向量机通过属性变换和核技术转换成线性支持向量机问题</li>
+</ul>
+
+
+<h3>组合方法</h3>
+
+<ul>
+<li>装袋:bagging，均匀概率从数据集中重复有放回抽样的方法</li>
+<li>提升:通过迭代聚集到存在分类困难的样本上，AdaBoost</li>
+<li>随机森林: Random Forest</li>
+</ul>
+
+
+<h3>不平衡类问题</h3>
+
+<ul>
+<li>不平衡类问题：两种类标号的记录比例悬殊，如信用卡欺诈检测</li>
+<li>混淆矩阵：Confusing Matrix, TP/FP/TN/FN</li>
+<li>TPR = TP/(TP+FN)，被预测为正的正样本比例，也称为recall</li>
+<li>FNR = FN/(FN+TP)，被预测为负的正样本比例</li>
+<li>FPR = FP/(FP+TN)，被预测为正的负样本比例</li>
+<li><p>TNR = TN/(TN+FP)，被预测为负的负样本比例</p></li>
+<li><p>召回率：recall = TP/(TP+FN)</p></li>
+<li>准确率：precison = TP/(TP+FP)</li>
+<li>召回率+准确率的综合度量: F1 = 2/(1/r+1/p) = 2rp/(r+p)</li>
+<li>ROC曲线：Receiver Operating Characteristic，显示TPR从0到1的过程中FPR的变化</li>
+</ul>
+
+
+<h2>6.关联分析</h2>
+
+<ul>
+<li>关联规则: X->Y</li>
+<li>support: 支持度，数据集X∩Y在所有的事务中出现的频繁程度 X∩Y / All</li>
+<li>confidenct: 置信度，Y在包含X的事务中出现的频繁程度 X∩Y / X</li>
+<li>关联规则分析算法分两步：</li>
+<li>产生满足最小支持度的频繁项集(frequent itemset)</li>
+<li>从频繁项集中提取所有高置信度的规则(strong rule)</li>
+<li>Apriori原理：先验原理，一个项集是频繁的，则他的所有的子集也都是频繁的，根据该原理是用基于支持度的剪枝，提出Apriori算法</li>
+<li>Apriori算法：每次产生候选k-项集，然后根据支持度进行剪枝，再产生新的(k+1)-项集，直到没有新的频繁项集产生</li>
+<li>基于支持度的剪枝是单调性的，但基于置信度的剪枝不具备单调性</li>
+</ul>
+
+
+<h2>6.聚类分析：基本概念和算法</h2>
+
+<ul>
+<li>k均值算法：(0)开始随机选择k个质心;(1)把每个点加到最近的质心的簇中;(2)重新计算每个簇的质心，重复(1)</li>
+<li>初始簇的选择很重要，可以多次随机选择并计算最终结果的SSE来找到一个较优解</li>
+<li>k均值算法适合于球形同密度分布</li>
+<li>评估：凝聚度（同一个簇的点到质心的距离之和）和分离度（不同簇的质心距离）</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[线性代数读书笔记]]></title>
@@ -2197,66 +2466,6 @@ maxV = f(m,n)</p>
 <p>过了一个多月边考研边找工作的生活，想想还是找工作吧。一直在纠结，定下来也好，态度不端正感觉找工作还是有点难。找个一个月工作，海投了40多家，工作找起来也没原预期的势如破竹拿遍各种offer反而各种网申挂、笔试挂、一面挂、二面挂、三面挂、HR面挂，悲催如斯。仔细反思了一下，感觉海投还是不好，一天奔三四场宣讲笔试面试，在华科武大珞珈山酒店间跑来跑去，略累，也没有哪家公司是有好好准备的（又想起我亲爱的度娘， ）。笔试面试做起题来感觉还不如大二那会的水平。。。一年多没写什么代码，C++好多东西都忘了，STL和BOOST都用不顺手了，不止一次想不起容器的操作方法，感觉略坑。操作系统神马也不像大二考完软设、系分那么熟，好多东西都不会了，一问三不知，伤不起伤不起</p>
 
 <p>看来还是得停业整顿，删掉一些公司，好好复习一下，再重新上路，加油。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[大三]]></title>
-    <link href="http://CodePeasant.github.io/blog/2011/09/17/%E5%A4%A7%E4%B8%89/"/>
-    <updated>2011-09-17T00:00:00+08:00</updated>
-    <id>http://CodePeasant.github.io/blog/2011/09/17/大三</id>
-    <content type="html"><![CDATA[<h2>110927</h2>
-
-<p>89.14&amp;99，保持这种状态，好好努力</p>
-
-<h2>110926</h2>
-
-<p>今天是很累的一天，身体累心也累，对一些事情的处理能力还有待加强，向男哥看齐。</p>
-
-<h2>11092</h2>
-
-<p>今天知道辉哥放弃保研挺震惊的，也聊了挺久，多了很多感触，读研和工作，如何选择，其实还是比较难想的。有时我也在想我是不是要那么执着于去一个更好的学校的读个研究生？是为了提高自己抑或只是为了镀镀金。。。算了，还是坚持目前的基本路线吧，动摇来动摇去反而不好。又聊起技术，发现我最近研究的东西越来越偏表层和美工，辉哥说了C++和算法才是核心竞争力，我一直以来也是这样想的，但总是对各种各样的技术很好奇，各种研究，从VB到Java/PHP，从OpenGL到GoogleMaps，从css/js到HTML5/CSS3，从Test到Bugfix，到各种工具软件的使用，貌似我的兴趣一直在各种变，学得也不够精，C++过后我再也不敢说我熟悉某一种语言了，C++
-实际上也是有很多问题的，STL/boost/Linux C++/QT很多很重要的东西我都只学了皮毛，有时总有种C/S已死，web当立的感觉，盲目的追求各种潮流，很纠结，主要也是目标不确定。最近的事情也很多，令人无力吐槽的某项目，力不从心却又不能不做的某项目，某本电子杂志，各场想去却又没时间的招聘会，看着淘宝人人腾讯百度一个个飘过或是即将飘过，有种恨不会分身术的感觉。学习上也很需要时间，目前的时间基本只能维持预习到老师讲的前面一点点，真怕像大一那样一个懈怠进度就落后了，还是需要时间去维持，好好学习。事情很多，主要还是自己当时没控制好应该做什么，什么事情应该拒绝或放弃，好吧，既然选择了就别后悔，用自己的努力去维护自己的光荣，work hard。</p>
-
-<h2>110920</h2>
-
-<p>尽管大二下已经比较努力地弥补加权了，大二的加权还是比较惨，算起来估计总成绩比某人还要少一些，TT&hellip;大二上自己选择了研究技术就别后悔，奋斗目标还是得选定了就别动摇，好吧，大三好好学习，挤出时间研究技术，吴逸翔你可以证明自己的，我相信你，好好奋斗。</p>
-
-<h2>110916</h2>
-
-<p>有时初始目的是好的，只是因为好奇或者是想展现自己的技术，却不小心变得有点像做坏事，有种道德的负罪感。好吧，到处为止，以后还是不要太好奇也不要逾越界限，安安分分过日子吧。</p>
-
-<h2>110912</h2>
-
-<p>还是会为某些人某些事高兴难过，还是有点容易激动，但已经进步很多了，加油，吴逸翔，心态再平和一点，内心强大的人才不会寂寞。</p>
-
-<h2>111116</h2>
-
-<p>很多东西压抑太久后释放出来才发现自己还是很脆弱，suzecenzezigen</p>
-
-<h2>111222</h2>
-
-<p>用了近五年的密码还是改了，不想承认，但还是一个时代的终结&hellip;</p>
-
-<h2>120106</h2>
-
-<p>下半学期来感觉得失心太强了，从成绩到Sose，感觉心态一直不对，太在意结果了反而一直很纠结，没有上半学期的什么都不想一心一意搞学习，改变自己那种平静的感觉。或许很多东西不经意间或许就得到了，太过于追求反而会越来越远。</p>
-
-<h2>120108</h2>
-
-<p>突然想不起当年我和苏泽是怎么度过那段打个游戏都会互相讥讽然后有时就变成吵架了的充满摩擦的岁月了，一个真实完整的现实中的人还是比一个只存在于脑海中的完美幻象好</p>
-
-<h2>120212</h2>
-
-<p>100&amp;91.81&amp;86.85，Keep working, keep moving</p>
-
-<h2>120510</h2>
-
-<p>继腾讯莫名其妙的挂了以后，百度也挂了，还挂在笔试，周三上午在考试间的空隙去老地方想要霸面然后不给，伤感。。。今天考试完重新看了一下机器学习/数据挖掘的岗位要求，突然发现要求的是硕士以上，有点坑爹，好吧，算我自己不够细心，应该低调点投C/C++的，百度的系统也有问题，缺乏错误提醒，吐槽一下，看来还是要读研，好好努力。</p>
-
-<h2>120518</h2>
-
-<p>西山居一面又变成去年腾讯一面的悲剧，每次都这样，我真的可能是谈吐中一直透着一股傲气和自大，多年习惯有点难改，还是得压一下。技术水平之外还是有很多东西&hellip;.</p>
 ]]></content>
   </entry>
   

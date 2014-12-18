@@ -9,9 +9,8 @@
 	<meta name="author" content="吴逸翔">
 
 	
-	<meta name="description" content="Dec 2nd, 2014 others Comments 线性代数读书笔记 线性代数读书笔记 1.行列式 D= |a11 a12|=a11*a22-a21*a12称为二阶行列式 |a21 a22|
-n阶行列式D：n阶行列式由n行n列组成，供n2个元素
-余子式Mij：划去第i行第j列剩余的n- &hellip;">
+	<meta name="description" content="Dec 18th, 2014 others Comments 数据挖掘导论笔记 数据挖掘导论笔记 1.绪论&amp;2.数据 定义 数据挖掘与信息检索/统计的区别
+数据挖掘[Data Mining]:从数据库的大量数据中揭示出隐含的、先前未知的并有潜在价值的信息的非平凡过程，又称为KDD[ &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,6 +114,303 @@ n阶行列式D：n阶行列式由n行n列组成，供n2个元素
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-18T11:25:00+08:00" data-updated="true" itemprop="datePublished">Dec 18<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/others/'>others</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/blog/2014/12/18/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/12/18/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%AF%BC%E8%AE%BA%E7%AC%94%E8%AE%B0/" itemprop="url">数据挖掘导论笔记</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<h1>数据挖掘导论笔记</h1>
+
+<h2>1.绪论&amp;2.数据</h2>
+
+<h3>定义</h3>
+
+<ul>
+<li>数据挖掘与信息检索/统计的区别</li>
+<li>数据挖掘[Data Mining]:从数据库的大量数据中揭示出隐含的、先前未知的并有潜在价值的信息的非平凡过程，又称为KDD[Knowledege Discovery in Database]</li>
+</ul>
+
+
+<h3>数据挖掘任务</h3>
+
+<ul>
+<li>预测建模[离散:分类; 连续:回归]</li>
+<li>聚类分析</li>
+<li>关联分析</li>
+<li>异常检测</li>
+</ul>
+
+
+<h3>属性类型</h3>
+
+<ul>
+<li>Normal: 标称(==, !=),众数</li>
+<li>Ordinal: 序数(&lt;, >),中位数</li>
+<li>Interval: 区间(+, &ndash;),算术平均数</li>
+<li>Ratio: 比率(*, /),几何平均数</li>
+</ul>
+
+
+<h3>数据质量</h3>
+
+<ul>
+<li>Precision: 精度，标准差</li>
+<li>Bias: 偏倚，均值与实际值的差</li>
+</ul>
+
+
+<h3>数据预处理</h3>
+
+<ul>
+<li>聚集</li>
+<li>抽样</li>
+<li>维归约</li>
+<li>特征子集选择</li>
+<li>特征创建</li>
+<li>离散化和二元化</li>
+<li>变量变换（规范化，映射）</li>
+</ul>
+
+
+<h3>相似度</h3>
+
+<ul>
+<li>Minkowski Distance(n=1,街区距离;n=2,欧几里得距离)</li>
+<li>Simple Matching Coefficient: SMC=(f11+f00)/(f10+f01+f11+f00)</li>
+<li>Jaccard Coefficient: J=f11/(f10+f01+f11+f00)</li>
+<li>Cosine Similarity: cos(x,y)=x<em>y/(|x|</em>|y|)</li>
+<li>Pearson&rsquo;s Correlation: corr(x,y)=covariance(x,y)/(standard_deviation(x)*standard_deviation(y))</li>
+</ul>
+
+
+<h2>3.探索数据</h2>
+
+<h3>汇总统计</h3>
+
+<ul>
+<li>mode(众数)/median(中位数)/mean(均值)</li>
+<li>range(极差)/variance(方差)/standard deviation(标准差)</li>
+<li>covariance matrix(协方差矩阵)</li>
+</ul>
+
+
+<h3>可视化</h3>
+
+<ul>
+<li>stem and leaf plot(茎叶图)</li>
+<li>histogram(直方图)</li>
+<li>box plot(盒状图)</li>
+<li>pie chart</li>
+<li>contour plot(等高线图)</li>
+</ul>
+
+
+<h3>多维数据</h3>
+
+<ul>
+<li>data cube(数据立方体): 数据的多维表示，连同可能的总和（聚集/维归约</li>
+<li>pivoting(转轴): 除了两个维之外所有维的聚集</li>
+<li>slicing(切片): 对一个或多个维指定值进行聚集</li>
+<li>dicing(切块): 对一个或多个维指定区间进行聚集</li>
+<li>roll up(上卷): 聚集</li>
+<li>drill down(下钻): 分解</li>
+</ul>
+
+
+<h2>4.分类: 使用决策树</h2>
+
+<h3>预备知识</h3>
+
+<ul>
+<li>classification(分类): 通过学习得到一个目标函数/分类模型(target function)，把每个属性集x映射到一个预先定义的类标号y</li>
+<li>描述性建模/预测性建模</li>
+<li>训练集(training set)/检验集(test set)</li>
+<li>混淆矩阵(confusion matrix)</li>
+</ul>
+
+
+<h3>决策树终止条件</h3>
+
+<ul>
+<li>没有符合条件的记录</li>
+<li>所有记录都有相同的类标号</li>
+</ul>
+
+
+<h3>划分度量</h3>
+
+<ul>
+<li>Entropy(t) = -sum(p(i|t)*log2(p(i|t)))</li>
+<li>Gini(t) = 1-sum(p(i|t)<sup>2</sup>)</li>
+<li>Classification errorz(t) = 1-max(p(i|t))</li>
+<li>信息增益Δinfo=I(parent) &ndash; sum(p(son)*I(son))</li>
+<li>增益率Gain Ratio = Δinfo/Split Info, Split Info = -sum(p(v)*log2(p(v))</li>
+<li>数据碎片：某些叶节点记录太少，不能做出具有统计意义的判决</li>
+</ul>
+
+
+<h3>误差</h3>
+
+<ul>
+<li>training error(训练误差)</li>
+<li>generalization error(泛化误差)</li>
+</ul>
+
+
+<h3>拟合</h3>
+
+<ul>
+<li>model underfitting: 模型拟合不足，一开始模型没有学习到数据的真实结构，在训练集和检验集上的误差都很大</li>
+<li>model overfitting: 模型过度拟合，一旦树的规模变的太大，虽然训练误差还在降低，但检验误差会开始增大</li>
+<li>Occam&rsquo;s razor: 奥卡姆剃刀，给定两个具有相同泛化误差的模型，较简单的模型比较复杂的模型更可取</li>
+<li>Minimum Description Length(MDL): Cost(Data, Model) = Cost(Model) + Cost(Data|Model)</li>
+<li>解决拟合的方法：(1)先剪枝，提前终止；(2)后剪枝，子树提升/子树替换</li>
+</ul>
+
+
+<h3>分类器评估</h3>
+
+<ul>
+<li>Holdout(保持方法): 一部分划为训练集，一部分划为检验集</li>
+<li>Random Subsampling(随机二次抽样): 进行多次保持方法</li>
+<li>k-Cross-Validation(k折交叉验证): 把所有数据分为k个大小相同的子集，1份用于检验，其他的用于训练</li>
+<li>置信区间: 综合考虑样本数和准确率</li>
+</ul>
+
+
+<h2>5.分类: 其他技术</h2>
+
+<h3>分类器分类</h3>
+
+<ul>
+<li>积极学习方法(eager learner): 从训练数据中建立输入属性到类标号的映射模型</li>
+<li>消极学习方法(lazy learner): 推迟对训练数据的建模直到进行分类测试时才进行</li>
+</ul>
+
+
+<h3>基于规则的分类器</h3>
+
+<ul>
+<li>规则分类器使用if&hellip;then&hellip;进行分类，但所有的规则加起来并不一定能覆盖所有的记录</li>
+</ul>
+
+
+<h3>最近邻分类器(K-Nearest-Neighbor)</h3>
+
+<ul>
+<li>使用k个与待分类点z最近距离的数据点采用多数表决方案来判定类标号</li>
+<li>k值太小易受噪声影响产生过分拟合，太大会忽视局部信息错误分类</li>
+<li>一个改进是对使用与距离平方成反比的加权</li>
+</ul>
+
+
+<h3>贝叶斯分类器(Beyesian)</h3>
+
+<ul>
+<li>X为属性集，Y为类标号，P(Y|X)称为Y的后验概率，P(Y)称为Y的先验概率，P(X|Y)称为类条件概率，则P(Y|X) = P(X|Y)*P(Y)/P(X)</li>
+<li>对于某些属性样本缺失和样本数量较少，使用m-estimate比较好</li>
+<li>朴素贝叶斯(Naive Beyesian)分类器要求各属性条件独立，贝叶斯信念网络(Beyesian Belief Networks)不要求</li>
+</ul>
+
+
+<h3>人工神经网络(Artifical Neural Network)</h3>
+
+<ul>
+<li>人的大脑通过在同个脉冲下反复刺激改变神经元之间的连接强度，故使用激活函数y = sign(w*x) w为连接强度的权重向量，x为输入属性向量</li>
+<li>每次更新采用w[i+1,k] = w[i,k] + λ<em>(y-^y)</em>x[i,k]来迭代更新权重，λ称为学习率，在0~1之间，y为预测值，<sup>y</sup>为实际值</li>
+<li>感知器模型(Perceptron)与多层人工神经网络</li>
+</ul>
+
+
+<h3>支持向量机(Support Vector Machine)</h3>
+
+<ul>
+<li>决策边界:理想状况下把两种类标号恰好分布在决策边界的两侧（也允许存在噪声），距离两类类标号最小距离最大的决策边界称为最大边缘超平面（maximal margin hyperplane）</li>
+<li>线性支持向量机</li>
+<li>非线性支持向量机通过属性变换和核技术转换成线性支持向量机问题</li>
+</ul>
+
+
+<h3>组合方法</h3>
+
+<ul>
+<li>装袋:bagging，均匀概率从数据集中重复有放回抽样的方法</li>
+<li>提升:通过迭代聚集到存在分类困难的样本上，AdaBoost</li>
+<li>随机森林: Random Forest</li>
+</ul>
+
+
+<h3>不平衡类问题</h3>
+
+<ul>
+<li>不平衡类问题：两种类标号的记录比例悬殊，如信用卡欺诈检测</li>
+<li>混淆矩阵：Confusing Matrix, TP/FP/TN/FN</li>
+<li>TPR = TP/(TP+FN)，被预测为正的正样本比例，也称为recall</li>
+<li>FNR = FN/(FN+TP)，被预测为负的正样本比例</li>
+<li>FPR = FP/(FP+TN)，被预测为正的负样本比例</li>
+<li><p>TNR = TN/(TN+FP)，被预测为负的负样本比例</p></li>
+<li><p>召回率：recall = TP/(TP+FN)</p></li>
+<li>准确率：precison = TP/(TP+FP)</li>
+<li>召回率+准确率的综合度量: F1 = 2/(1/r+1/p) = 2rp/(r+p)</li>
+<li>ROC曲线：Receiver Operating Characteristic，显示TPR从0到1的过程中FPR的变化</li>
+</ul>
+
+
+<h2>6.关联分析</h2>
+
+<ul>
+<li>关联规则: X->Y</li>
+<li>support: 支持度，数据集X∩Y在所有的事务中出现的频繁程度 X∩Y / All</li>
+<li>confidenct: 置信度，Y在包含X的事务中出现的频繁程度 X∩Y / X</li>
+<li>关联规则分析算法分两步：</li>
+<li>产生满足最小支持度的频繁项集(frequent itemset)</li>
+<li>从频繁项集中提取所有高置信度的规则(strong rule)</li>
+<li>Apriori原理：先验原理，一个项集是频繁的，则他的所有的子集也都是频繁的，根据该原理是用基于支持度的剪枝，提出Apriori算法</li>
+<li>Apriori算法：每次产生候选k-项集，然后根据支持度进行剪枝，再产生新的(k+1)-项集，直到没有新的频繁项集产生</li>
+<li>基于支持度的剪枝是单调性的，但基于置信度的剪枝不具备单调性</li>
+</ul>
+
+
+<h2>6.聚类分析：基本概念和算法</h2>
+
+<ul>
+<li>k均值算法：(0)开始随机选择k个质心;(1)把每个点加到最近的质心的簇中;(2)重新计算每个簇的质心，重复(1)</li>
+<li>初始簇的选择很重要，可以多次随机选择并计算最终结果的SSE来找到一个较优解</li>
+<li>k均值算法适合于球形同密度分布</li>
+<li>评估：凝聚度（同一个簇的点到质心的距离之和）和分离度（不同簇的质心距离）</li>
+</ul>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -2068,92 +2364,6 @@ cat /proc/[pid]/status 查看pid的进程占用的内存大小(当前，峰值)<
 <li>IP层提供的核心基本功能有两点，第一点是地址管理，第二点就是路由选路。</li>
 <li>TCP3次握手,4次挥手用于保证双方都终止数据传输</li>
 <li>UDP可以一个Client Socket连多个Server，TCP只能一对一</li>
-</ul>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-10T20:15:00+08:00" data-updated="true" itemprop="datePublished">Jul 10<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/design-pattern/'>Design Pattern</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/blog/2014/07/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/07/10/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/" itemprop="url">设计模式笔记</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<h2>分类</h2>
-
-<h3>创建（5+1）</h3>
-
-<ul>
-<li>工厂(Factory)</li>
-<li>简单工厂(Simple Factory)</li>
-<li>抽象工厂(Abstract Factory)</li>
-<li>原型(Protoype)</li>
-<li>单例(Singleton)</li>
-<li>建造者(Builder)</li>
-</ul>
-
-
-<h3>结构（7）</h3>
-
-<ul>
-<li>组合(Composite)</li>
-<li>代理(Proxy)</li>
-<li>装饰(Decorator)</li>
-<li>桥接(Bridge)</li>
-<li>享元(Flyweight)</li>
-<li>适配器(Adaptor)</li>
-<li>外观(Facade)</li>
-</ul>
-
-
-<h3>行为（11）</h3>
-
-<ul>
-<li>模板方法(Template Method)</li>
-<li>状态(State)</li>
-<li>策略(Strategy)</li>
-<li>观察者(Observer)</li>
-<li>迭代器(Iterator)</li>
-<li>责任链(Chain of Responsibility)</li>
-<li>命令(Command)</li>
-<li>访问者(Visitor)</li>
-<li>备忘录(Memento)</li>
-<li>中介者(Mediator)</li>
-<li>解释器(Intepretor)</li>
-</ul>
-
-
-<h2>TIP</h2>
-
-<ul>
-<li>代理模式用于控制访问，用户不知道被代理的对象；装饰器模式用于新增行为，用户知道被被装饰的对象并在构造函数中传递给装饰器。</li>
 </ul>
 
 
